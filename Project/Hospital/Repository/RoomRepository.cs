@@ -70,8 +70,7 @@ namespace Repository
       
       public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-            int ids = rooms.Count() == 0 ? 0 : rooms.Max(Room => Room.Id);
-            rooms.Add(new Room(++ids, floor, roomType, name, availability));
+            rooms.Add(new Room(id, floor, roomType, name, availability));
             roomFileHandler.Write(rooms);
             return true;
         }

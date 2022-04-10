@@ -2,6 +2,7 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Service
 {
@@ -13,27 +14,29 @@ namespace Service
       }
       public Room GetById(int id)
       {
-         throw new NotImplementedException();
+            return roomRepository.GetById(id);
       }
       
       public List<Room> GetAll()
       {
-         throw new NotImplementedException();
+            return roomRepository.GetAll();
       }
       
       public bool DeleteRoom(int id)
       {
-         throw new NotImplementedException();
+            return roomRepository.DeleteRoom(id);
       }
       
       public bool EditRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-         throw new NotImplementedException();
+            return roomRepository.EditRoom(floor,name,id,availability,roomType);
       }
       
       public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-         throw new NotImplementedException();
+            int ids = roomRepository.GetAll().Count() == 0 ? 0 : roomRepository.GetAll().Max(Room => Room.Id);
+
+            return roomRepository.CreateRoom(floor,name,++ids,availability,roomType);
       }
       
       public Repository.RoomRepository roomRepository;
