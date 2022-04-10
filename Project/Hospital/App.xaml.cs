@@ -21,7 +21,7 @@ namespace Hospital
         public App()
         {
             RoomRepository roomRepository = new RoomRepository();
-            RoomService roomService = new RoomService();
+            RoomService roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
         }
     }

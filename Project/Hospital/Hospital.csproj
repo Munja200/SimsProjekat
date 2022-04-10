@@ -136,5 +136,8 @@
   <ItemGroup>
     <Folder Include="View\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Room.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

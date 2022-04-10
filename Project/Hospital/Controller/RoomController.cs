@@ -14,27 +14,46 @@ namespace Controller
 
       public Room GetById(int id)
       {
-         throw new NotImplementedException();
+            return roomService.GetById(id);
       }
       
       public List<Room> GetAll()
       {
-         throw new NotImplementedException();
+            return roomService.GetAll();
       }
       
       public bool DeleteRoom(int id)
       {
-         throw new NotImplementedException();
+            if (roomService.GetById(id).RoomType.Equals("storage")) 
+            {
+                return false;
+            }
+            return roomService.DeleteRoom(id);
       }
       
       public bool EditRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-         throw new NotImplementedException();
-      }
+            if (roomService.GetById(id).RoomType.Equals("storage"))
+            {
+                return false;
+            }
+            return roomService.EditRoom(floor,name,id,availability,roomType);
+        }
       
       public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-         throw new NotImplementedException();
+            bool indicator = false;
+            foreach (Room room in roomService.GetAll()) {
+                if (room.RoomType.Equals("storage"))
+                    indicator = true;
+            }
+
+            if (roomService.GetById(id).RoomType.Equals("storage") && indicator)
+            {
+                return false;
+            }
+
+            return roomService.CreateRoom(floor,name,id,availability,roomType);
       }
       
       public Service.RoomService roomService;
