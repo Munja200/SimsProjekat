@@ -4,13 +4,22 @@ namespace Model
 {
    public class Room
    {
-      public int floor;
-      public String name;
-      public int id;
-      public bool availability;
-      public RoomType roomType;
-      
-      public System.Collections.Generic.List<RoomSchedule> roomSchedule;
+        public Room(int id, int floor, RoomType roomType, String name, bool availability)
+        {
+            Id = id;
+            Floor = floor;
+            RoomType = roomType;
+            Name = name;
+            Availability = availability;
+        }
+
+        public int Floor { get; set; }
+        public String Name { get; set; }
+        public int Id { get; set; }
+        public bool Availability { get; set; }
+        public RoomType RoomType { get; set; }
+
+        public System.Collections.Generic.List<RoomSchedule> roomSchedule;
       
       public System.Collections.Generic.List<RoomSchedule> RoomSchedule
       {

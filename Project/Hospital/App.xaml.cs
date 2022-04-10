@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Controller;
+using Repository;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +16,13 @@ namespace Hospital
     /// </summary>
     public partial class App : Application
     {
+        public RoomController roomController { get; set; }
+
+        public App()
+        {
+            RoomRepository roomRepository = new RoomRepository();
+            RoomService roomService = new RoomService();
+            roomController = new RoomController(roomService);
+        }
     }
 }

@@ -1,35 +1,80 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository
 {
    public class RoomRepository
    {
-      public Room GetById(int id)
+     public RoomRepository()
+     {
+          roomFileHandler = new FileHandler.RoomFileHandler();
+          rooms = new List<Room>();
+     }
+        public Room GetById(int id)
       {
-         throw new NotImplementedException();
-      }
+            foreach (Room room in rooms)
+            {
+                if (room.Id.Equals(id))
+                    return room;
+            }
+            return null;
+        }
       
       public List<Room> GetAll()
       {
-         throw new NotImplementedException();
-      }
+            if (roomFileHandler.Read() == null)
+                return rooms;
+
+            foreach (Room room in roomFileHandler.Read())
+            {
+                rooms.Add(room);
+            }
+            return rooms;
+        }
       
       public bool DeleteRoom(int id)
       {
-         throw new NotImplementedException();
-      }
+            foreach (Room room in rooms)
+            {
+                if (room.Id.Equals(id))
+                {
+                    rooms.Remove(room);
+                    roomFileHandler.Write(rooms);
+                    return true;
+                }
+            }
+            return false;
+        }
       
       public bool EditRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-         throw new NotImplementedException();
-      }
+            foreach (Room rs in rooms)
+            {
+                if (rs.Id.Equals(id))
+                {
+                    rs.Id = id;
+                    rs.Floor = floor;
+                    rs.Name = name;
+                    rs.RoomType = roomType;
+                    rs.Availability = availability;
+                    roomFileHandler.Write(rooms);
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
       
       public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-         throw new NotImplementedException();
-      }
+            int ids = rooms.Count() == 0 ? 0 : rooms.Max(Room => Room.Id);
+            rooms.Add(new Room(++ids, floor, roomType, name, availability));
+            roomFileHandler.Write(rooms);
+            return true;
+        }
       
       public List<Room> rooms;
       

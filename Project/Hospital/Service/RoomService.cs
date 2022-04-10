@@ -1,4 +1,5 @@
 using Model;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -6,6 +7,10 @@ namespace Service
 {
    public class RoomService
    {
+      public RoomService(RoomRepository roomRepository) 
+      {
+            this.roomRepository = roomRepository;
+      }
       public Room GetById(int id)
       {
          throw new NotImplementedException();

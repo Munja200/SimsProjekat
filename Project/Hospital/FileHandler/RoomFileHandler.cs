@@ -6,17 +6,20 @@ namespace FileHandler
 {
    public class RoomFileHandler
    {
-      public void Write(List<Room> rooms)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Room> Read()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public string path;
-   
-   }
+        private readonly string path = @"../../Resources/Room.txt";
+
+
+        public List<Room> Read()
+        {
+            string serializedRooms = System.IO.File.ReadAllText(path);
+            List<Room> rooms = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Room>>(serializedRooms);
+            return rooms;
+        }
+
+        public void Write(List<Room> rooms)
+        {
+            string serializedRooms = Newtonsoft.Json.JsonConvert.SerializeObject(rooms);
+            System.IO.File.WriteAllText(path, serializedRooms);
+        }
+    }
 }

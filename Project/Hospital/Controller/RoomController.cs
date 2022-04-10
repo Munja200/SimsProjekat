@@ -1,4 +1,5 @@
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -6,6 +7,11 @@ namespace Controller
 {
    public class RoomController
    {
+      public RoomController(RoomService roomService)
+      {
+            this.roomService = roomService;
+      }
+
       public Room GetById(int id)
       {
          throw new NotImplementedException();
