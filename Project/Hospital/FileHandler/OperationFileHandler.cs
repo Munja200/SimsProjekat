@@ -6,17 +6,23 @@ namespace FileHandler
 {
    public class OperationFileHandler
    {
-      public List<Operation> Read()
+
+        private readonly string path = @"../../Resources/Operation.txt";
+
+        public List<Operation> Read()
       {
-         throw new NotImplementedException();
-      }
+
+            string serializedOperations = System.IO.File.ReadAllText(path);
+            List<Operation> operations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Operation>>(serializedOperations);
+            return operations;
+        }
       
       public void Write(ref List<Operation> operations)
       {
-         throw new NotImplementedException();
+            string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(operations);
+            System.IO.File.WriteAllText(path, serializedOperations);
+           
       }
-      
-      public string path;
    
    }
 }

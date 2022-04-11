@@ -1,0 +1,2 @@
+[{"id":301,"duration": 30,"specialist": null,"room":null,"Appointment":null}]
+[{"id":202,"duration": 10,"specialist": null,"room":null,"Appointment":null}]
