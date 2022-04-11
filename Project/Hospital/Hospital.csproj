@@ -96,6 +96,9 @@
     <Compile Include="View\DirectorAddRoom.xaml.cs">
       <DependentUpon>DirectorAddRoom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DirectorEditRoom.xaml.cs">
+      <DependentUpon>DirectorEditRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DirectorRoomWindow.xaml.cs">
       <DependentUpon>DirectorRoomWindow.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\DirectorAddRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DirectorEditRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
