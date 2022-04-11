@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,8 @@ namespace Hospital
 
         private void Director(object sender, RoutedEventArgs e)
         {
-
+            new DirectorRoomWindow().Show();
+            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

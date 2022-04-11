@@ -24,7 +24,7 @@ namespace Controller
       
       public bool DeleteRoom(int id)
       {
-            if (roomService.GetById(id).RoomType.Equals("storage")) 
+            if (roomService.GetById(id).RoomType.Equals(RoomType.storage)) 
             {
                 return false;
             }
@@ -33,7 +33,7 @@ namespace Controller
       
       public bool EditRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-            if (roomService.GetById(id).RoomType.Equals("storage"))
+            if (roomService.GetById(id).RoomType.Equals(RoomType.storage))
             {
                 return false;
             }
@@ -44,15 +44,15 @@ namespace Controller
       {
             bool indicator = false;
             foreach (Room room in roomService.GetAll()) {
-                if (room.RoomType.Equals("storage"))
+                if (room.RoomType.Equals(RoomType.storage))
                     indicator = true;
             }
-
-            if (roomService.GetById(id).RoomType.Equals("storage") && indicator)
+            
+            if (roomType.Equals(RoomType.storage) && indicator)
             {
                 return false;
             }
-
+          
             return roomService.CreateRoom(floor,name,id,availability,roomType);
       }
       

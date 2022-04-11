@@ -27,10 +27,8 @@ namespace Repository
             if (roomFileHandler.Read() == null)
                 return rooms;
 
-            foreach (Room room in roomFileHandler.Read())
-            {
-                rooms.Add(room);
-            }
+            rooms = roomFileHandler.Read();
+            
             return rooms;
         }
       
@@ -69,11 +67,12 @@ namespace Repository
         }
       
       public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
-      {
+      { 
+
             rooms.Add(new Room(id, floor, roomType, name, availability));
             roomFileHandler.Write(rooms);
             return true;
-        }
+      }
       
       public List<Room> rooms;
       

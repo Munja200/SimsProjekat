@@ -93,6 +93,13 @@
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
     <Compile Include="Service\RoomService.cs" />
+    <Compile Include="View\DirectorAddRoom.xaml.cs">
+      <DependentUpon>DirectorAddRoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DirectorRoomWindow.xaml.cs">
+      <DependentUpon>DirectorRoomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\priavte.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +112,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\DirectorAddRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DirectorRoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -132,9 +147,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Room.txt" />
