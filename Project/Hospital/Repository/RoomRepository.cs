@@ -1,16 +1,18 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Repository
 {
    public class RoomRepository
    {
-     public RoomRepository()
+        ObservableCollection<Room> rooms;
+        public RoomRepository()
      {
           roomFileHandler = new FileHandler.RoomFileHandler();
-          rooms = new List<Room>();
+          rooms = new ObservableCollection<Room>();
      }
         public Room GetById(int id)
       {
@@ -21,15 +23,18 @@ namespace Repository
             }
             return null;
         }
-      
-      public List<Room> GetAll()
+
+        public ref ObservableCollection<Room> GetAll()
       {
             if (roomFileHandler.Read() == null)
-                return rooms;
+                return ref rooms;
+            rooms.Clear();
+            List<Room> list = roomFileHandler.Read();
 
-            rooms = roomFileHandler.Read();
-            
-            return rooms;
+            foreach (Room r in list)
+            { rooms.Add(r); }
+
+            return ref rooms;
         }
       
       public bool DeleteRoom(int id)
@@ -39,7 +44,7 @@ namespace Repository
                 if (room.Id.Equals(id))
                 {
                     rooms.Remove(room);
-                    roomFileHandler.Write(rooms);
+                    roomFileHandler.Write(rooms.ToList());
                     return true;
                 }
             }
@@ -57,7 +62,7 @@ namespace Repository
                     rs.Name = name;
                     rs.RoomType = roomType;
                     rs.Availability = availability;
-                    roomFileHandler.Write(rooms);
+                    roomFileHandler.Write(rooms.ToList());
 
                     return true;
                 }
@@ -70,11 +75,11 @@ namespace Repository
       { 
 
             rooms.Add(new Room(id, floor, roomType, name, availability));
-            roomFileHandler.Write(rooms);
+            roomFileHandler.Write(rooms.ToList());
             return true;
       }
       
-      public List<Room> rooms;
+     // public List<Room> rooms;
       
       public FileHandler.RoomFileHandler roomFileHandler;
    
