@@ -6,15 +6,22 @@ namespace Repository
 {
    public class OperationRepository
    {
-      public bool CreateOperation(Operation operation)
+
+        public List<Operation> operations;
+        public OperationRepository()
+        {
+            operationFileHandler = new FileHandler.OperationFileHandler();
+            operations = new List<Operation>();
+        }
+        public bool CreateOperation(Operation operation)
       {
          throw new NotImplementedException();
       }
       
       public bool DeleteOperation(Operation operation)
       {
-         throw new NotImplementedException();
-      }
+            throw new NotImplementedException();
+        }
       
       public bool UpdateOperation(Operation operation)
       {
@@ -23,13 +30,23 @@ namespace Repository
       
       public List<Operation> GetAll()
       {
-         throw new NotImplementedException();
-      }
+            if (operationFileHandler.Read() == null)
+                return operations;
+
+            operations = operationFileHandler.Read();
+
+            return operations;
+        }
       
       public Operation GetOperationById(int id)
       {
-         throw new NotImplementedException();
-      }
+            foreach (Operation operation in operations)
+            {
+                if (operation.id.Equals(id))
+                    return operation;
+            }
+            return null;
+        }
       
       public FileHandler.OperationFileHandler operationFileHandler;
    
