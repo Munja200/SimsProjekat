@@ -6,17 +6,23 @@ namespace FileHandler
 {
    public class PatientAccountFileHandler
    {
-      public void Write(List<PatientAccount> patientAccount)
+
+        private readonly string path = @"../../Resources/Patient.txt";
+
+        public void Write(List<PatientAccount> patients)
       {
-         throw new NotImplementedException();
-      }
+            string serializedPatients = Newtonsoft.Json.JsonConvert.SerializeObject(patients);
+            System.IO.File.WriteAllText(path, serializedPatients);
+        }
       
       public List<PatientAccount> Read()
       {
-         throw new NotImplementedException();
-      }
+            string serializedPatients = System.IO.File.ReadAllText(path);
+            List<PatientAccount> patients = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PatientAccount>>(serializedPatients);
+            return patients;
+        }
       
-      public string path;
+      
    
    }
 }

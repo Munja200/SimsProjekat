@@ -156,10 +156,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+
     <Resource Include="Resources\Room.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Operation.txt" />
+
+    <Folder Include="Resources\" />
+    <Folder Include="View\" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
