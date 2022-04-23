@@ -4,13 +4,19 @@ namespace Model
 {
    public class Address
    {
-      public String streetName;
-      public String number;
+      public String streetName { get; set; }
+      public String number { get; set; }
       
       public City city;
-      
-      
-      public City City
+
+        public Address(string streetName, string number, City city)
+        {
+            this.streetName = streetName;
+            this.number = number;
+            this.city = city;
+        }
+
+        public City City
       {
          get
          {
