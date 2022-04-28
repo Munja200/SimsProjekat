@@ -1,0 +1,44 @@
+﻿<Window x:Class="Hospital.View.DoctorEditOperation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View"
+        mc:Ignorable="d"
+        Title="DoctorEditOperation" Height="450" Width="800">
+    <DockPanel x:Name="EditOp">
+        <DockPanel DockPanel.Dock="Bottom">
+            <Button DockPanel.Dock="Left" Width="100" Padding="10" Margin="10" IsDefault="True" FontSize="15" Click="EditButton">Submit</Button>
+            <Button DockPanel.Dock="Right" Width="100" Padding="10" Margin="10" IsCancel="True" FontSize="15" Click="CencelButton">Cencel</Button>
+            <Separator DockPanel.Dock="Bottom"></Separator>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Width="100" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left">Duration:</Label>
+                <Label Grid.Column="0" Grid.Row="1" Width="150" Height="40" FontSize="18" Margin="20"  HorizontalAlignment="Left" >OperationType:</Label>
+                <Label Grid.Column="0" Grid.Row="2" Width="100" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left" >Specialist:</Label>
+                <Label Grid.Column="0" Grid.Row="3" Width="100" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left" >Room:</Label>
+                <Label Grid.Column="0" Grid.Row="4" Width="150" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left" >Appointment:</Label>
+
+                <TextBox x:Name="durationO" Grid.Column="1" Grid.Row="0" Width="400" Height="20" BorderBrush="#FF070709" Text="{Binding Operation.Duration}"/>
+                <ComboBox Grid.Column="1" Grid.Row="1" Width="400" Height="30" ItemsSource="{Binding OperationTypes}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Operation.OperationType}"></ComboBox>
+                <ComboBox Grid.Column="1" Grid.Row="2" Width="400" Height="30" ItemsSource="{Binding Specialists}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Operation.Specialist}"></ComboBox>
+                <ComboBox Grid.Column="1" Grid.Row="3" Width="400" Height="30" ItemsSource="{Binding Rooms}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Operation.Room}"></ComboBox>
+                <ComboBox Grid.Column="1" Grid.Row="4" Width="400" Height="30" ItemsSource="{Binding Appointments}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Operation.Appointment}"></ComboBox>
+
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+
+</Window>

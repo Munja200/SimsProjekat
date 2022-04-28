@@ -1,18 +1,5 @@
-﻿using Hospital.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Hospital.View;
 
 namespace Hospital
 {
@@ -34,13 +21,16 @@ namespace Hospital
 
         private void Secretary(object sender, RoutedEventArgs e)
         {
+
             new SecretaryPatientAccountWindow().Show();
             this.Close();
+
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Doctor(object sender, RoutedEventArgs e)
         {
-
+            new DoctorOperationWindow().Show();
+            this.Close();
         }
     }
 }

@@ -1,0 +1,6 @@
+[{"OperationCode" : 12,  "OperationDescription" : "operacija srca"}, 
+{"OperationCode" : 56,  "OperationDescription" : "operacija ruke"}, 
+{"OperationCode" : 122,  "OperationDescription" : "operacija noge"},
+{"OperationCode" : 2,  "OperationDescription" : "plasticna operacija"},
+{"OperationCode" : 15,  "OperationDescription" : "operacija oka"}
+]

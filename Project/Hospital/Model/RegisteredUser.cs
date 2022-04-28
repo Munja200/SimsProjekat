@@ -4,6 +4,7 @@ namespace Model
 {
    public class RegisteredUser : User
    {
+
       public String Username { get; set; }
       public String Password { get; set; }
 
@@ -13,4 +14,5 @@ namespace Model
             this.Password = password;
         }
     }
+
 }

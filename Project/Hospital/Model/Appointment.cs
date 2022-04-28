@@ -1,17 +1,32 @@
 using System;
+using System.Collections.Generic;
+using System.Windows.Controls;
+using Newtonsoft.Json;
 
 namespace Model
 {
-   public class Appointment
-   {
-      public int id;
-      public DateTime startTime;
-      public DateTime endTime;
-      public float duration;
-        public bool Scheduled;
+    public class Appointment
+    {
+        public int Id { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public int Duration { get; set; }
+        public bool Scheduled { get; set; }
+        public AppointmentType AppointmetntType { get; set; }
 
+        [JsonIgnore]
         public System.Collections.Generic.List<Operation> operation;
 
+        public Appointment(int idd, DateTime startTimee, DateTime endTimee, int durationn, bool scheduledd, AppointmentType appointmetntTypee)
+        {
+            Id = idd;
+            StartTime = startTimee;
+            EndTime = endTimee;
+            Duration = durationn;
+            Scheduled = scheduledd;
+            AppointmetntType = appointmetntTypee;
+        }
+        [JsonIgnore]
         public System.Collections.Generic.List<Operation> Operation
         {
             get
@@ -72,7 +87,16 @@ namespace Model
                 tmpOperation.Clear();
             }
         }
+      
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Appointment);
+        }
 
-
+        public bool Equals(Appointment other)
+        {
+            return other != null &&
+                   Id == other.Id;
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Model
       public DateTime DateOfBirth { get; set; }
       public String Email { get; set; }
       public String PhoneNumber { get; set; }
+
       public Address Address { get; set; }
 
         public User(String name, String surname, int citizenId, Gender gender, DateTime dateOfBirth, String email, String phoneNumber, Address address)
@@ -26,4 +27,5 @@ namespace Model
         }
 
     }
+
 }

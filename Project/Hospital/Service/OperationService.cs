@@ -1,11 +1,10 @@
+using System.Collections.Generic;
 using Model;
 using Repository;
-using System;
-using System.Collections.Generic;
 
 namespace Service
 {
-   public class OperationService
+    public class OperationService
     {
         public OperationService(OperationRepository operationRepository)
         {
@@ -17,14 +16,14 @@ namespace Service
             return operationRepository.GetAll();
         }
 
-        public bool CreateOperation(Operation operation)
+        public bool CreateOperation(int id, int duration, OperationType operationType, Specialist specialist, Room room, Appointment appointment)
         {
-            return operationRepository.CreateOperation(operation);
+            return operationRepository.CreateOperation(id, duration, operationType, specialist, room, appointment);
         }
 
-        public bool DeleteOperation(Operation operation)
+        public bool DeleteOperation(int id)
         {
-            return operationRepository.DeleteOperation(operation);
+            return operationRepository.DeleteOperation(id);
         }
 
         public Operation GetOperationById(int id)
@@ -32,12 +31,12 @@ namespace Service
             return operationRepository.GetOperationById(id);
         }
 
-        public bool UpdateOperation(Operation operation)
+        public bool EditOperation(int id, int duration, OperationType operationType, Specialist specialist, Room room, Appointment appointment)
         {
-            return operationRepository.UpdateOperation(operation);
+            return operationRepository.EditOperation(id, duration, operationType, specialist, room, appointment);
         }
 
         public Repository.OperationRepository operationRepository;
-   
-   }
+
+    }
 }
