@@ -34,7 +34,7 @@
                 <DataGrid x:Name="dataGridRooms"  IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" 
                   Height="532" Margin="10,15,0,0" VerticalAlignment="Top" Width="1007"
-                  SelectedItem="{Binding SelectedItem}"  >
+                  SelectedItem="{Binding SelectedItem}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding  Id}"/>
                         <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" />

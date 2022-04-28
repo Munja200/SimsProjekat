@@ -1,1 +1,1 @@
-[{"roomSchedule":[],"Floor":3,"Name":"NovaR","Id":2,"Availability":true,"RoomType":5,"RoomSchedule":[]},{"roomSchedule":[],"Floor":2,"Name":"Pacijent1","Id":4,"Availability":true,"RoomType":4,"RoomSchedule":[]}]
+[{"roomSchedule":[],"Floor":4,"Name":"NovaR","Id":2,"Availability":true,"RoomType":1,"RoomSchedule":[]},{"roomSchedule":[],"Floor":2,"Name":"Pacijent1","Id":4,"Availability":true,"RoomType":4,"RoomSchedule":[]}]

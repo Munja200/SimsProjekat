@@ -103,6 +103,15 @@
       <DependentUpon>DirectorRoomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
+    <Compile Include="View\SecretaryEditPatientAccount.xaml.cs">
+      <DependentUpon>SecretaryEditPatientAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SecretaryAddPatientAccount.xaml.cs">
+      <DependentUpon>SecretaryAddPatientAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SecretaryPatientAccountWindow.xaml.cs">
+      <DependentUpon>SecretaryPatientAccountWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +133,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DirectorRoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SecretaryEditPatientAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SecretaryAddPatientAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SecretaryPatientAccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,15 +177,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-
     <Resource Include="Resources\Room.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Operation.txt" />
-
-    <Folder Include="Resources\" />
-    <Folder Include="View\" />
-
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Patient.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
