@@ -155,7 +155,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="View\DoctorAddOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,7 +176,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SecretaryPatientAccountWindow.xaml">
-
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,7 +214,6 @@
     <Resource Include="Resources\Operation.txt" />
   </ItemGroup>
   <ItemGroup>
-
     <Resource Include="Resources\Appointment.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Specialist.txt" />
-
     <Resource Include="Resources\Patient.txt" />
-
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

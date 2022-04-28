@@ -1,8 +1,9 @@
 using System;
+using Hospital.Model;
 
 namespace Model
 {
-   public class User
+    public class User
    {
       public String Name { get; set; }
       public String Surname { get; set; }

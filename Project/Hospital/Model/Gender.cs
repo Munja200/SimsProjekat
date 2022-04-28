@@ -1,10 +1,10 @@
 using System;
 
-namespace Model
+namespace Hospital.Model
 {
-   public enum Gender
-   {
-      male,
-      female
-   }
+    public enum Gender
+    {
+        male,
+        female
+    }
 }

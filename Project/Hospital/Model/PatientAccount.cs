@@ -1,8 +1,9 @@
 using System;
+using Hospital.Model;
 
 namespace Model
 {
-   public class PatientAccount : RegisteredUser
+    public class PatientAccount : RegisteredUser
    {
       public bool IsGuest { get; set; }
       public int HealthCardId { get; set; }

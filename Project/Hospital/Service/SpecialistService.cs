@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hospital.Controller;
+using Hospital.Model;
 using Hospital.Repository;
 using Model;
 

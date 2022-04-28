@@ -1,3 +1,4 @@
+using Hospital.Model;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 
 namespace Repository
 {
-   public class PatientAccountRepository
+    public class PatientAccountRepository
    {
         ObservableCollection<PatientAccount> patients;
 

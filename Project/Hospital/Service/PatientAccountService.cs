@@ -1,3 +1,4 @@
+using Hospital.Model;
 using Model;
 using Repository;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace Service
 {
-   public class PatientAccountService
+    public class PatientAccountService
    {
 
         public PatientAccountService(PatientAccountRepository patientAccountRepository)

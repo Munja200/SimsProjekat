@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Controller;
+using Hospital.Model;
 using Model;
 
 namespace Hospital.View
@@ -26,6 +27,7 @@ namespace Hospital.View
     {
         public ObservableCollection<string> Gender { get; set; }
 
+        
         private PatientAccountController patientAccountController;
         public SecretaryAddPatientAccount()
         {
