@@ -17,7 +17,7 @@ namespace FileHandler
             return operations;
         }
       
-      public void Write(ref List<Operation> operations)
+      public void Write(List<Operation> operations)
       {
             string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(operations);
             System.IO.File.WriteAllText(path, serializedOperations);

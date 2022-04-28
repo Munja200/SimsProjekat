@@ -14,33 +14,19 @@ namespace Controller
             _service = service;
         }
 
-        public bool CreateOperation(Operation operation)
-        {
-            // opefaciona sala, zakazan termin, specijalista u smenu
-            if (_service.GetOperationById(operation.id).room.RoomType.Equals("operationRoom") && _service.GetOperationById(operation.id).appointment.Scheduled.Equals(false) && _service.GetOperationById(operation.id).specialist.workingTime.startTime.Equals(true) && _service.GetOperationById(operation.id).specialist.workingTime.endTime.Equals(false))
-            {
-                return _service.CreateOperation(operation); ;
-            }
-            return false;
+        public bool CreateOperation(int id, int duration, OperationType operationType, Specialist specialist, Room room, Appointment appointment)
+        {   
+            return _service.CreateOperation(id, duration, operationType, specialist, room, appointment);
         }
 
-        public bool DeleteOperation(Operation operation)
+        public bool DeleteOperation(int id)
         {
-            if (_service.GetOperationById(operation.id).room.RoomType.Equals("operationRoom") && _service.GetOperationById(operation.id).appointment.Scheduled.Equals(true))
-            {
-                return _service.DeleteOperation(operation);
-            }
-            return false;
-
+            return _service.DeleteOperation(id);        
         }
 
-        public bool UpdateOperation(Operation operation)
+        public bool EditOperation(int id, int duration, OperationType operationType, Specialist specialist, Room room, Appointment appointment)
         {
-            if (_service.GetOperationById(operation.id).room.RoomType.Equals("operationRoom") && _service.GetOperationById(operation.id).appointment.Scheduled.Equals(true))
-            {
-                return _service.UpdateOperation(operation);
-            }
-            return false;
+                return _service.EditOperation(id, duration, operationType, specialist, room, appointment);
 
         }
 

@@ -6,17 +6,23 @@ namespace FileHandler
 {
    public class AppointmnetFileHandler
    {
-      public List<Appointment> Read()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public void Write(List<Appointment> appointments)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public string path;
+
+        private readonly string path = @"../../Resources/Appointment.txt";
+
+        public List<Appointment> Read()
+        {
+
+            string serializedOperations = System.IO.File.ReadAllText(path);
+            List<Appointment> appointments = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Appointment>>(serializedOperations);
+            return appointments;
+        }
+
+        public void Write(List<Appointment> appointments)
+        {
+            string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(appointments);
+            System.IO.File.WriteAllText(path, serializedOperations);
+
+        }
    
    }
 }

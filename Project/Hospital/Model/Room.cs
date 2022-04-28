@@ -1,4 +1,6 @@
 using System;
+using System.Windows.Controls;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -13,12 +15,17 @@ namespace Model
             Availability = availability;
         }
 
+        public Room()
+        {
+        }
+
         public int Floor { get; set; }
         public String Name { get; set; }
         public int Id { get; set; }
         public bool Availability { get; set; }
         public RoomType RoomType { get; set; }
 
+        [JsonIgnore]
         public System.Collections.Generic.List<RoomSchedule> roomSchedule;
       
       public System.Collections.Generic.List<RoomSchedule> RoomSchedule
@@ -67,6 +74,16 @@ namespace Model
          if (roomSchedule != null)
             roomSchedule.Clear();
       }
-   
-   }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Room);
+        }
+
+        public bool Equals(Room other)
+        {
+            return other != null &&
+                   Id == other.Id;
+        }
+    }
 }

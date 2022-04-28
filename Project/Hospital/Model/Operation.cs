@@ -1,26 +1,32 @@
 using System;
+using Newtonsoft.Json;
 
 namespace Model
 {
    public class Operation
    {
-        public int id { get; set; }
-        public int duration;
+        public int Id { get; set; }
+        public int Duration { get; set; }
 
-        public OperationType operationType { get; set; }
-        public Specialist specialist { get; set; }
-        public Room room { get; set; }
-
-        public Appointment appointment { get; set; }
+        public OperationType OperationType { get; set; }
+        public Specialist Specialist { get; set; }
+        public Room Room { get; set; }
+        
+        public Appointment Appointmentt { get; set; }
 
         public Operation(int idd, int durationn, OperationType operationTypee, Specialist specialistt, Room roomm, Appointment appointmentt)
         { 
-            id = idd;
-            duration = durationn;
-            operationType = operationTypee;
-            specialist = specialistt;
-            room = roomm;
-            appointment = appointmentt;
+            Id = idd;
+            Duration = durationn;
+            OperationType = operationTypee;
+            Specialist = specialistt;
+            Room = roomm;
+            Appointmentt = appointmentt;
+
+        }
+
+        public Operation()
+        {
 
         }
 
@@ -28,22 +34,22 @@ namespace Model
         {
             get
             {
-                return Appointment;
+                return Appointmentt;
             }
             set
             {
-                if (this.appointment == null || !this.appointment.Equals(value))
+                if (this.Appointmentt == null || !this.Appointmentt.Equals(value))
                 {
-                    if (this.appointment != null)
+                    if (this.Appointmentt != null)
                     {
-                        Appointment oldAppointment = this.appointment;
-                        this.appointment = null;
+                        Appointment oldAppointment = this.Appointmentt;
+                        this.Appointmentt = null;
                         oldAppointment.RemoveOperation(this);
                     }
                     if (value != null)
                     {
-                        this.appointment = value;
-                        this.appointment.AddOperation(this);
+                        this.Appointmentt = value;
+                        this.Appointmentt.AddOperation(this);
                     }
                 }
             }

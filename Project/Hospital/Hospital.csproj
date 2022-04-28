@@ -60,15 +60,20 @@
     </ApplicationDefinition>
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\OperationController.cs" />
+    <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
     <Compile Include="Controller\RoomController.cs" />
+    <Compile Include="Controller\SpecialistController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
+    <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
     <Compile Include="FileHandler\RoomFileHandler.cs" />
+    <Compile Include="FileHandler\SpecialistFileHandler.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\City.cs" />
+    <Compile Include="Model\ComboItem.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Employee.cs" />
@@ -81,18 +86,23 @@
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\RoomSchedule.cs" />
     <Compile Include="Model\RoomType.cs" />
+    <Compile Include="Model\AppointmentType.cs" />
     <Compile Include="Model\Specialist.cs" />
     <Compile Include="Model\Speciality.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
+    <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
+    <Compile Include="Repository\SpecialistRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\OperationService.cs" />
+    <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
     <Compile Include="Service\RoomService.cs" />
+    <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="View\DirectorAddRoom.xaml.cs">
       <DependentUpon>DirectorAddRoom.xaml</DependentUpon>
     </Compile>
@@ -101,6 +111,15 @@
     </Compile>
     <Compile Include="View\DirectorRoomWindow.xaml.cs">
       <DependentUpon>DirectorRoomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorAddOperation.xaml.cs">
+      <DependentUpon>DoctorAddOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorEditOperation.xaml.cs">
+      <DependentUpon>DoctorEditOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DoctorOperationWindow.xaml.cs">
+      <DependentUpon>DoctorOperationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
     <Page Include="MainWindow.xaml">
@@ -124,6 +143,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DirectorRoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorAddOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorEditOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoctorOperationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,6 +191,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Operation.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Appointment.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OperationType.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Specialist.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

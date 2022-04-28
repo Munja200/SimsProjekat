@@ -1,12 +1,11 @@
-using System;
-
 namespace Model
 {
-   public class Employee : RegisteredUser
-   {
-      private EmployeeRole role;
-
-        public WorkingTime workingTime;
+    public class Employee : RegisteredUser
+    {
+        public EmployeeRole role { get; set; }
+        
+        public WorkingTime WorkingTime { get; set; }
+        /*
         public WorkingTime WorkingTime
         {
             get
@@ -31,7 +30,7 @@ namespace Model
                 }
             }
         }
+        */
 
-    
-}
+    }
 }

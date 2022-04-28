@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Upravnik" HorizontalAlignment="Left" Margin="302,120,0,0" VerticalAlignment="Top" Width="155" Height="47" Click= "Director"/>
-        <Button Content="Sekretar" HorizontalAlignment="Left" Margin="552,121,0,0" VerticalAlignment="Top" Width="155" Height="47" Click="Button_Click_1"/>
-        <Button Content="Lekar" HorizontalAlignment="Left" Margin="61,121,0,0" VerticalAlignment="Top" Width="155" Height="47" Click="Button_Click_2"/>
+        <Button Content="Sekretar" HorizontalAlignment="Left" Margin="552,121,0,0" VerticalAlignment="Top" Width="155" Height="47" Click="Secretary"/>
+        <Button Content="Lekar" HorizontalAlignment="Left" Margin="61,121,0,0" VerticalAlignment="Top" Width="155" Height="47" Click="Doctor"/>
 
     </Grid>
 </Window>

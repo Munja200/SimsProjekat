@@ -4,8 +4,8 @@ namespace Model
 {
    public class RegisteredUser : User
    {
-      public String username;
-      public String password;
+      public string Username { get; set; }
+      public string Password { get; set; }
    
    }
 }

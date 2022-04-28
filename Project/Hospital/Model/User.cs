@@ -4,15 +4,15 @@ namespace Model
 {
    public class User
    {
-      public String name;
-      public String surname;
-      public int citizenId;
-      public Gender gender;
-      public DateTime dateOfBirth;
-      public String email;
-      public String phoneNumber;
+      public String Name { get; set; }
+      public String Surname { get; set; }
+      public int CitizenId { get; set; }
+      public Gender Gender { get; set; }
+      public DateTime DateOfBirth { get; set; }
+      public String Email { get; set; }
+      public String PhoneNumber { get; set; }
       
-      public Address address;
+      public Address Address { get; set; }
    
    }
 }

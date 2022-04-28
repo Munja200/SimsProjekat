@@ -4,12 +4,12 @@ namespace Model
 {
    public class WorkingTime
    {
-        public bool startTime;
-        public bool endTime;
-        public int duration;
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public int Duration { get; set; }
 
         public System.Collections.Generic.List<Employee> employee;
-
+        /*
         public System.Collections.Generic.List<Employee> Employee
         {
             get
@@ -70,6 +70,6 @@ namespace Model
                 tmpEmployee.Clear();
             }
         }
-
+        */
     }
 }
