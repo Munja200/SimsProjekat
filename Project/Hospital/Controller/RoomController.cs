@@ -2,6 +2,7 @@ using Model;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Controller
 {
@@ -16,10 +17,10 @@ namespace Controller
       {
             return roomService.GetById(id);
       }
-      
-      public List<Room> GetAll()
+
+      public ref ObservableCollection<Room> GetAll()
       {
-            return roomService.GetAll();
+            return ref roomService.GetAll();
       }
       
       public bool DeleteRoom(int id)

@@ -1,37 +1,46 @@
 using Model;
+using Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Controller
 {
    public class PatientAccountController
    {
-      public void Create(String name, String surname, int citizenId, DateTime dateOfBirth, String email, String phoneNumber, String username, String password, bool isGuest, int healthCardId, String allergies, Address address, Gender gender)
+
+        public PatientAccountController(PatientAccountService patientAccountService)
+        {
+            this.patientAccountService = patientAccountService;
+        }
+
+        public bool Create(String name, String surname, int citizenId, DateTime dateOfBirth, String email, String phoneNumber, String username, String password, bool isGuest, int healthCardId, String allergies, Address address, Gender gender)
       {
-         throw new NotImplementedException();
+            return patientAccountService.Create(name, surname, citizenId, dateOfBirth, email, phoneNumber, username, password, isGuest, healthCardId, allergies, address, gender);
       }
       
-      public List<int> GetValues()
+      public ref ObservableCollection<PatientAccount> GetValues()
       {
-         throw new NotImplementedException();
+            return ref patientAccountService.GetValues();
       }
       
-      public int GetById(int id)
+      public PatientAccount GetById(int id)
       {
-         throw new NotImplementedException();
+            return patientAccountService.GetById(id);
       }
       
-      public void Update(String name, String surname, int citizenId, DateTime dateOfBirth, String email, String phoneNumber, String username, String password, bool isGuest, int healthCardId, String allergies, Address address, Gender gender)
+      public bool Update(String name, String surname, int citizenId, DateTime dateOfBirth, String email, String phoneNumber, String username, String password, bool isGuest, int healthCardId, String allergies, Address address, Gender gender)
       {
-         throw new NotImplementedException();
-      }
+         return patientAccountService.Update(name, surname, citizenId, dateOfBirth, email, phoneNumber, username, password, isGuest, healthCardId, allergies, address, gender);
+        }
       
-      public void DeleteById(int id)
+      public bool DeleteById(int id)
       {
-         throw new NotImplementedException();
-      }
+            return patientAccountService.DeleteById(id);
+        }
       
       public Service.PatientAccountService patientAccountService;
-   
-   }
+
+      
+    }
 }

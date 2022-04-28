@@ -21,15 +21,21 @@ namespace Hospital
     {
         public SpecialistController specialistController { get; set; }
         public RoomController roomController { get; set; }
+
         public OperationController operationController { get; set; }
         public OperationTypeController operationTypeController { get; set; }
         public AppointmentController appointmentController { get; set; }
 
+        public PatientAccountController patientAccountController { get; set; }
+
         public App()
         {
             RoomRepository roomRepository = new RoomRepository();
+            PatientAccountRepository patientAccountRepository = new PatientAccountRepository();
             RoomService roomService = new RoomService(roomRepository);
+            PatientAccountService patientAccountService = new PatientAccountService(patientAccountRepository);
             roomController = new RoomController(roomService);
+
 
             OperationRepository operationRepository = new OperationRepository();
             OperationService operationService = new OperationService(operationRepository);
@@ -46,6 +52,9 @@ namespace Hospital
             SpecialistRepository specialistRepository = new SpecialistRepository();
             SpecialistService specialistService = new SpecialistService(specialistRepository);
             specialistController = new SpecialistController(specialistService);
+
+            patientAccountController = new PatientAccountController(patientAccountService);
+
         }
     }
 }

@@ -21,6 +21,10 @@ namespace Hospital
 
         private void Secretary(object sender, RoutedEventArgs e)
         {
+
+            new SecretaryPatientAccountWindow().Show();
+            this.Close();
+
         }
 
         private void Doctor(object sender, RoutedEventArgs e)

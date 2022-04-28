@@ -122,6 +122,15 @@
       <DependentUpon>DoctorOperationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
+    <Compile Include="View\SecretaryEditPatientAccount.xaml.cs">
+      <DependentUpon>SecretaryEditPatientAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SecretaryAddPatientAccount.xaml.cs">
+      <DependentUpon>SecretaryAddPatientAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SecretaryPatientAccountWindow.xaml.cs">
+      <DependentUpon>SecretaryPatientAccountWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,6 +155,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="View\DoctorAddOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +165,17 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorOperationWindow.xaml">
+
+    <Page Include="View\SecretaryEditPatientAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SecretaryAddPatientAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SecretaryPatientAccountWindow.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +214,7 @@
     <Resource Include="Resources\Operation.txt" />
   </ItemGroup>
   <ItemGroup>
+
     <Resource Include="Resources\Appointment.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +222,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Specialist.txt" />
+
+    <Resource Include="Resources\Patient.txt" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

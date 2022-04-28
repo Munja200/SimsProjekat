@@ -29,9 +29,7 @@ namespace Hospital.View
             this.DataContext = this;
             App app = Application.Current as App;
             roomController = app.roomController;
-            List<Room> list = roomController.GetAll();
-            ObservableCollection<Room> collection = new ObservableCollection<Room>(list);
-            dataGridRooms.ItemsSource = collection;
+            dataGridRooms.ItemsSource = roomController.GetAll();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

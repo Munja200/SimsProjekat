@@ -1,3 +1,4 @@
+
 [{"roomSchedule":null,"Floor":1,"Name":"NovaR","Id":2,"Availability":true,"RoomType":1,"RoomSchedule":[]},
 {"roomSchedule":null,"Floor":2,"Name":"Soba 15","Id":5,"Availability":true,"RoomType":2,"RoomSchedule":[]},
 {"roomSchedule":null,"Floor":3,"Name":"Soba 23","Id":124,"Availability":false,"RoomType":1,"RoomSchedule":[]},
@@ -7,3 +8,4 @@
 
 
 ]
+

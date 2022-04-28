@@ -4,8 +4,15 @@ namespace Model
 {
    public class RegisteredUser : User
    {
-      public string Username { get; set; }
-      public string Password { get; set; }
-   
-   }
+
+      public String Username { get; set; }
+      public String Password { get; set; }
+
+        public RegisteredUser(String name, String surname, int citizenId, Gender gender, DateTime dateOfBirth, String email, String phoneNumber, Address address, String username, String password) : base(name, surname, citizenId, gender, dateOfBirth, email, phoneNumber, address)
+        {
+            this.Username = username;
+            this.Password = password;
+        }
+    }
+
 }

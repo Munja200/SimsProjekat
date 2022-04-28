@@ -4,13 +4,20 @@ namespace Model
 {
    public class Address
    {
-      public String streetName;
-      public String number;
+      public String StreetName { get; set; }
+      public String Number { get; set; }
       
       public City city;
-      
-      
-      public City City
+
+        public Address(string streetName, string number, City city)
+        {
+            this.StreetName = streetName;
+            this.Number = number;
+            this.city = city;
+        }
+
+
+        public City City
       {
          get
          {
@@ -21,6 +28,10 @@ namespace Model
             this.city = value;
          }
       }
-   
-   }
+
+        public override string ToString()
+        {
+            return StreetName + " " + Number + ", " + city.name + ", " + city.country.name;
+        }
+    }
 }

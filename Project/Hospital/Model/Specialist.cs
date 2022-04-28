@@ -3,6 +3,7 @@ using System.Windows.Controls;
 
 namespace Model
 {
+
     public class Specialist : Doctor
     {
         public Speciality Speciality { get; set; }

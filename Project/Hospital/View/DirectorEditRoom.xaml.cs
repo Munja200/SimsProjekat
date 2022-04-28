@@ -22,7 +22,7 @@ namespace Hospital.View
     /// <summary>
     /// Interaction logic for DirectorEditRoom.xaml
     /// </summary>
-    public partial class DirectorEditRoom : Window
+    public partial class DirectorEditRoom : Window, INotifyPropertyChanged
     {
         private RoomController roomController;
         public ObservableCollection<string> RoomT { get; set; }
