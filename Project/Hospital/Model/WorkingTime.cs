@@ -39,7 +39,7 @@ namespace Model
             if (!this.employee.Contains(newEmployee))
             {
                 this.employee.Add(newEmployee);
-                newEmployee.WorkingTime = this;
+                newEmployee.workingTime = this;
             }
         }
 
@@ -52,7 +52,7 @@ namespace Model
                 if (this.employee.Contains(oldEmployee))
                 {
                     this.employee.Add(oldEmployee);
-                    oldEmployee.WorkingTime = this;
+                    oldEmployee.workingTime = this;
                 }
         }
 
@@ -66,7 +66,7 @@ namespace Model
                     tmpEmployee.Add(oldEmployee);
                 employee.Clear();
                 foreach (Employee oldEmployee in tmpEmployee)
-                    oldEmployee.WorkingTime = null;
+                    oldEmployee.workingTime = null;
                 tmpEmployee.Clear();
             }
         }

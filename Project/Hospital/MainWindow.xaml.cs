@@ -32,9 +32,10 @@ namespace Hospital
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Secretary(object sender, RoutedEventArgs e)
         {
-
+            new SecretaryPatientAccountWindow().Show();
+            this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

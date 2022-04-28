@@ -1,4 +1,3 @@
-using FileHandler;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,7 @@ namespace Repository
       {
          foreach(PatientAccount patient in patients)
             {
-                if (patient.citizenId.Equals(id))
+                if (patient.CitizenId.Equals(id))
                 {
                     return patient;
                 }
@@ -57,21 +56,21 @@ namespace Repository
       {
          foreach(PatientAccount patient in patients)
             {
-                if (patient.citizenId.Equals(citizenId))
+                if (patient.CitizenId.Equals(citizenId))
                 {
-                    patient.citizenId = citizenId;
-                    patient.name = name;
-                    patient.surname = surname;
-                    patient.dateOfBirth = dateOfBirth;
-                    patient.email = email;
-                    patient.phoneNumber = phoneNumber;
-                    patient.username = username;
-                    patient.password = password;
-                    patient.isGuest = isGuest;
-                    patient.healthCardId = healthCardId;
-                    patient.allergies = allergies;
-                    patient.address = address;
-                    patient.gender = gender;
+                    patient.CitizenId = citizenId;
+                    patient.Name = name;
+                    patient.Surname = surname;
+                    patient.DateOfBirth = dateOfBirth;
+                    patient.Email = email;
+                    patient.PhoneNumber = phoneNumber;
+                    patient.Username = username;
+                    patient.Password = password;
+                    patient.IsGuest = isGuest;
+                    patient.HealthCardId = healthCardId;
+                    patient.Allergies = allergies;
+                    patient.Address = address;
+                    patient.Gender = gender;
                     patientAccountFileHandler.Write(patients.ToList());
 
                     return true;
@@ -84,7 +83,7 @@ namespace Repository
       {
          foreach(PatientAccount patient in patients)
             {
-                if (patient.citizenId.Equals(id))
+                if (patient.CitizenId.Equals(id))
                 {
                     patients.Remove(patient);
                     patientAccountFileHandler.Write(patients.ToList());

@@ -4,25 +4,26 @@ namespace Model
 {
    public class User
    {
-      public String name { get; set; }
-      public String surname { get; set; }
-      public int citizenId { get; set; }
-      public Gender gender { get; set; }
-      public DateTime dateOfBirth { get; set; }
-      public String email { get; set; }
-      public String phoneNumber { get; set; }
-      public Address address { get; set; }
+      public String Name { get; set; }
+      public String Surname { get; set; }
+      public int CitizenId { get; set; }
+      public Gender Gender { get; set; }
+      public DateTime DateOfBirth { get; set; }
+      public String Email { get; set; }
+      public String PhoneNumber { get; set; }
+      public Address Address { get; set; }
 
         public User(String name, String surname, int citizenId, Gender gender, DateTime dateOfBirth, String email, String phoneNumber, Address address)
         {
-            this.name = name;
-            this.surname = surname;
-            this.citizenId = citizenId;
-            this.gender = gender;
-            this.dateOfBirth = dateOfBirth;
-            this.email = email;
-            this.phoneNumber = phoneNumber;
-            this.address = address;
+            this.Name = name;
+            this.Surname = surname;
+            this.CitizenId = citizenId;
+            this.Gender = gender;
+            this.DateOfBirth = dateOfBirth;
+            this.Email = email;
+            this.PhoneNumber = phoneNumber;
+            this.Address = address;
         }
+
     }
 }

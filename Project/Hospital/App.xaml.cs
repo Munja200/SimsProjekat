@@ -17,12 +17,16 @@ namespace Hospital
     public partial class App : Application
     {
         public RoomController roomController { get; set; }
+        public PatientAccountController patientAccountController { get; set; }
 
         public App()
         {
             RoomRepository roomRepository = new RoomRepository();
+            PatientAccountRepository patientAccountRepository = new PatientAccountRepository();
             RoomService roomService = new RoomService(roomRepository);
+            PatientAccountService patientAccountService = new PatientAccountService(patientAccountRepository);
             roomController = new RoomController(roomService);
+            patientAccountController = new PatientAccountController(patientAccountService);
         }
     }
 }
