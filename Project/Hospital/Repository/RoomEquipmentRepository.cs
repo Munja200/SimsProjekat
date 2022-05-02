@@ -139,7 +139,7 @@ namespace Repository
             roomEquipmentFileHandler.Write(roomEquipments.ToList());
             return true;
         }
-      /*
+      
       public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
       {
             if (equipmentTransfer.SenderRoom.Id.Equals(equipmentTransfer.RecipientRoom.Id))
@@ -181,7 +181,7 @@ namespace Repository
 
             return true;
         }
-      */
+      
         public ObservableCollection<RoomEquipment> roomEquipments;
       
       public FileHandler.RoomEquipmentFileHandler roomEquipmentFileHandler;

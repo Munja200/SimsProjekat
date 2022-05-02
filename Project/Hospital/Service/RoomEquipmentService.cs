@@ -70,12 +70,12 @@ namespace Service
             int ids = roomEquipmentRepository.GetAll().Count() == 0 ? 0 : roomEquipmentRepository.GetAll().Max(RoomEquipment => RoomEquipment.Id);
             return roomEquipmentRepository.Create(room, equipment, quantity, ++ids); 
       }
-    /*  
+      
       public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
       {
             return roomEquipmentRepository.MoveEquipment(equipmentTransfer);
       }
-      */
+      
       public Repository.RoomEquipmentRepository roomEquipmentRepository;
    
    }

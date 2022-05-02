@@ -60,12 +60,12 @@ namespace Controller
       {
             return roomEquipmentService.Create(room, equipment, quantity, id);
       }
-    /*  
+      
       public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
       {
             return roomEquipmentService.MoveEquipment(equipmentTransfer);
       }
-      */
+      
       public Service.RoomEquipmentService roomEquipmentService;
    
    }
