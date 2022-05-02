@@ -30,7 +30,7 @@ namespace Hospital
 
         public EquipmentController equipmentController { get; set; }
         public RoomEquipmentController roomEquimpentController { get; set; }
-        //public EquipmentTransferController equipmentTransferController { get; set; }
+        public EquipmentTransferController equipmentTransferController { get; set; }
 
 
 
@@ -63,16 +63,16 @@ namespace Hospital
 
             EquipmentRepository equipmentRepository = new EquipmentRepository();
             RoomEquipmentRepository roomEquipmentRepository = new RoomEquipmentRepository();
-        //    EquipmentTransferRepository equipmentTransferRepository = new EquipmentTransferRepository();
+            EquipmentTransferRepository equipmentTransferRepository = new EquipmentTransferRepository();
 
             EquipmentService equipmentService = new EquipmentService(equipmentRepository);
             RoomEquipmentService roomEquipmentService = new RoomEquipmentService(roomEquipmentRepository);
-        //    EquipmentTransferService equipmentTransferService = new EquipmentTransferService(equipmentTransferRepository);
+            EquipmentTransferService equipmentTransferService = new EquipmentTransferService(equipmentTransferRepository);
 
             equipmentController = new EquipmentController(equipmentService);
             roomEquimpentController = new RoomEquipmentController(roomEquipmentService);
-         //   equipmentTransferController = new EquipmentTransferController(equipmentTransferService);
-          //  new Class1(roomEquipmentRepository, equipmentTransferRepository);
+            equipmentTransferController = new EquipmentTransferController(equipmentTransferService);
+            new ThreadEquipmentService(roomEquipmentRepository, equipmentTransferRepository);
 
         }
     }
