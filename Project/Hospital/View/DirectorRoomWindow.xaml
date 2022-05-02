@@ -26,7 +26,9 @@
             <Button Grid.Column="1" Grid.Row="0" DockPanel.Dock="Left" Padding="5" Margin="5" Click="Button_Click">Dodaj sobu</Button>
             <Button Grid.Column="3" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Button_Click_1">Obrisi</Button>
             <Button Grid.Column="5" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Button_Edit">Izmeni</Button>
-            <Separator Grid.Column="2" Grid.Row="0"></Separator>
+            <Button Grid.Column="5" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Equipment">Prikazi opremu</Button>
+            <Separator Grid.Column="2" Grid.Row="0" Background="Transparent"></Separator>
+
 
         </DockPanel>
         <DockPanel DockPanel.Dock="top">

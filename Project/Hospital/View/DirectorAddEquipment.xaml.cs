@@ -23,7 +23,7 @@ namespace Hospital.View
     {
         private EquipmentController equipmentController;
         private RoomController roomController;
-      //  private RoomEquipmentController roomEquipmentController;
+        private RoomEquipmentController roomEquipmentController;
         public ObservableCollection<int> IDR { get; set; }
 
         public DirectorAddEquipment()
@@ -34,7 +34,7 @@ namespace Hospital.View
             App app = Application.Current as App;
             equipmentController = app.equipmentController;
             roomController = app.roomController;
-           // roomEquipmentController = app.roomEquimpentController;
+            roomEquipmentController = app.roomEquimpentController;
             IDR = new ObservableCollection<int>();
 
             foreach (Room r in roomController.GetAll())
@@ -83,7 +83,7 @@ namespace Hospital.View
                 return;
             }
             Room ro = roomController.GetById(Int32.Parse(romd));
-        //    roomEquipmentController.Create(ro, equipmentController.GetByName(na), temp, 0);
+            roomEquipmentController.Create(ro, equipmentController.GetByName(na), temp, 0);
             this.Close();
         }
     }
