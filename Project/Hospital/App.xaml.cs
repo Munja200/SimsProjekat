@@ -72,7 +72,7 @@ namespace Hospital
             equipmentController = new EquipmentController(equipmentService);
             roomEquimpentController = new RoomEquipmentController(roomEquipmentService);
             equipmentTransferController = new EquipmentTransferController(equipmentTransferService);
-          //  new Class1(roomEquipmentRepository, equipmentTransferRepository);
+            new ThreadEquipmentService(roomEquipmentRepository, equipmentTransferRepository);
 
         }
     }

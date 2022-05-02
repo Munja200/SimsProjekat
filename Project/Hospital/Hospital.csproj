@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
+    <Compile Include="Controller\EquipmentTransferController.cs" />
     <Compile Include="Controller\OperationController.cs" />
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Controller\SpecialistController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
     <Compile Include="FileHandler\EquipmentFileHandler.cs" />
+    <Compile Include="FileHandler\EquipmentTransferFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\EmployeeRole.cs" />
     <Compile Include="Model\Equipment.cs" />
+    <Compile Include="Model\EquipmentTransfer.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\Operation.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />
+    <Compile Include="Repository\EquipmentTransferRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
@@ -107,7 +111,9 @@
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SpecialistRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
+    <Compile Include="Service\ThreadEquipmentService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
+    <Compile Include="Service\EquipmentTransferService.cs" />
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
@@ -253,6 +259,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\RoomEquipment.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\EquipmentTransfer.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
