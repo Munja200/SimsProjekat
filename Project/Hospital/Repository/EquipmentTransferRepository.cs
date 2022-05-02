@@ -26,6 +26,8 @@ namespace Repository
       
       public List<EquipmentTransfer> GetAll()
       {
+            if (equipmentTransferFileHandler.Read() == null)
+                return equipmentTransfers;
             equipmentTransfers = equipmentTransferFileHandler.Read();
             return equipmentTransfers;
         }
@@ -67,7 +69,8 @@ namespace Repository
       
       public bool Create(Room senderRoom, Room recipientRoom, Equipment equipment, int quantity, DateTime scheduledDate, int id)
       {
-            equipmentTransfers.Add(new EquipmentTransfer(senderRoom,recipientRoom,equipment,quantity,scheduledDate,id)) ;
+
+            equipmentTransfers.Add(new EquipmentTransfer(senderRoom, recipientRoom, equipment, quantity,scheduledDate,id));
             equipmentTransferFileHandler.Write(equipmentTransfers);
             return true;
         }

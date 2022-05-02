@@ -74,7 +74,9 @@ namespace Repository
       
       public bool DeleteByRoomId(int id)
       {
-            foreach (RoomEquipment roomEquipment in roomEquipments)
+            List<RoomEquipment> re = this.GetByRoomId(id);
+
+            foreach (RoomEquipment roomEquipment in re)
             {
                 if (roomEquipment.Room.Id.Equals(id))
                 {
@@ -88,7 +90,9 @@ namespace Repository
 
         public bool DeleteByEquipmentId(int id)
       {
-            foreach (RoomEquipment roomEquipment in roomEquipments)
+            List<RoomEquipment> re = this.GetByRoomId(id);
+
+            foreach (RoomEquipment roomEquipment in re)
             {
                 if (roomEquipment.Equipment.Id.Equals(id))
                 {
