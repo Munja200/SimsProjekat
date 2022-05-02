@@ -88,6 +88,8 @@ namespace Hospital.View
             {
                 MessageBox.Show("Nije uspela izmena", "Error");
             }
+
+            roomController.GetAll();
             this.Close();
 
 

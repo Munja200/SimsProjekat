@@ -15,11 +15,11 @@ namespace Hospital.Service
         private Thread myThread;
         public EquipmentTransferRepository equipmentTransferRepository;
         public RoomEquipmentRepository roomEquipmentRepository;
-        private List<EquipmentTransfer> equipmentTransfers;
+        private List<EquipmentTransfer> equipmentTs;
         public ThreadEquipmentService(RoomEquipmentRepository roomEquipmentRepository, EquipmentTransferRepository equipmentTransferRepository){
             this.equipmentTransferRepository = equipmentTransferRepository;
             this.roomEquipmentRepository = roomEquipmentRepository;
-            equipmentTransfers = new List<EquipmentTransfer>();
+            equipmentTs = new List<EquipmentTransfer>();
             myThread = new Thread(CheckDate);
             myThread.IsBackground = true;
             myThread.Start();
@@ -28,10 +28,10 @@ namespace Hospital.Service
         public void CheckDate() {
             while (true)
             {
-                equipmentTransfers = equipmentTransferRepository.GetAll();
+                equipmentTs = equipmentTransferRepository.GetAll();
                 bool flag = false;
-                if (equipmentTransfers != null) {
-                    foreach (EquipmentTransfer et in equipmentTransfers)
+                if (equipmentTs != null) {
+                    foreach (EquipmentTransfer et in equipmentTs)
                     {
                         if (DateTime.Compare(et.SheduledDate.Date, DateTime.Today) == 0) {
                             roomEquipmentRepository.MoveEquipment(et);

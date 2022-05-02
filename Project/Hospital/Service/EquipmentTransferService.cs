@@ -45,7 +45,7 @@ namespace Service
             }
             
        
-                return equipmentTransferRepository.Create(senderRoom, recipientRoom, equipment, quantity, scheduledDate, 0);
+                return equipmentTransferRepository.Create(senderRoom, recipientRoom, equipment, quantity, scheduledDate, id);
       }
 
         public Repository.EquipmentTransferRepository equipmentTransferRepository;

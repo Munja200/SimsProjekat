@@ -1,1 +1,1 @@
-﻿
+[{"Id":1,"Name":"Stolica","Manufacturer":"Metal st","Quantity":30,"Description":"","Medicine":null},{"Id":2,"Name":"Noca","Manufacturer":"ca","Quantity":100,"Description":"","Medicine":null},{"Id":3,"Name":"korpa","Manufacturer":"mafija","Quantity":20,"Description":"asd","Medicine":null}]

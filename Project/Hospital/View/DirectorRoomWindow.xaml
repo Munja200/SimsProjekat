@@ -24,6 +24,8 @@
             </Grid>
 
             <Button Grid.Column="1" Grid.Row="0" DockPanel.Dock="Left" Padding="5" Margin="5" Click="Button_Click">Dodaj sobu</Button>
+            <Button Grid.Column="1" Grid.Row="0" DockPanel.Dock="Left" Padding="5" Margin="5" Click="Button_Click_2">Dodaj opremu</Button>
+
             <Button Grid.Column="3" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Button_Click_1">Obrisi</Button>
             <Button Grid.Column="5" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Button_Edit">Izmeni</Button>
             <Button Grid.Column="5" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Equipment">Prikazi opremu</Button>
@@ -36,7 +38,7 @@
                 <DataGrid x:Name="dataGridRooms"  IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" 
                   Height="532" Margin="10,15,0,0" VerticalAlignment="Top" Width="1007"
-                  SelectedItem="{Binding SelectedItem}">
+                  SelectedItem="{Binding SelectedItem}" CanUserSortColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding  Id}"/>
                         <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" />

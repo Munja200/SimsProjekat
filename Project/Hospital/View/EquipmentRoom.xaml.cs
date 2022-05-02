@@ -21,8 +21,9 @@ namespace Hospital.View
     {
         private RoomEquipmentController roomEquipmenController;
         private RoomController roomController;
-       // private EquipmentTransferController equipmentTransferController;
+        private EquipmentTransferController equipmentTransferController;
         public ObservableCollection<Room> States { get; set; }
+        public ObservableCollection<RoomEquipment> roomEquipments;
         public EquipmentRoom(Room idr)
         {
             InitializeComponent();
@@ -30,9 +31,11 @@ namespace Hospital.View
             App app = Application.Current as App;
             roomEquipmenController = app.roomEquimpentController;
             roomController = app.roomController;
-//            equipmentTransferController = app.equipmentTransferController;
+            roomEquipments = new ObservableCollection<RoomEquipment>();
+            equipmentTransferController = app.equipmentTransferController;
+            foreach (RoomEquipment re in roomEquipmenController.GetByRoomId(idr.Id)) { roomEquipments.Add(re); }
 
-            dataGridRoomEquipment.ItemsSource = roomEquipmenController.GetByRoomId(idr.Id);
+            dataGridRoomEquipment.ItemsSource = roomEquipments; 
             States = new ObservableCollection<Room>();
             foreach (Room r in roomController.GetAll()) { States.Add(r); }
 
@@ -44,10 +47,10 @@ namespace Hospital.View
             RoomEquipment room = (RoomEquipment)viewRoomsWindow.dataGridRoomEquipment.SelectedItem;
             if (room != null)
             {
-                int kolicina = 0;
+                int quanty = 0;
                 try
                 {
-                    kolicina = Int32.Parse(Kolicina.Text);
+                    quanty = Int32.Parse(Kolicina.Text);
 
                 }
                 catch (Exception ex)
@@ -56,7 +59,7 @@ namespace Hospital.View
                     this.Close();
                     return;
                 }
-                if (kolicina > room.Quantity || kolicina <= 0)
+                if (quanty > room.Quantity || quanty <= 0)
                 {
                     MessageBox.Show("Nije uspelo dodavanje", "Error");
                     this.Close();
@@ -80,20 +83,36 @@ namespace Hospital.View
                 DateTime dt = Convert.ToDateTime(Datum.Text);
                 int ids = (int)Odrediste.SelectedValue;
                 Room ro = roomController.GetById(ids);
-            /*    if (!equipmentTransferController.Create(room.Room, ro, room.Equipment, kolicina, dt, 0))
+
+                if (DateTime.Compare(dt, DateTime.Today) == 0)
+                {
+                    roomEquipmenController.MoveEquipment(new EquipmentTransfer(room.Room, ro, room.Equipment, quanty, dt, 0));
+                    this.Close();
+                    return;
+                }
+
+
+                if (!equipmentTransferController.Create(room.Room, ro, room.Equipment, quanty, dt, 0))
                 {
                     MessageBox.Show("Nije uspelo dodavanje", "Error");
                 }
+               
+               
                 
-                if (DateTime.Compare(dt, DateTime.Today) == 0) 
-                {
-                    roomEquipmenController.MoveEquipment(new EquipmentTransfer(room.Room, ro, room.Equipment, kolicina, dt, 0));
-                }
-                */
                 this.Close();
 
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var viewRoomsWindow = Application.Current.Windows.OfType<EquipmentRoom>().FirstOrDefault();
+            RoomEquipment room = (RoomEquipment)viewRoomsWindow.dataGridRoomEquipment.SelectedItem;
+            if (room != null)
+            {
+                roomEquipments.Remove(room);
+                roomEquipmenController.DeleteById(room.Id);
+            }
+        }
     }
 }
