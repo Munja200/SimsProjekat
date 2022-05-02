@@ -8,8 +8,8 @@
         Title="DoctorAddOperation" Height="450" Width="800">
     <DockPanel>
         <DockPanel DockPanel.Dock="Bottom">
-            <Button DockPanel.Dock="Left" Width="100" Padding="10" Margin="10" IsDefault="True" FontSize="15" Click="AddButton">Add</Button>
-            <Button DockPanel.Dock="Right" Width="100" Padding="10" Margin="10" IsCancel="True" FontSize="15" Click="CencelButton">Cencel</Button>
+            <Button DockPanel.Dock="Left" Width="100" Padding="10" Margin="18" IsDefault="True" FontSize="15" Click="AddButton" >Add</Button>
+            <Button DockPanel.Dock="Right" Width="100" Padding="10" Margin="18" IsCancel="True" FontSize="15" Click="CencelButton">Cencel</Button>
             <Separator DockPanel.Dock="Bottom"></Separator>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch">
@@ -20,27 +20,30 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Width="100" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left">Duration:</Label>
-                <Label Grid.Column="0" Grid.Row="1" Width="150" Height="40" FontSize="18" Margin="20"  HorizontalAlignment="Left" >OperationType:</Label>
-                <Label Grid.Column="0" Grid.Row="2" Width="100" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left" >Specialist:</Label>
-                <Label Grid.Column="0" Grid.Row="3" Width="100" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left" >Room:</Label>
-                <Label Grid.Column="0" Grid.Row="4" Width="150" Height="40" FontSize="18" Margin="20" HorizontalAlignment="Left" >Appointment:</Label>
+                <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Width="240" Height="40" FontSize="21" Margin="8" HorizontalAlignment="Left">Scheduling operation</Label>
+                <Label Grid.Column="0" Grid.Row="1" Width="100" Height="40" FontSize="18" Margin="16" HorizontalAlignment="Left">Duration:</Label>
+                <Label Grid.Column="0" Grid.Row="2" Width="150" Height="40" FontSize="18" Margin="16"  HorizontalAlignment="Left" >OperationType:</Label>
+                <Label Grid.Column="0" Grid.Row="3" Width="100" Height="40" FontSize="18" Margin="16" HorizontalAlignment="Left" >Specialist:</Label>
+                <Label Grid.Column="0" Grid.Row="4" Width="100" Height="40" FontSize="18" Margin="16" HorizontalAlignment="Left" >Room:</Label>
+                <Label Grid.Column="0" Grid.Row="5" Width="150" Height="40" FontSize="18" Margin="16" HorizontalAlignment="Left" >Appointment:</Label>
 
-                <TextBox x:Name="durationO" Grid.Column="1" Grid.Row="0" Width="400" Height="20" BorderBrush="#FF070709" Text="{Binding Operation.Duration}"/>
-                <ComboBox Grid.Column="1" Grid.Row="1" Width="400" Height="30" ItemsSource="{Binding OperationTypes}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.OperationType}"></ComboBox>
-                <ComboBox Grid.Column="1" Grid.Row="2" Width="400" Height="30" ItemsSource="{Binding Specialists}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.Specialist}"></ComboBox>
-                <ComboBox Grid.Column="1" Grid.Row="3" Width="400" Height="30" ItemsSource="{Binding Rooms}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.Room}"></ComboBox>
-                <ComboBox Grid.Column="1" Grid.Row="4" Width="400" Height="30" ItemsSource="{Binding Appointments}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.Appointment}"></ComboBox>
+                <TextBox x:Name="durationO" Grid.Column="1" Grid.Row="1" Height="20" BorderBrush="Gray" Text="{Binding Operation.Duration}" Margin="109,18,20,21"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" Height="30" ItemsSource="{Binding OperationTypes}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.OperationType}" Margin="109,15,20,15"/>
+                <ComboBox Grid.Column="1" Grid.Row="3" Height="30" ItemsSource="{Binding Specialists}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.Specialist}" Margin="109,14,20,15"/>
+                <ComboBox Grid.Column="1" Grid.Row="4" Height="30" ItemsSource="{Binding Rooms}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.Room}" Margin="109,15,20,14"/>
+                <ComboBox Grid.Column="1" Grid.Row="5" Height="30" ItemsSource="{Binding Appointments}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Operation.Appointment}" Margin="109,15,20,15"/>
 
-                
-                 
+
+
             </Grid>
         </DockPanel>
+        <Label Content="Label" Width="0"/>
     </DockPanel>
 
 </Window>

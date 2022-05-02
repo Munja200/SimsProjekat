@@ -59,15 +59,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\ExaminationController.cs" />
     <Compile Include="Controller\OperationController.cs" />
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
+    <Compile Include="Controller\PrescriptionController.cs" />
+    <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\SpecialistController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
+    <Compile Include="FileHandler\ExaminationFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
+    <Compile Include="FileHandler\PrescriptionFileHandler.cs" />
+    <Compile Include="FileHandler\ReportFileHandler.cs" />
     <Compile Include="FileHandler\RoomFileHandler.cs" />
     <Compile Include="FileHandler\SpecialistFileHandler.cs" />
     <Compile Include="Model\Address.cs" />
@@ -76,13 +82,17 @@
     <Compile Include="Model\ComboItem.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\Drug.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\EmployeeRole.cs" />
+    <Compile Include="Model\Examination.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\Operation.cs" />
     <Compile Include="Model\OperationType.cs" />
     <Compile Include="Model\PatientAccount.cs" />
+    <Compile Include="Model\Prescription.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
+    <Compile Include="Model\Report.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\RoomSchedule.cs" />
     <Compile Include="Model\RoomType.cs" />
@@ -92,15 +102,21 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
+    <Compile Include="Repository\ExaminationRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
+    <Compile Include="Repository\PrescriptionRepository.cs" />
+    <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SpecialistRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
+    <Compile Include="Service\ExaminationService.cs" />
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
+    <Compile Include="Service\PrescriptionService.cs" />
+    <Compile Include="Service\ReportService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="View\DirectorAddRoom.xaml.cs">
@@ -121,6 +137,15 @@
     <Compile Include="View\DoctorOperationWindow.xaml.cs">
       <DependentUpon>DoctorOperationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoctorSelfTerms.xaml.cs">
+      <DependentUpon>DoctorSelfTerms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExaminationAddReport.xaml.cs">
+      <DependentUpon>ExaminationAddReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExaminationEditReport.xaml.cs">
+      <DependentUpon>ExaminationEditReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\priavte.cs" />
     <Compile Include="View\SecretaryEditPatientAccount.xaml.cs">
       <DependentUpon>SecretaryEditPatientAccount.xaml</DependentUpon>
@@ -130,6 +155,12 @@
     </Compile>
     <Compile Include="View\SecretaryPatientAccountWindow.xaml.cs">
       <DependentUpon>SecretaryPatientAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowExamination.xaml.cs">
+      <DependentUpon>ShowExamination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowPatient.xaml.cs">
+      <DependentUpon>ShowPatient.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +198,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DoctorSelfTerms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExaminationAddReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExaminationEditReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SecretaryEditPatientAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -176,6 +219,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SecretaryPatientAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowExamination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +273,15 @@
   <ItemGroup>
     <Resource Include="Resources\Specialist.txt" />
     <Resource Include="Resources\Patient.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Report.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Examination.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SelfAppointment.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

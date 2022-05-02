@@ -28,6 +28,9 @@ namespace Hospital
 
         public PatientAccountController patientAccountController { get; set; }
 
+        public ReportController reportController { get; set; }
+        public ExaminationController examinationController { get; set; }    
+
         public App()
         {
             RoomRepository roomRepository = new RoomRepository();
@@ -54,6 +57,14 @@ namespace Hospital
             specialistController = new SpecialistController(specialistService);
 
             patientAccountController = new PatientAccountController(patientAccountService);
+
+            ReportRepository reportRepository = new ReportRepository();
+            ReportService reportService = new ReportService(reportRepository);
+            reportController = new ReportController(reportService);
+
+            ExaminationRepository examinationRepository = new ExaminationRepository();
+            ExaminationService examinationService = new ExaminationService(examinationRepository);
+            examinationController = new ExaminationController(examinationService);
 
         }
     }
