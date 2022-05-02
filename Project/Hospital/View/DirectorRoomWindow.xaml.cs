@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Hospital.View
 {
-    /// <summary>
-    /// Interaction logic for DirectorRoomWindow.xaml
-    /// </summary>
     public partial class DirectorRoomWindow : Window
     {
         private RoomController roomController;
@@ -54,6 +51,13 @@ namespace Hospital.View
 
             if (room != null)
                 new DirectorEditRoom().Show();
+        }
+        private void Equipment(object sender, RoutedEventArgs e)
+        {
+            var viewRoomsWindow = Application.Current.Windows.OfType<DirectorRoomWindow>().FirstOrDefault();
+            Room room = (Room)viewRoomsWindow.dataGridRooms.SelectedItem;
+            if (room != null)
+                new EquipmentRoom(room).Show();
         }
     }
 }

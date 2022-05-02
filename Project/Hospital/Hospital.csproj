@@ -59,15 +59,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\OperationController.cs" />
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
     <Compile Include="Controller\RoomController.cs" />
+    <Compile Include="Controller\RoomEquipmentController.cs" />
     <Compile Include="Controller\SpecialistController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
+    <Compile Include="FileHandler\EquipmentFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
+    <Compile Include="FileHandler\RoomEquipmentFileHandler.cs" />
     <Compile Include="FileHandler\RoomFileHandler.cs" />
     <Compile Include="FileHandler\SpecialistFileHandler.cs" />
     <Compile Include="Model\Address.cs" />
@@ -78,12 +82,15 @@
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\EmployeeRole.cs" />
+    <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\Gender.cs" />
+    <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\Operation.cs" />
     <Compile Include="Model\OperationType.cs" />
     <Compile Include="Model\PatientAccount.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\RoomEquipment.cs" />
     <Compile Include="Model\RoomSchedule.cs" />
     <Compile Include="Model\RoomType.cs" />
     <Compile Include="Model\AppointmentType.cs" />
@@ -92,17 +99,24 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
+    <Compile Include="Repository\EquipmentRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
+    <Compile Include="Repository\RoomEquipmentRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SpecialistRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
+    <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
+    <Compile Include="Service\RoomEquipmentService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
+    <Compile Include="View\DirectorAddEquipment.xaml.cs">
+      <DependentUpon>DirectorAddEquipment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DirectorAddRoom.xaml.cs">
       <DependentUpon>DirectorAddRoom.xaml</DependentUpon>
     </Compile>
@@ -120,6 +134,9 @@
     </Compile>
     <Compile Include="View\DoctorOperationWindow.xaml.cs">
       <DependentUpon>DoctorOperationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EquipmentRoom.xaml.cs">
+      <DependentUpon>EquipmentRoom.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
     <Compile Include="View\SecretaryEditPatientAccount.xaml.cs">
@@ -143,6 +160,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\DirectorAddEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DirectorAddRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorOperationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EquipmentRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +247,12 @@
   <ItemGroup>
     <Resource Include="Resources\Specialist.txt" />
     <Resource Include="Resources\Patient.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Equipment.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RoomEquipment.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

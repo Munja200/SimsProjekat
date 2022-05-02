@@ -28,6 +28,12 @@ namespace Hospital
 
         public PatientAccountController patientAccountController { get; set; }
 
+        public EquipmentController equipmentController { get; set; }
+        public RoomEquipmentController roomEquimpentController { get; set; }
+        //public EquipmentTransferController equipmentTransferController { get; set; }
+
+
+
         public App()
         {
             RoomRepository roomRepository = new RoomRepository();
@@ -54,6 +60,19 @@ namespace Hospital
             specialistController = new SpecialistController(specialistService);
 
             patientAccountController = new PatientAccountController(patientAccountService);
+
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            RoomEquipmentRepository roomEquipmentRepository = new RoomEquipmentRepository();
+        //    EquipmentTransferRepository equipmentTransferRepository = new EquipmentTransferRepository();
+
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository);
+            RoomEquipmentService roomEquipmentService = new RoomEquipmentService(roomEquipmentRepository);
+        //    EquipmentTransferService equipmentTransferService = new EquipmentTransferService(equipmentTransferRepository);
+
+            equipmentController = new EquipmentController(equipmentService);
+            roomEquimpentController = new RoomEquipmentController(roomEquipmentService);
+         //   equipmentTransferController = new EquipmentTransferController(equipmentTransferService);
+          //  new Class1(roomEquipmentRepository, equipmentTransferRepository);
 
         }
     }
