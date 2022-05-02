@@ -22,16 +22,16 @@ namespace Hospital.Controller
             return _service.GetAll();
         }
 
-        public bool CreateExamination(int id, Appointment appointment, Report report)
+        public bool CreateExamination(int id, Appointment appointment, Report report, Prescription prescription)
         {
-            return _service.CreateExamination(id, appointment, report);
+            return _service.CreateExamination(id, appointment, report, prescription);
         }
 
-        public bool EditExamination(int id, Appointment appointment, Report report)
+        public bool EditExamination(int id, Appointment appointment, Report report, Prescription prescription)
         {
-            return _service.EditExamination(id, appointment, report);
+            return _service.EditExamination(id, appointment, report, prescription);
         }
 
-        
+
     }
 }

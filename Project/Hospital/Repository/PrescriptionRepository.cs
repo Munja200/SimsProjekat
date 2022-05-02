@@ -19,9 +19,9 @@ namespace Hospital.Repository
             prescriptions = new List<Prescription>();
         }
 
-        public bool CreatePrescription(int id, int frequency, string description, DateTime startTime, int duration, Examination examination, Drug drug)
+        public bool CreatePrescription(int id, int frequency, int interval, DateTime startTime, int duration, Drug drug)
         {
-            prescriptions.Add(new Prescription(id, frequency, description, startTime, duration, examination, drug));
+            prescriptions.Add(new Prescription(id, frequency, interval, startTime, duration, drug));
             prescriptionFileHandler.Write(prescriptions);
             return true;
         }
@@ -40,7 +40,7 @@ namespace Hospital.Repository
             return false;
         }
 
-        public bool EditPrescription(int id, int frequency, string description, DateTime startTime, int duration, Examination examination, Drug drug)
+        public bool EditPrescription(int id, int frequency, int interval, DateTime startTime, int duration, Drug drug)
         {
 
             foreach(Prescription prescription in prescriptions)
@@ -49,11 +49,10 @@ namespace Hospital.Repository
                 {
                     prescription.Id = id;
                     prescription.Frequency = frequency;
-                    prescription.Description = description;
+                    prescription.Interval = interval;
                     prescription.StartTime = startTime;
                     prescription.Duration = duration;
                     prescription.Drug = drug;
-                    prescription.Examination = examination;
 
                     prescriptionFileHandler.Write(prescriptions);
 

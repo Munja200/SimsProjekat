@@ -11,21 +11,24 @@ namespace Hospital.Model
     {
         public int Id { get; set; }
         public int Frequency { get; set; }
-        public string Description { get; set; }
+        public int Interval { get; set; }
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
-        public Examination Examination { get; set; }
         public Drug Drug { get; set; }
 
-        public Prescription(int id, int frequency, string description, DateTime startTime, int duration, Examination examination, Drug drug)
+        public Prescription(int id, int frequency, int interval, DateTime startTime, int duration, Drug drug)
         {
             Id = id;
             Frequency = frequency;
-            Description = description;
+            Interval = interval;
             StartTime = startTime;
             Duration = duration;
-            Examination = examination;
             Drug = drug;
+        }
+
+        public override string ToString()
+        {
+            return Drug.Name + " " + Frequency + "x dnevno, na " + Interval + "h od " + StartTime + ", " + Duration + " dana";
         }
     }
 }

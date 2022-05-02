@@ -13,14 +13,15 @@ namespace Model
         public int Id { get; set; }
         public Appointment Appointment { get; set; }
 
-        // public Prescription Prescription { get; set; }
+        public Prescription Prescription { get; set; }
         public Report Report { get; set; }
 
-        public Examination(int id, Appointment appointment, Report report)
+        public Examination(int id, Appointment appointment, Report report, Prescription prescription)
         {
             Id = id;
             Appointment = appointment;
             Report = report;
+            Prescription = prescription;
         }
     }
 }

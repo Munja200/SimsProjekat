@@ -54,7 +54,7 @@ namespace Hospital.View
 
             }
 
-            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report);
+            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription);
             this.Close();
 
         }

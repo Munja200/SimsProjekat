@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,22 +14,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hospital.Controller;
-using Hospital.Model;
 using Model;
 
 namespace Hospital.View
 {
     /// <summary>
-    /// Interaction logic for ExaminationAddReport.xaml
+    /// Interaction logic for IssuingPrescription.xaml
     /// </summary>
-    public partial class ExaminationAddReport : Window
+    public partial class IssuingPrescription : Window
     {
         private ExaminationController examinationController;
-        private ReportController reportController;
-        private Report report;
-
         private Examination examination;
         public event PropertyChangedEventHandler PropertyChanged;
+
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -38,11 +34,10 @@ namespace Hospital.View
         }
 
 
-        public ExaminationAddReport(Examination examination)
+        public IssuingPrescription(Examination examination)
         {
             InitializeComponent();
             this.DataContext = this;
-            report = new Report();
             App app = Application.Current as App;
             var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
             Examination = examination;
@@ -50,7 +45,7 @@ namespace Hospital.View
 
         }
 
-        private void AddButton(object sender, RoutedEventArgs e)
+        private void SubmitButton(object sender, RoutedEventArgs e)
         {
             var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
             Examination examination = (Examination)examinationW.dataGridExaminations.SelectedItem;
@@ -60,17 +55,7 @@ namespace Hospital.View
 
         }
 
-        public Report Report
-        {
-            get { return report; }
-            set
-            {
-                report = value;
-                OnPropertyChanged(nameof(Report));
-            }
-        }
-
-        public Examination Examination 
+        public Examination Examination
         {
             get { return examination; }
             set
@@ -79,11 +64,11 @@ namespace Hospital.View
                 OnPropertyChanged(nameof(Examination));
             }
         }
-
+        
         private void CencelButton(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        
     }
 }

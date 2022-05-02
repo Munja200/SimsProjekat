@@ -23,9 +23,9 @@ namespace Hospital.Controller
             return _service.GetAll();
         }
 
-        public bool CreatePrescription(int id, int frequency, string description, DateTime startTime, int duration, Examination examination, Drug drug)
+        public bool CreatePrescription(int id, int frequency,  int interval, DateTime startTime, int duration, Drug drug)
         {
-            return _service.CreatePrescription(id, frequency, description, startTime, duration, examination, drug);
+            return _service.CreatePrescription(id, frequency, interval, startTime, duration, drug);
         }
 
         public bool DeletePrescription(int id)
@@ -38,9 +38,9 @@ namespace Hospital.Controller
             return _service.GetPrescriptionById(id);
         }
 
-        public bool EditPrescription(int id, int frequency, string description, DateTime startTime, int duration, Examination examination, Drug drug)
+        public bool EditPrescription(int id, int frequency, int interval, DateTime startTime, int duration, Drug drug)
         {
-            return _service.EditPrescription(id, frequency, description, startTime, duration, examination, drug);
+            return _service.EditPrescription(id, frequency, interval, startTime, duration, drug);
         }
     }
 }

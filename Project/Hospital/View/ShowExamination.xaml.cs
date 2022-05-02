@@ -88,5 +88,24 @@ namespace Hospital.View
 
 
         }
+
+        private void IssuingPrescription(object sender, RoutedEventArgs e)
+        {
+            var viewReportsWindow = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
+            Examination examination = (Examination)viewReportsWindow.dataGridExaminations.SelectedItem;
+
+            //za izvestaj koji nije napisan ne moze da se izda lek
+            if (examination != null)
+            {
+                if (examination.Report.Written == true)
+                {
+                    new IssuingPrescription(examination).ShowDialog();
+                }else
+                {
+                    MessageBox.Show("The report for this review has not been written!", "Error");
+                }
+            }
+
+        }
     }
 }

@@ -30,9 +30,9 @@ namespace Hospital.Repository
             return examinations;
         }
 
-        public bool CreateExamination(int id, Appointment appointment, Report report)
+        public bool CreateExamination(int id, Appointment appointment, Report report, Prescription prescription)
         {
-            examinations.Add(new Examination(GenerateId(), appointment, report));
+            examinations.Add(new Examination(GenerateId(), appointment, report, prescription));
             examinationFileHandler.Write(examinations);
             return true;
         }
@@ -52,7 +52,7 @@ namespace Hospital.Repository
             return id + 1;
         }
 
-        public bool EditExamination(int id, Appointment appointment, Report report)
+        public bool EditExamination(int id, Appointment appointment, Report report, Prescription prescription)
         {
 
             foreach (Examination examination in examinations)
@@ -62,6 +62,7 @@ namespace Hospital.Repository
                     examination.Id = id;
                     examination.Appointment = appointment;
                     examination.Report = report;
+                    examination.Prescription = prescription;
                     examinationFileHandler.Write(examinations);
 
                     return true;
@@ -70,8 +71,6 @@ namespace Hospital.Repository
 
             return false;
         }
-
-      
 
     }
 }

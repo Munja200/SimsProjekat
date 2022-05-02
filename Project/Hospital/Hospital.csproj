@@ -146,6 +146,9 @@
     <Compile Include="View\ExaminationEditReport.xaml.cs">
       <DependentUpon>ExaminationEditReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\IssuingPrescription.xaml.cs">
+      <DependentUpon>IssuingPrescription.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\priavte.cs" />
     <Compile Include="View\SecretaryEditPatientAccount.xaml.cs">
       <DependentUpon>SecretaryEditPatientAccount.xaml</DependentUpon>
@@ -207,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExaminationEditReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IssuingPrescription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
