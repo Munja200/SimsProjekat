@@ -181,6 +181,7 @@
     </Compile>
     <Compile Include="View\IssuingPrescription.xaml.cs">
       <DependentUpon>IssuingPrescription.xaml</DependentUpon>
+     </Compile>
     <Compile Include="View\EquipmentRoom.xaml.cs">
       <DependentUpon>EquipmentRoom.xaml</DependentUpon>
     </Compile>
