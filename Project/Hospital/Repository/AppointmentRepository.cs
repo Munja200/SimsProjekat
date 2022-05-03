@@ -15,9 +15,9 @@ namespace Repository
             appointments = new List<Appointment>();
         }
 
-        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType)
+        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
         {
-            appointments.Add(new Appointment(id, startTime, endTime, duration, scheduled, appointmetntType));
+            appointments.Add(new Appointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount));
             appointmnetFileHandler.Write(appointments);
             return true;
         }
@@ -36,7 +36,7 @@ namespace Repository
           return false;
         }
 
-        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType)
+        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
         {
 
             foreach (Appointment appointment in appointments)
@@ -49,6 +49,9 @@ namespace Repository
                     appointment.Duration = duration;
                     appointment.Scheduled = scheduled;
                     appointment.AppointmetntType = appointmetntType;
+                    appointment.Doctor = doctor;
+                    appointment.Room = room;
+                    appointment.PatientAccount = patientAccount;
 
                     appointmnetFileHandler.Write(appointments);
 

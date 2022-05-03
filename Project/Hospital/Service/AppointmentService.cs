@@ -17,9 +17,9 @@ namespace Service
             return appointmentRepository.GetAll();
         }
 
-        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType)
+        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
         {
-            return appointmentRepository.CreateAppointment(id, startTime, endTime, duration, scheduled, appointmetntType);
+            return appointmentRepository.CreateAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
 
         public bool DeleteAppointment(int id)
@@ -27,9 +27,9 @@ namespace Service
             return appointmentRepository.DeleteAppointment(id);
         }
 
-        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType)
+        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
         {
-            return appointmentRepository.EditAppointment(id, startTime, endTime, duration, scheduled, appointmetntType);
+            return appointmentRepository.EditAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
 
         public Appointment GetAppointmentById(int id)

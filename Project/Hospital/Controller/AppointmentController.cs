@@ -8,9 +8,9 @@ namespace Controller
     public class AppointmentController
     {
         public List<Appointment> appointments;
-        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType)
+        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
         {
-            return appointmentService.CreateAppointment(id, startTime, endTime, duration, scheduled, appointmetntType);
+            return appointmentService.CreateAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
 
         public bool DeleteAppointment(int id)
@@ -18,9 +18,9 @@ namespace Controller
             return appointmentService.DeleteAppointment(id);
         }
 
-        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType)
+        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
         {
-            return appointmentService.EditAppointment(id, startTime, endTime, duration, scheduled, appointmetntType);
+            return appointmentService.EditAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
 
         public List<Appointment> GetAll()

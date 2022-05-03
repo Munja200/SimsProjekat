@@ -70,12 +70,14 @@ namespace Hospital.View
             foreach (Specialist specialist in specialistController.GetAll())
             {
                 
-                if (specialist.WorkingTime.StartTime.Hour > DateTime.Now.Hour && specialist.WorkingTime.EndTime.Hour < DateTime.Now.Hour) 
-                { 
+                if (specialist.WorkingTime.StartTime.Hour >= DateTime.Now.Hour && specialist.WorkingTime.EndTime.Hour <= DateTime.Now.Hour) 
+                {
+
                     continue;
                 }
-                
-                Specialists.Add(new ComboItem<Specialist> { Name = specialist.Speciality.ToString(), Value = specialist });
+
+               Specialists.Add(new ComboItem<Specialist> { Name = specialist.Speciality.ToString(), Value = specialist });
+               
             }
 
             foreach (Room room in roomController.GetAll())
@@ -85,7 +87,7 @@ namespace Hospital.View
                 {
                     continue;
                 }
-                
+
                 Rooms.Add(new ComboItem<Room> { Name = room.Name, Value = room });
             }
 

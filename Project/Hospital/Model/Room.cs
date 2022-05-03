@@ -24,6 +24,16 @@ namespace Model
         public int Id { get; set; }
         public bool Availability { get; set; }
         public RoomType RoomType { get; set; }
-   
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Room);
+        }
+
+        public bool Equals(Room other)
+        {
+            return other != null &&
+                   Id == other.Id;
+        }
     }
 }

@@ -19,20 +19,23 @@ namespace Model
         public Room Room { get; set; }
         public PatientAccount PatientAccount { get; set; }
 
-
-
         [JsonIgnore]
         public System.Collections.Generic.List<Operation> operation;
 
-        public Appointment(int idd, DateTime startTimee, DateTime endTimee, int durationn, bool scheduledd, AppointmentType appointmetntTypee)
+        public Appointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
         {
-            Id = idd;
-            StartTime = startTimee;
-            EndTime = endTimee;
-            Duration = durationn;
-            Scheduled = scheduledd;
-            AppointmetntType = appointmetntTypee;
+            Id = id;
+            StartTime = startTime;
+            EndTime = endTime;
+            Duration = duration;
+            Scheduled = scheduled;
+            AppointmetntType = appointmetntType;
+            Doctor = doctor;
+            Room = room;
+            PatientAccount = patientAccount;
+          
         }
+       
         [JsonIgnore]
         public System.Collections.Generic.List<Operation> Operation
         {
