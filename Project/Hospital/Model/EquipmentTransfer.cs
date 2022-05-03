@@ -21,5 +21,23 @@ namespace Model
       public Room SenderRoom { get; set; }
       public Room RecipientRoom { get; set; }
 
+        public bool ShouldSerializeSenderRoom()
+        {
+            this.SenderRoom.serialize = false;
+            return true;
+        }
+
+        public bool ShouldSerializeEquipment()
+        {
+            this.Equipment.serialize = false;
+            return true;
+        }
+
+        public bool ShouldSerializeRecipientRoom()
+        {
+            this.RecipientRoom.serialize = false;
+            return true;
+        }
+
     }
 }

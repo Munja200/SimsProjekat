@@ -8,6 +8,7 @@ namespace FileHandler
    {
       public void Write(List<Equipment> equipments)
       {
+            foreach (Equipment eq in equipments) { eq.serialize = true; }
             string serializedEquimpent = Newtonsoft.Json.JsonConvert.SerializeObject(equipments);
             System.IO.File.WriteAllText(path, serializedEquimpent);
         }

@@ -25,7 +25,7 @@ namespace Service
       public List<RoomEquipment> GetAll()
       {
             return roomEquipmentRepository.GetAll();
-      }
+        }
       
       public RoomEquipment GetByIds(int idRoom, int idEquipment)
       {

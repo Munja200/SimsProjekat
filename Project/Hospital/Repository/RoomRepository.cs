@@ -79,8 +79,6 @@ namespace Repository
             return true;
       }
       
-     // public List<Room> rooms;
-      
       public FileHandler.RoomFileHandler roomFileHandler;
    
    }

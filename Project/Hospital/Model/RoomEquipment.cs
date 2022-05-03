@@ -21,7 +21,17 @@ namespace Model
       public Equipment Equipment { get; set; }
 
       public Room Room { get; set; }
+        public bool ShouldSerializeRoom()
+        {
+            this.Room.serialize = false;
+            return true;
+        }
 
+        public bool ShouldSerializeEquipment()
+        {
+            this.Equipment.serialize = false;
+            return true;
+        }
 
     }
 }
