@@ -11,7 +11,7 @@ namespace Repository
       public RoomEquipmentRepository()
       {
           roomEquipmentFileHandler = new FileHandler.RoomEquipmentFileHandler();
-          roomEquipments = new ObservableCollection<RoomEquipment>();
+          roomEquipments = new List<RoomEquipment>();
           this.GetAll();
         }
 
@@ -42,19 +42,27 @@ namespace Repository
       public List<RoomEquipment> GetAll()
       {
             if (roomEquipmentFileHandler.Read() == null)
-                return  roomEquipments.ToList();
+                return  roomEquipments;
+
             roomEquipments.Clear();
-            List<RoomEquipment> list = roomEquipmentFileHandler.Read();
+            RoomRepository roomRepository = new RoomRepository();
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            List<RoomEquipment> roomEquipment = roomEquipmentFileHandler.Read();
+            equipmentRepository.GetAll();
+            roomRepository.GetAll();
+            foreach (RoomEquipment re in roomEquipment)
+            {
+                re.Room = roomRepository.GetById(re.Room.Id);
+                re.Equipment = equipmentRepository.GetById(re.Equipment.Id);
 
-            foreach (RoomEquipment r in list)
-            { roomEquipments.Add(r); }
-
-            return  roomEquipments.ToList();
+                roomEquipments.Add(re);
+            }
+            return roomEquipments;
         }
       
       public RoomEquipment GetByIds(int idRoom, int idEquipment)
       {
-            foreach (RoomEquipment roomEquipment in roomEquipments.ToList())
+            foreach (RoomEquipment roomEquipment in roomEquipments)
             {
                 if (roomEquipment.Room.Id.Equals(idRoom) && roomEquipment.Equipment.Id.Equals(idEquipment))
                     return roomEquipment;
@@ -64,7 +72,7 @@ namespace Repository
       
       public RoomEquipment GetById(int id)
       {
-            foreach (RoomEquipment roomEquipment in roomEquipments.ToList())
+            foreach (RoomEquipment roomEquipment in roomEquipments)
             {
                 if (roomEquipment.Id.Equals(id))
                     return roomEquipment;
@@ -81,7 +89,7 @@ namespace Repository
                 if (roomEquipment.Room.Id.Equals(id))
                 {
                     roomEquipments.Remove(roomEquipment);
-                    roomEquipmentFileHandler.Write(roomEquipments.ToList());
+                    roomEquipmentFileHandler.Write(roomEquipments);
                 }
             }
             return true;
@@ -97,7 +105,7 @@ namespace Repository
                 if (roomEquipment.Equipment.Id.Equals(id))
                 {
                     roomEquipments.Remove(roomEquipment);
-                    roomEquipmentFileHandler.Write(roomEquipments.ToList());
+                    roomEquipmentFileHandler.Write(roomEquipments);
                 }
             }
             return true;
@@ -110,7 +118,7 @@ namespace Repository
                 if (roomEquipment.Id.Equals(id)) 
                 {
                     roomEquipments.Remove(roomEquipment);
-                    roomEquipmentFileHandler.Write(roomEquipments.ToList());
+                    roomEquipmentFileHandler.Write(roomEquipments);
                     return true;
                 }
             }
@@ -128,7 +136,7 @@ namespace Repository
                     re.Equipment = equipment;
                     re.Quantity = quantity;
                     re.Id = id;
-                    roomEquipmentFileHandler.Write(roomEquipments.ToList());
+                    roomEquipmentFileHandler.Write(roomEquipments);
 
                     return true;
                 }
@@ -140,12 +148,21 @@ namespace Repository
       public bool Create(Room room, Equipment equipment, int quantity, int id)
       {
             roomEquipments.Add(new RoomEquipment(room, equipment, quantity, id));
-            roomEquipmentFileHandler.Write(roomEquipments.ToList());
+            roomEquipmentFileHandler.Write(roomEquipments);
             return true;
         }
       
       public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
       {
+            if (equipmentTransfer.SenderRoom == null)
+                return true;
+
+            if (equipmentTransfer.RecipientRoom == null)
+                return true;
+
+            if (equipmentTransfer.Equipment == null)
+                return true;
+
             if (equipmentTransfer.SenderRoom.Id.Equals(equipmentTransfer.RecipientRoom.Id))
             {
                 return true;
@@ -155,11 +172,12 @@ namespace Repository
             {
                 return true;
             }
-
+         
             RoomEquipment re = this.GetByIds(equipmentTransfer.SenderRoom.Id, equipmentTransfer.Equipment.Id);
             if (re == null)
                 return true;
-           
+
+
             if (re.Quantity == equipmentTransfer.Quantity)
             {
                 this.DeleteById(re.Id);
@@ -186,7 +204,7 @@ namespace Repository
             return true;
         }
       
-        public ObservableCollection<RoomEquipment> roomEquipments;
+        public List<RoomEquipment> roomEquipments;
       
       public FileHandler.RoomEquipmentFileHandler roomEquipmentFileHandler;
    

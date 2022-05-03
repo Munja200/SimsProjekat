@@ -23,16 +23,34 @@ namespace Repository
             }
             return null;
         }
-      
-      public List<EquipmentTransfer> GetAll()
+        
+        public List<EquipmentTransfer> GetAll()
       {
             if (equipmentTransferFileHandler.Read() == null)
                 return equipmentTransfers;
-            equipmentTransfers = equipmentTransferFileHandler.Read();
+
+            equipmentTransfers.Clear();
+            RoomRepository roomRepository = new RoomRepository();
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            List<EquipmentTransfer> ets = equipmentTransferFileHandler.Read();
+
+            equipmentRepository.GetAll();
+            roomRepository.GetAll();
+
+            foreach (EquipmentTransfer et in ets)
+            {
+                et.RecipientRoom = roomRepository.GetById(et.RecipientRoom.Id);
+                et.SenderRoom = roomRepository.GetById(et.SenderRoom.Id);
+                et.Equipment = equipmentRepository.GetById(et.Equipment.Id);
+
+                equipmentTransfers.Add(et);
+            }
+
             return equipmentTransfers;
+
         }
-      
-      public bool Delete(int id)
+
+        public bool Delete(int id)
       {
             foreach (EquipmentTransfer et in equipmentTransfers)
             {

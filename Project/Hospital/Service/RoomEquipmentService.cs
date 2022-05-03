@@ -24,17 +24,7 @@ namespace Service
       
       public List<RoomEquipment> GetAll()
       {
-            RoomRepository roomRepository = new RoomRepository();
-            EquipmentRepository equipmentRepository = new EquipmentRepository();
-            List<RoomEquipment> roomEquipments = roomEquipmentRepository.GetAll();
-            foreach (RoomEquipment re in roomEquipments)
-            {
-                re.Room = roomRepository.GetById(re.Room.Id);
-                re.Equipment = equipmentRepository.GetById(re.Equipment.Id);
-
-                roomEquipments.Add(re);
-            }
-            return roomEquipments;
+            return roomEquipmentRepository.GetAll();
         }
       
       public RoomEquipment GetByIds(int idRoom, int idEquipment)

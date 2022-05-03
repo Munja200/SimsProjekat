@@ -6,6 +6,7 @@ namespace Model
 {
    public class Room
    {
+        [Newtonsoft.Json.JsonConstructor]
         public Room(int id, int floor, RoomType roomType, String name, bool availability)
         {
             Id = id;

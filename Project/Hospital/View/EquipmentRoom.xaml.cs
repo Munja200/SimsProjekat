@@ -84,13 +84,7 @@ namespace Hospital.View
                 int ids = (int)Odrediste.SelectedValue;
                 Room ro = roomController.GetById(ids);
 
-                if (DateTime.Compare(dt, DateTime.Today) == 0)
-                {
-                    roomEquipmenController.MoveEquipment(new EquipmentTransfer(room.Room, ro, room.Equipment, quanty, dt, 0));
-                    this.Close();
-                    return;
-                }
-
+                int idse = equipmentTransferController.GetAll().Count() == 0 ? 0 : equipmentTransferController.GetAll().Max(EquipmentTransfer => EquipmentTransfer.Id);
 
                 if (!equipmentTransferController.Create(room.Room, ro, room.Equipment, quanty, dt, 0))
                 {

@@ -8,10 +8,13 @@ namespace Service
 {
    public class EquipmentTransferService
    {
-      public EquipmentTransferService(EquipmentTransferRepository equipmentTransferRepository)
+        private RoomEquipmentRepository roomEquipmentRepository;
+
+        public EquipmentTransferService(EquipmentTransferRepository equipmentTransferRepository, RoomEquipmentRepository roomEquipmentRepository)
       {
           this.equipmentTransferRepository = equipmentTransferRepository;
-      }
+          this.roomEquipmentRepository = roomEquipmentRepository;
+        }
         public EquipmentTransfer GetById(int id)
       {
             return equipmentTransferRepository.GetById(id);
@@ -19,19 +22,8 @@ namespace Service
       
       public List<EquipmentTransfer> GetAll()
       {
-            RoomRepository roomRepository = new RoomRepository();
-            EquipmentRepository equipmentRepository = new EquipmentRepository();
-            List<EquipmentTransfer> ets = equipmentTransferRepository.GetAll();
-            foreach (EquipmentTransfer et in ets)
-            {
-                et.RecipientRoom = roomRepository.GetById(et.RecipientRoom.Id);
-                et.SenderRoom = roomRepository.GetById(et.SenderRoom.Id);
-                et.Equipment = equipmentRepository.GetById(et.Equipment.Id);
-
-                ets.Add(et);
-            }
-            return ets;
-        }
+            return equipmentTransferRepository.GetAll();     
+      }
       
       public bool Delete(int id)
       {
@@ -50,13 +42,19 @@ namespace Service
                 return false;
             }
 
-            if (DateTime.Compare(scheduledDate, DateTime.Today) < 0) 
+            if (DateTime.Compare(scheduledDate, DateTime.Today) < 0)
             {
                 return false;
             }
-            
-       
-                return equipmentTransferRepository.Create(senderRoom, recipientRoom, equipment, quantity, scheduledDate, id);
+
+            if (DateTime.Compare(scheduledDate, DateTime.Today) == 0)
+            {
+                return roomEquipmentRepository.MoveEquipment(new EquipmentTransfer(senderRoom, recipientRoom, equipment, quantity, scheduledDate, 0));
+            }
+
+
+
+            return equipmentTransferRepository.Create(senderRoom, recipientRoom, equipment, quantity, scheduledDate, id);
       }
 
         public Repository.EquipmentTransferRepository equipmentTransferRepository;

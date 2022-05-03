@@ -85,7 +85,7 @@ namespace Hospital
 
             EquipmentService equipmentService = new EquipmentService(equipmentRepository);
             RoomEquipmentService roomEquipmentService = new RoomEquipmentService(roomEquipmentRepository);
-            EquipmentTransferService equipmentTransferService = new EquipmentTransferService(equipmentTransferRepository);
+            EquipmentTransferService equipmentTransferService = new EquipmentTransferService(equipmentTransferRepository, roomEquipmentRepository);
 
             equipmentController = new EquipmentController(equipmentService);
             roomEquimpentController = new RoomEquipmentController(roomEquipmentService);
