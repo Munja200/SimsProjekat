@@ -59,6 +59,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\DrugController.cs" />
     <Compile Include="Controller\ExaminationController.cs" />
     <Compile Include="Controller\OperationController.cs" />
     <Compile Include="Controller\OperationTypeController.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\SpecialistController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
+    <Compile Include="FileHandler\DrugFileHandler.cs" />
     <Compile Include="FileHandler\ExaminationFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
+    <Compile Include="Repository\DrugRepository.cs" />
     <Compile Include="Repository\ExaminationRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
     <Compile Include="Repository\OperationTypeRepository.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SpecialistRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
+    <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\ExaminationService.cs" />
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\OperationTypeService.cs" />
@@ -289,6 +293,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\SelfAppointment.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drug.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

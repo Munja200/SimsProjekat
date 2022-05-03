@@ -7,7 +7,7 @@ namespace FileHandler
    public class AppointmnetFileHandler
    {
 
-        private readonly string path = @"../../Resources/SelfAppointment.txt";
+        private readonly string path = @"../../Resources/Appointment.txt";
 
         public List<Appointment> Read()
         {

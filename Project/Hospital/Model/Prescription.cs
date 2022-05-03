@@ -16,6 +16,8 @@ namespace Hospital.Model
         public int Duration { get; set; }
         public Drug Drug { get; set; }
 
+        public Prescription() { StartTime = DateTime.Now; }
+
         public Prescription(int id, int frequency, int interval, DateTime startTime, int duration, Drug drug)
         {
             Id = id;
