@@ -28,9 +28,15 @@ namespace Hospital
 
         public PatientAccountController patientAccountController { get; set; }
 
+
         public ReportController reportController { get; set; }
         public ExaminationController examinationController { get; set; }
         public DrugController drugController { get; set; }
+
+        public EquipmentController equipmentController { get; set; }
+        public RoomEquipmentController roomEquimpentController { get; set; }
+        public EquipmentTransferController equipmentTransferController { get; set; }
+
 
 
         public App()
@@ -60,6 +66,7 @@ namespace Hospital
 
             patientAccountController = new PatientAccountController(patientAccountService);
 
+
             ReportRepository reportRepository = new ReportRepository();
             ReportService reportService = new ReportService(reportRepository);
             reportController = new ReportController(reportService);
@@ -71,6 +78,20 @@ namespace Hospital
             DrugRepository drugRepository = new DrugRepository();
             DrugService drugService = new DrugService(drugRepository);  
             drugController = new DrugController(drugService);
+
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            RoomEquipmentRepository roomEquipmentRepository = new RoomEquipmentRepository();
+            EquipmentTransferRepository equipmentTransferRepository = new EquipmentTransferRepository();
+
+            EquipmentService equipmentService = new EquipmentService(equipmentRepository);
+            RoomEquipmentService roomEquipmentService = new RoomEquipmentService(roomEquipmentRepository);
+            EquipmentTransferService equipmentTransferService = new EquipmentTransferService(equipmentTransferRepository);
+
+            equipmentController = new EquipmentController(equipmentService);
+            roomEquimpentController = new RoomEquipmentController(roomEquipmentService);
+            equipmentTransferController = new EquipmentTransferController(equipmentTransferService);
+            new ThreadEquipmentService(roomEquipmentRepository, equipmentTransferRepository);
+
 
         }
     }
