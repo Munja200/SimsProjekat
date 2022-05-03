@@ -19,8 +19,19 @@ namespace Service
       
       public List<EquipmentTransfer> GetAll()
       {
-            return equipmentTransferRepository.GetAll();
-      }
+            RoomRepository roomRepository = new RoomRepository();
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            List<EquipmentTransfer> ets = equipmentTransferRepository.GetAll();
+            foreach (EquipmentTransfer et in ets)
+            {
+                et.RecipientRoom = roomRepository.GetById(et.RecipientRoom.Id);
+                et.SenderRoom = roomRepository.GetById(et.SenderRoom.Id);
+                et.Equipment = equipmentRepository.GetById(et.Equipment.Id);
+
+                ets.Add(et);
+            }
+            return ets;
+        }
       
       public bool Delete(int id)
       {

@@ -20,6 +20,16 @@ namespace Model
       public String Description { get; set; }
       
       public Medicine Medicine { get; set; }
-   
-   }
+
+        public bool serialize { get; set; }
+
+        public bool ShouldSerializeName() { return serialize; }
+        public bool ShouldSerializeManufacturer() { return serialize; }
+
+        public bool ShouldSerializeQuantity() { return serialize; }
+        public bool ShouldSerializeDescription() { return serialize; }
+        public bool ShouldSerializeMedicine() { return serialize; }
+        public bool ShouldSerializeserialize() { return false; }
+
+    }
 }
