@@ -83,6 +83,13 @@ namespace Repository
             return null;
         }
 
+        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, PatientAccount patientAccount, Doctor doctor, Room room)
+        {
+            appointments.Add(new Appointment(id,startTime,endTime,duration, scheduled, appointmetntType, doctor, room,patientAccount));
+            appointmnetFileHandler.Write(appointments);
+            return true;
+        }
+
         public FileHandler.AppointmnetFileHandler appointmnetFileHandler;
 
     }

@@ -1,0 +1,17 @@
+﻿<Window x:Class="Hospital.View.RoomRenovation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View"
+        mc:Ignorable="d"
+        Title="RoomRenovation" Height="450" Width="800">
+    <Grid>
+        <Label Content="Zakazi renoviranje:" HorizontalAlignment="Left" FontSize="25" Margin="126,14,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kraj:" HorizontalAlignment="Left" FontSize="25" Margin="27,194,0,0" VerticalAlignment="Top"/>
+        <Label Content="Pocetak:" HorizontalAlignment="Left" FontSize="25" Margin="27,97,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="end" HorizontalAlignment="Left" Margin="229,202,0,0" VerticalAlignment="Top" Height="36" Width="131"/>
+        <DatePicker x:Name="start" HorizontalAlignment="Left" Margin="227,106,0,0" VerticalAlignment="Top" Height="36" Width="131"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="159,270,0,0" VerticalAlignment="Top" Width="131" Height="32" Click="AddRenovation" />
+    </Grid>
+</Window>
