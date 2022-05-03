@@ -117,7 +117,6 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
-
     <Compile Include="Repository\DrugRepository.cs" />
     <Compile Include="Repository\ExaminationRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
@@ -135,18 +134,13 @@
     <Compile Include="Service\PatientAccountService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
     <Compile Include="Service\ReportService.cs" />
-
     <Compile Include="Repository\EquipmentRepository.cs" />
     <Compile Include="Repository\EquipmentTransferRepository.cs" />
-    
-    
-   
     <Compile Include="Repository\RoomEquipmentRepository.cs" />
     <Compile Include="Service\ThreadEquipmentService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\EquipmentTransferService.cs" />
     <Compile Include="Service\RoomEquipmentService.cs" />
-
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="View\DirectorAddEquipment.xaml.cs">
@@ -181,11 +175,14 @@
     </Compile>
     <Compile Include="View\IssuingPrescription.xaml.cs">
       <DependentUpon>IssuingPrescription.xaml</DependentUpon>
-     </Compile>
+    </Compile>
     <Compile Include="View\EquipmentRoom.xaml.cs">
       <DependentUpon>EquipmentRoom.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
+    <Compile Include="View\RoomRenovation.xaml.cs">
+      <DependentUpon>RoomRenovation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SecretaryEditPatientAccount.xaml.cs">
       <DependentUpon>SecretaryEditPatientAccount.xaml</DependentUpon>
     </Compile>
@@ -258,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EquipmentRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RoomRenovation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

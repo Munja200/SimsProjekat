@@ -6,6 +6,7 @@ namespace Model
    {
         operationAppointment,
         examinationAppointment,
-        controlAppointment
+        controlAppointment,
+        renovationAppointment
     }
 }

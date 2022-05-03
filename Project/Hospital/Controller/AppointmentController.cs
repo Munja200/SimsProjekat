@@ -44,7 +44,10 @@ namespace Controller
 
         }
 
-
+        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, PatientAccount patientAccount, Doctor doctor, Room room)
+        {
+            return appointmentService.CreateRenovation(id, startTime, endTime, duration, scheduled, appointmetntType, patientAccount, doctor, room);
+        }
 
         public Service.AppointmentService appointmentService;
 

@@ -41,9 +41,10 @@ namespace Hospital.View
             var viewRoomsWindow = Application.Current.Windows.OfType<DirectorRoomWindow>().FirstOrDefault();
             Room room = (Room)viewRoomsWindow.dataGridRooms.SelectedItem;
             if (room != null)
+            {
                 roomEquipmentController.DeleteByRoomId(room.Id);
                 roomController.DeleteRoom(room.Id);
-              
+            }
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
@@ -65,6 +66,15 @@ namespace Hospital.View
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             new DirectorAddEquipment().Show();
+        }
+
+        private void Renovation(object sender, RoutedEventArgs e)
+        {
+            var viewRoomsWindow = Application.Current.Windows.OfType<DirectorRoomWindow>().FirstOrDefault();
+            Room room = (Room)viewRoomsWindow.dataGridRooms.SelectedItem;
+
+            if (room != null)
+                new RoomRenovation(room).Show();
         }
     }
 }
