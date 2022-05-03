@@ -14,6 +14,13 @@ namespace Model
         public bool Scheduled { get; set; }
         public AppointmentType AppointmetntType { get; set; }
 
+
+        public Doctor Doctor { get; set; }
+        public Room Room { get; set; }
+        public PatientAccount PatientAccount { get; set; }
+
+
+
         [JsonIgnore]
         public System.Collections.Generic.List<Operation> operation;
 
