@@ -85,14 +85,14 @@ namespace Hospital.View
                 {
 
 
-                    if ((DateTime.Now.Hour > examination.Appointment.StartTime.Hour && DateTime.Now.Hour < examination.Appointment.EndTime.Hour))
+                    if ((DateTime.Now.Hour >= examination.Appointment.StartTime.Hour && DateTime.Now.Hour <= examination.Appointment.EndTime.Hour))
                     {
                         //izvestaj moze da se izmeni u toku termina pregleda
                         new ExaminationEditReport(examination).ShowDialog();
                     }
                     else
                     {
-                        if (DateTime.Now.Hour > examination.Appointment.EndTime.Hour)
+                        if (DateTime.Now.Hour >= examination.Appointment.EndTime.Hour)
                         {
                             //izvestaj moze da se izmeni posle termina pregleda
                             new ExaminationEditReport(examination).ShowDialog();
