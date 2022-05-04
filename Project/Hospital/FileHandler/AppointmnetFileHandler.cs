@@ -19,6 +19,7 @@ namespace FileHandler
 
         public void Write(List<Appointment> appointments)
         {
+            foreach (Appointment o in appointments) { o.Room.serialize = true; }
             string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(appointments);
             System.IO.File.WriteAllText(path, serializedOperations);
 

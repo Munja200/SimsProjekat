@@ -42,14 +42,14 @@ namespace Hospital.View
                 if (examination.Report.Written == false)
                 {
 
-                    if ((DateTime.Now.Hour > examination.Appointment.StartTime.Hour && DateTime.Now.Hour < examination.Appointment.EndTime.Hour))
+                    if ((DateTime.Now.Hour >= examination.Appointment.StartTime.Hour && DateTime.Now.Hour <= examination.Appointment.EndTime.Hour))
                     {
                         //izvestaj moze da se kreira u toku termina pregleda
                         new ExaminationEditReport(examination).ShowDialog();
                     }
                     else
                     {
-                        if (DateTime.Now.Hour > examination.Appointment.EndTime.Hour)
+                        if (DateTime.Now.Hour >= examination.Appointment.EndTime.Hour)
                         {
                             //izvestaj moze da se kreira posle termina pregleda
                             new ExaminationEditReport(examination).ShowDialog();
@@ -128,7 +128,7 @@ namespace Hospital.View
                 if (examination.Report.Written == true)
                 {
 
-                    if ((DateTime.Now.Hour > examination.Appointment.StartTime.Hour && DateTime.Now.Hour < examination.Appointment.EndTime.Hour))
+                    if ((DateTime.Now.Hour >= examination.Appointment.StartTime.Hour && DateTime.Now.Hour <= examination.Appointment.EndTime.Hour))
                     {
                         //recept moze da se izda u toku pregleda
                         new IssuingPrescription(examination).ShowDialog();
@@ -136,7 +136,7 @@ namespace Hospital.View
                     }
                     else
                     {
-                        if (DateTime.Now.Hour > examination.Appointment.EndTime.Hour)
+                        if (DateTime.Now.Hour >= examination.Appointment.EndTime.Hour)
                         {
                             //recept moze da se izda nakon pregleda
                             new IssuingPrescription(examination).ShowDialog();
