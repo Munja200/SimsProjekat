@@ -45,5 +45,11 @@ namespace Hospital
             new ShowExamination().Show();
             this.Close();
         }
+
+        private void Drugs(object sender, RoutedEventArgs e)
+        {
+            new ListDrugs().Show();
+            this.Close();
+        }
     }
 }

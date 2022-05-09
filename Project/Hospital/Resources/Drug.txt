@@ -1,1 +1,1 @@
-[{"Name" : "Brufen"}, {"Name" : "Bensedin" }, {"Name" : "Kafetin"}]
+[{"Name" : "Brufen"}, {"Name" : "Bensedin" }, {"Name" : "Caffetin"}, {"Name" : "Dexomen"}, {"Name" : "Flavamed"}, {"Name" : "Aerius "}]

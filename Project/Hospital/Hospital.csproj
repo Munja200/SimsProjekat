@@ -179,6 +179,9 @@
     <Compile Include="View\EquipmentRoom.xaml.cs">
       <DependentUpon>EquipmentRoom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ListDrugs.xaml.cs">
+      <DependentUpon>ListDrugs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\priavte.cs" />
     <Compile Include="View\RoomRenovation.xaml.cs">
       <DependentUpon>RoomRenovation.xaml</DependentUpon>
@@ -255,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EquipmentRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListDrugs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
