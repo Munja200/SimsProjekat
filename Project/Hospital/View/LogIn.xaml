@@ -1,0 +1,46 @@
+﻿<Window x:Class="Hospital.View.LogIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View"
+        mc:Ignorable="d"
+        Title="LogIn" Height="750" Width="430">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#196873"/>
+            <GradientStop Color="#5bb5c2"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#196873"/>
+                <GradientStop Color="#5bb5c2" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition />
+            <RowDefinition  />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Source="Images/hospital.ico" Margin="157,60,162,14"/>
+        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="27" Margin="126,165,126,0" Grid.RowSpan="2">My Hospital</Label>
+        <Label Grid.Row="1"  FontSize="22" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,114,0,0"/>
+        <Label  Grid.Row="1" Grid.Column="0" FontSize="22" Content="Password:" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="77,180,0,0" Grid.RowSpan="2"/>
+        <Image Grid.Row="1" Grid.Column="0" Source="Images/user.png" Height="30"  Margin="33,119,131,34" RenderTransformOrigin="1.743,0.514"/>
+        <Image Grid.Row="2" Grid.Column="0" Source="Images/padlock.png" Height="30"  Margin="33,1,131,153" RenderTransformOrigin="1.743,0.514"/>
+
+        <TextBox x:Name="usernamee" BorderBrush="Black" Background="#81c9d4" Grid.Row="1"  HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Margin="214,120,0,0" Grid.ColumnSpan="2" SelectionBrush="#FFDC8E3F"/>
+        <PasswordBox x:Name="passwordd" BorderBrush="Black" Background="#81c9d4" Grid.Row="1"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="180" Height="30" Margin="214,183,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" SelectionBrush="#FFDC8E3F"/>
+        <Button Grid.Row="3" BorderBrush="Black" Background="#81c9d4"  Grid.Column="0" Grid.ColumnSpan="2"  Content="Log in" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="358" Height="49" Click="LogIn_Click" />
+        <CheckBox Content="Remember Me"  FontSize="17" Background="#81c9d4" IsChecked="true" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="36,137,0,0"/>
+    </Grid>
+</Window>

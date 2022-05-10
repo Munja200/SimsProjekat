@@ -63,6 +63,7 @@
     <Compile Include="Controller\ExaminationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentTransferController.cs" />
+    <Compile Include="Controller\LogInController.cs" />
     <Compile Include="Controller\OperationController.cs" />
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
     <Compile Include="FileHandler\DrugFileHandler.cs" />
     <Compile Include="FileHandler\ExaminationFileHandler.cs" />
+    <Compile Include="FileHandler\LogInFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\DrugRepository.cs" />
     <Compile Include="Repository\ExaminationRepository.cs" />
+    <Compile Include="Repository\LogInRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\ExaminationService.cs" />
+    <Compile Include="Service\LogInService.cs" />
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
@@ -178,6 +182,9 @@
     </Compile>
     <Compile Include="View\EquipmentRoom.xaml.cs">
       <DependentUpon>EquipmentRoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
     <Compile Include="View\RoomRenovation.xaml.cs">
@@ -255,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EquipmentRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -346,6 +357,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\EquipmentTransfer.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Employee.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\hospital.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\padlock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
