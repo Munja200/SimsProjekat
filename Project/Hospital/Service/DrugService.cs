@@ -10,6 +10,9 @@ namespace Hospital.Service
 {
     public class DrugService
     {
+
+        public Repository.DrugRepository drugRepository;
+
         public DrugService(DrugRepository drugRepository)
         {
             this.drugRepository = drugRepository;
@@ -20,6 +23,9 @@ namespace Hospital.Service
             return drugRepository.GetAll();
         }
 
-        public Repository.DrugRepository drugRepository;
+        public bool EditDrug(Drug drug) { 
+
+            return drugRepository.EditDrug(drug);
+        }
     }
 }

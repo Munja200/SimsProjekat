@@ -21,5 +21,10 @@ namespace Hospital.Controller
         {
             return _service.GetAll();
         }
+
+        public bool EditDrug(Drug drug) 
+        {
+            return _service.EditDrug(drug); 
+        }
     }
 }

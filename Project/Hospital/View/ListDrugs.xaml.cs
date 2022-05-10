@@ -34,24 +34,20 @@ namespace Hospital.View
             Load();
         }
 
-        public ObservableCollection<ComboItem<Drug>> Drugs { get; set; }
-
         public void Load()
         {
-            Drugs = new ObservableCollection<ComboItem<Drug>>();
-            
-
-            foreach (Drug drug in drugController.GetAll())
-            {
-                Drugs.Add(new ComboItem<Drug> { Name = drug.Name, Value = drug });
-            }
-
+            List<Drug> list = drugController.GetAll();
+            ObservableCollection<Drug> collection = new ObservableCollection<Drug>(list);
+            dataGridDrugs.ItemsSource = collection;
         }
-
 
         private void InvalidityDrug(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var viewDrugsWindow = Application.Current.Windows.OfType<ListDrugs>().FirstOrDefault();
+            Drug drug = (Drug)viewDrugsWindow.dataGridDrugs.SelectedItem;
+
+            if (drug != null)
+                new InvalidityDrug(drug).ShowDialog();
         }
         
     }
