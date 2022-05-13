@@ -37,6 +37,7 @@ namespace Hospital
         public RoomEquipmentController roomEquimpentController { get; set; }
         public EquipmentTransferController equipmentTransferController { get; set; }
 
+        public WeekRequestController weekRequestController { get; set; }
 
 
         public App()
@@ -92,6 +93,9 @@ namespace Hospital
             equipmentTransferController = new EquipmentTransferController(equipmentTransferService);
             new ThreadEquipmentService(roomEquipmentRepository, equipmentTransferRepository);
 
+            WeekRequestRepository weekRequestRepository = new WeekRequestRepository();
+            WeekRequestService weekRequestService = new WeekRequestService(weekRequestRepository);
+            weekRequestController = new WeekRequestController(weekRequestService);
 
         }
     }

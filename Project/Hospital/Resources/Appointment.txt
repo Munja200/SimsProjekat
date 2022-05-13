@@ -74,7 +74,7 @@
 		"Password" : "savara24", 
 		"Name" : "Petar",
 		"Surname" : "Savic",
-		"CitizenId" : 2,
+		"CitizenId" : 22,
 		"Gender" : 0,
 		"DateOfBirth" : "0001-01-01T00:00:00",
 		"Email" : "milance2@gmail.com",

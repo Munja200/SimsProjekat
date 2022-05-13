@@ -71,6 +71,7 @@
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\RoomEquipmentController.cs" />
     <Compile Include="Controller\SpecialistController.cs" />
+    <Compile Include="Controller\WeekRequestController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
     <Compile Include="FileHandler\DrugFileHandler.cs" />
     <Compile Include="FileHandler\ExaminationFileHandler.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="FileHandler\RoomEquipmentFileHandler.cs" />
     <Compile Include="FileHandler\RoomFileHandler.cs" />
     <Compile Include="FileHandler\SpecialistFileHandler.cs" />
+    <Compile Include="FileHandler\WeekRequestFileHandler.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\City.cs" />
@@ -114,7 +116,9 @@
     <Compile Include="Model\AppointmentType.cs" />
     <Compile Include="Model\Specialist.cs" />
     <Compile Include="Model\Speciality.cs" />
+    <Compile Include="Model\State.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\WeekRequest.cs" />
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\DrugRepository.cs" />
@@ -126,6 +130,7 @@
     <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SpecialistRepository.cs" />
+    <Compile Include="Repository\WeekRequestRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\ExaminationService.cs" />
@@ -143,6 +148,10 @@
     <Compile Include="Service\RoomEquipmentService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
+    <Compile Include="Service\WeekRequestService.cs" />
+    <Compile Include="View\CreateWeekRequest.xaml.cs">
+      <DependentUpon>CreateWeekRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DirectorAddEquipment.xaml.cs">
       <DependentUpon>DirectorAddEquipment.xaml</DependentUpon>
     </Compile>
@@ -166,6 +175,9 @@
     </Compile>
     <Compile Include="View\DoctorSelfTerms.xaml.cs">
       <DependentUpon>DoctorSelfTerms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWeekRequest.xaml.cs">
+      <DependentUpon>EditWeekRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ExaminationAddReport.xaml.cs">
       <DependentUpon>ExaminationAddReport.xaml</DependentUpon>
@@ -198,6 +210,9 @@
     <Compile Include="View\ShowPatient.xaml.cs">
       <DependentUpon>ShowPatient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ShowWeekRequest.xaml.cs">
+      <DependentUpon>ShowWeekRequest.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -210,6 +225,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CreateWeekRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DirectorAddEquipment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -239,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorSelfTerms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditWeekRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -279,6 +302,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ShowPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowWeekRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -346,6 +373,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\EquipmentTransfer.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WeekRequest.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
