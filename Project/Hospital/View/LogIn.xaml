@@ -41,6 +41,8 @@
         <TextBox x:Name="usernamee" BorderBrush="Black" Background="#81c9d4" Grid.Row="1"  HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Margin="214,120,0,0" Grid.ColumnSpan="2" SelectionBrush="#FFDC8E3F"/>
         <PasswordBox x:Name="passwordd" BorderBrush="Black" Background="#81c9d4" Grid.Row="1"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="180" Height="30" Margin="214,183,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" SelectionBrush="#FFDC8E3F"/>
         <Button Grid.Row="3" BorderBrush="Black" Background="#81c9d4"  Grid.Column="0" Grid.ColumnSpan="2"  Content="Log in" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="358" Height="49" Click="LogIn_Click" />
-        <CheckBox Content="Remember Me"  FontSize="17" Background="#81c9d4" IsChecked="true" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="36,137,0,0"/>
+        <CheckBox x:Name="RememberMe" Content="Remember Me"  FontSize="17" Background="#81c9d4" IsChecked="true" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="36,137,0,0"/>
+        <Label x:Name="valid" Grid.Row="2" Grid.ColumnSpan="2" FontSize="17" Foreground="Red" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+       
     </Grid>
 </Window>

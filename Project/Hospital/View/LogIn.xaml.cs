@@ -22,25 +22,41 @@ namespace Hospital.View
     public partial class LogIn : Window
     {
         private LogInController logInController;
-        public Employee employee; 
-        public string password;
-        public string username;
-
         public LogIn()
         {
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
             logInController = app.logInController;
-            employee = null;
-            password = null;
-            username = null;
+            app.Employee = null;
+            app.Password = null;
+            app.Username = null;
         }
 
         public void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            employee = logInController.LogIn(usernamee.Text, passwordd.Password);
-
+            App app = Application.Current as App;
+            app.Employee = logInController.LogIn(usernamee.Text, passwordd.Password);
+            if (app.Employee == null)
+            {
+                valid.Content = "Incorrect username or password";
+                valid.Visibility = Visibility.Visible;
+            }
+            else {
+                valid.Visibility = Visibility.Hidden;
+                app.Password = app.Employee.Password;
+                app.Username = app.Employee.Username;
+                if (app.Employee.role.Equals(EmployeeRole.doctor))
+                {
+                    new MainWindow().Show();
+                    this.Close();
+                }
+                else
+                {
+                    new DirectorRoomWindow().Show();
+                    this.Close();
+                }
+            }
         }
     }
 }
