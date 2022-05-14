@@ -48,7 +48,7 @@ namespace Hospital.View
                 app.Username = app.Employee.Username;
                 if (app.Employee.role.Equals(EmployeeRole.doctor))
                 {
-                    new MainWindow().Show();
+                    new IntroductionDoctor().Show();
                     this.Close();
                 }
                 else
