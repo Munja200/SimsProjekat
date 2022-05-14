@@ -1,9 +1,36 @@
-[{"Id":6,"Appointment":{"Id":255,"StartTime":"2022-05-04T07:00:00","EndTime":"2022-05-04T11:00:00","Duration":4,
-"Scheduled":false,"AppointmetntType":1,"Doctor":null,"Room":null,"PatientAccount":null},
+[{"Id":6,"Appointment":{"Id":255,"StartTime":"2022-05-13T18:00:00","EndTime":"2022-05-13T23:00:00","Duration":4,
+"Scheduled":false,"AppointmetntType":1,"Doctor":null,"Room":null,
+"PatientAccount":
+	{ "IsGuest" : true,
+	  "HealthCardId" : 10,
+		"Allergies" : "paracetamol",
+		"Username" : "milivoje",
+		"Password" : "muja",
+		"Name" : "Milan",
+		"Surname" : "mikic",
+		"CitizenId" : 2,
+		"Gender" : 0,
+		"DateOfBirth" : "0001-01-01T00:00:00",
+		"Email" : "nistabitno@gmail.com",
+		"PhoneNumber" : "+38155466533",
+		"Address": {
+		 "streetName": "Neka ulica",
+		 "number": "12a",
+		 "city": {
+			 "name": "Neki grad",
+			 "country": {
+				"name": "Neka drzava"
+					 }
+				 }
+			}
+		}},
 "Prescription":{"Id":36,"Frequency":3,"Interval":8,"StartTime":"2022-05-02T21:00:00","Duration":39,"Drug":{"Name":"Bensedin"}},
 "Report":{"Written":true,"Description":"Pacijent se oseca mnogo bolje","Id":27}},
+
 
 {"Id":69,"Appointment":{"Id":45,"StartTime":"2022-05-04T02:00:00","EndTime":"2022-05-04T05:00:00","Duration":3,
 "Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,"PatientAccount":null},
 "Prescription":null,
-"Report":{"Written":true,"Description":"Ustanovljena glavobolja,\r\ngrebanje grla,\r\nvrtoglavica,\r\nubrzan puls.","Id":29}},{"Id":9,"Appointment":{"Id":45,"StartTime":"2022-05-04T18:00:00","EndTime":"2022-05-04T21:00:00","Duration":3,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,"PatientAccount":null},"Prescription":null,"Report":{"Written":true,"Description":"Stanje pacijenta je super","Id":39}},{"Id":29,"Appointment":{"Id":45,"StartTime":"2021-11-01T01:00:00","EndTime":"2021-12-08T03:00:00","Duration":2,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,"PatientAccount":null},"Prescription":null,"Report":{"Written":false,"Description":"","Id":32}}]
+"Report":{"Written":true,"Description":"Ustanovljena glavobolja,\r\ngrebanje grla,\r\nvrtoglavica,\r\nubrzan puls.","Id":29}},
+
+{"Id":9,"Appointment":{"Id":45,"StartTime":"2022-05-04T18:00:00","EndTime":"2022-05-04T21:00:00","Duration":3,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,"PatientAccount":null},"Prescription":null,"Report":{"Written":true,"Description":"Stanje pacijenta je super","Id":39}},{"Id":29,"Appointment":{"Id":45,"StartTime":"2021-11-01T01:00:00","EndTime":"2021-12-08T03:00:00","Duration":2,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,"PatientAccount":null},"Prescription":null,"Report":{"Written":false,"Description":"","Id":32}}]

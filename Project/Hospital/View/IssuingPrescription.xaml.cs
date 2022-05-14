@@ -101,7 +101,7 @@ namespace Hospital.View
                 return;
             }
 
-            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription);
+            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
             this.Close();
 
         }

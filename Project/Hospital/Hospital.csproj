@@ -63,6 +63,7 @@
     <Compile Include="Controller\ExaminationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentTransferController.cs" />
+    <Compile Include="Controller\InstructionsController.cs" />
     <Compile Include="Controller\OperationController.cs" />
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
     <Compile Include="FileHandler\DrugFileHandler.cs" />
     <Compile Include="FileHandler\ExaminationFileHandler.cs" />
+    <Compile Include="FileHandler\InstructionsFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
@@ -100,11 +102,13 @@
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\EquipmentTransfer.cs" />
     <Compile Include="Model\Gender.cs" />
+    <Compile Include="Model\Instructions.cs" />
     <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\Operation.cs" />
     <Compile Include="Model\OperationType.cs" />
     <Compile Include="Model\PatientAccount.cs" />
     <Compile Include="Model\Prescription.cs" />
+    <Compile Include="Model\Purpose.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
     <Compile Include="Model\Report.cs" />
     <Compile Include="Model\Room.cs" />
@@ -119,6 +123,7 @@
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\DrugRepository.cs" />
     <Compile Include="Repository\ExaminationRepository.cs" />
+    <Compile Include="Repository\InstructionsRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
@@ -129,6 +134,7 @@
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\ExaminationService.cs" />
+    <Compile Include="Service\InstructionsService.cs" />
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
@@ -172,6 +178,9 @@
     </Compile>
     <Compile Include="View\ExaminationEditReport.xaml.cs">
       <DependentUpon>ExaminationEditReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IssuingInstructions.xaml.cs">
+      <DependentUpon>IssuingInstructions.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\IssuingPrescription.xaml.cs">
       <DependentUpon>IssuingPrescription.xaml</DependentUpon>
@@ -247,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExaminationEditReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IssuingInstructions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
