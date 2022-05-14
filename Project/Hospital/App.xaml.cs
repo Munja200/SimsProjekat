@@ -2,6 +2,7 @@
 using Hospital.Controller;
 using Hospital.Repository;
 using Hospital.Service;
+using Model;
 using Repository;
 using Service;
 using System;
@@ -36,8 +37,11 @@ namespace Hospital
         public EquipmentController equipmentController { get; set; }
         public RoomEquipmentController roomEquimpentController { get; set; }
         public EquipmentTransferController equipmentTransferController { get; set; }
-
-
+        public LogInController logInController { get; set; }
+        public Employee Employee { get; set; }
+        public string Password { get; set; }
+        public string Username { get; set; }
+        public int i { get; set; }
 
         public App()
         {
@@ -46,7 +50,7 @@ namespace Hospital
             RoomService roomService = new RoomService(roomRepository);
             PatientAccountService patientAccountService = new PatientAccountService(patientAccountRepository);
             roomController = new RoomController(roomService);
-
+            i = 0;
 
             OperationRepository operationRepository = new OperationRepository();
             OperationService operationService = new OperationService(operationRepository);
@@ -92,6 +96,9 @@ namespace Hospital
             equipmentTransferController = new EquipmentTransferController(equipmentTransferService);
             new ThreadEquipmentService(roomEquipmentRepository, equipmentTransferRepository);
 
+            LogInRepository logInRepository = new LogInRepository();
+            LogInService logInService = new LogInService(logInRepository);
+            logInController = new LogInController(logInService);
 
         }
     }
