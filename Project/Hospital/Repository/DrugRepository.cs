@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Hospital.Model;
+using Repository;
 
 namespace Hospital.Repository
 {
@@ -13,6 +14,7 @@ namespace Hospital.Repository
         {
             drugFileHandler = new FileHandler.DrugFileHandler();
             drugs = new List<Drug>();
+            this.GetAll();
         }
 
         public List<Drug> GetAll()
@@ -21,9 +23,31 @@ namespace Hospital.Repository
             if (drugFileHandler.Read() == null)
                 return drugs;
 
-            drugs = drugFileHandler.Read();
+            SetDrugsEquipment();
 
             return drugs;
+        }
+        public bool CreateDrug(Drug drug)
+        {
+            drugs.Add(new Drug(drug.Ingredients, drug.Id, drug.Equipment, drug.Replacements,"",true,""));
+            drugFileHandler.Write(drugs);
+            return true;
+        }
+        public void SetDrugsEquipment()
+        {
+            drugs.Clear();
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            equipmentRepository.GetAll();
+
+            foreach (Drug newDrug in drugFileHandler.Read())
+            {
+                if (newDrug.Equipment != null)
+                {
+                    newDrug.Equipment = equipmentRepository.GetById(newDrug.Equipment.Id);
+                }
+                    drugs.Add(newDrug);
+
+            }
         }
 
         public bool EditDrug(Drug drug)
@@ -34,7 +58,7 @@ namespace Hospital.Repository
                 if (drugg.Id.Equals(drug.Id))
                 {
                     drugg.Id = drug.Id;
-                    drugg.Name = drug.Name;
+                    //drugg.Equipment.Name = drug.Name;
                     drugg.Using = drug.Using;
                     drugg.IsNotValid = drug.IsNotValid;
                     drugg.ReasonForInvalidity = drug.ReasonForInvalidity;

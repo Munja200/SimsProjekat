@@ -69,7 +69,7 @@ namespace Hospital.View
            
            foreach (Drug drug in drugController.GetAll())
             {
-                Drugs.Add(new ComboItem<Drug> { Name = drug.Name, Value = drug });
+                Drugs.Add(new ComboItem<Drug> { Name = drug.Equipment.Name, Value = drug });
             }
  
 

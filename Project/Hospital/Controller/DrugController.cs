@@ -7,20 +7,24 @@ namespace Hospital.Controller
     public class DrugController
     {
 
-        private readonly DrugService _service;
+        private readonly DrugService drugService;
         public DrugController(DrugService drugService)
         {
-            _service = drugService;
+            this.drugService = drugService;
         }
 
         public List<Drug> GetAll()
         {
-            return _service.GetAll();
+            return drugService.GetAll();
+        }
+        public bool CreateDrug(Drug drug)
+        {
+            return drugService.CreateDrug(drug);
         }
 
         public bool EditDrug(Drug drug)
         {
-            return _service.EditDrug(drug);
+            return drugService.EditDrug(drug);
         }
     }
 }

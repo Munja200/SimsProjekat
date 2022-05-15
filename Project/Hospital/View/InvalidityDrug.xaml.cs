@@ -40,7 +40,7 @@ namespace Hospital.View
             Drug = drug;
             drugController = app.drugController;
 
-            name.Content = drug.Name;
+            name.Content = drug.Equipment.Name;
             usingg.Text = drug.Using;
             isValid.IsChecked = drug.IsNotValid;
             reason.Text = drug.ReasonForInvalidity;
