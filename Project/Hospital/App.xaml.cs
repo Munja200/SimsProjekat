@@ -38,6 +38,7 @@ namespace Hospital
         public RoomEquipmentController roomEquimpentController { get; set; }
         public EquipmentTransferController equipmentTransferController { get; set; }
         public WeekRequestController weekRequestController { get; set; }
+        public RenovationController renovationController { get; set; }
 
         public InstructionsController instructionsController { get; set; }
         
@@ -112,6 +113,11 @@ namespace Hospital
             LogInRepository logInRepository = new LogInRepository();
             LogInService logInService = new LogInService(logInRepository);
             logInController = new LogInController(logInService);
+
+            RenovationRepository renovationRepository = new RenovationRepository(appointmentRepository, roomRepository);
+            RenovationService renovationService = new RenovationService(renovationRepository, appointmentService);
+            renovationController = new RenovationController(renovationService);
+//            new Class1(roomEquipmentService, roomService, renovationService);
 
 
         }

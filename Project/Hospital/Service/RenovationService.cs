@@ -43,22 +43,28 @@ namespace Hospital.Service
 
             if (renovation.RenovationType == RenovationType.Merger) 
             {
-                int ids = appointmentService.GetAll().Count() == 0 ? 0 : appointmentService.GetAll().Max(Appointment => Appointment.Id);
-                if (renovation.Room == null) 
-                {
-                    appointmentService.DeleteAppointment(renovation.Appointment.Id);
+                if (!CreateAppointmenForMergerRoom(renovation))
                     return false;
-                }
-        
-
-                if (!appointmentService.CreateRenovation(++ids, renovation.Appointment.StartTime, renovation.Appointment.EndTime, 0, true, AppointmentType.renovationAppointment, null, null, renovation.Room)) 
-                {
-                    appointmentService.DeleteAppointment(renovation.Appointment.Id);
-                    return false;
-                }       
             }
 
             return renovationRepository.Create(renovation);
+        }
+
+        public bool CreateAppointmenForMergerRoom(Renovation renovation)
+        {
+            int ids = appointmentService.GetAll().Count() == 0 ? 0 : appointmentService.GetAll().Max(Appointment => Appointment.Id);
+            if (renovation.Room == null)
+            {
+                appointmentService.DeleteAppointment(renovation.Appointment.Id);
+                return false;
+            }
+
+            if (!appointmentService.CreateRenovation(++ids, renovation.Appointment.StartTime, renovation.Appointment.EndTime, 0, true, AppointmentType.renovationAppointment, null, null, renovation.Room))
+            {
+                appointmentService.DeleteAppointment(renovation.Appointment.Id);
+                return false;
+            }
+            return true;
         }
 
         public Repository.RenovationRepository renovationRepository;

@@ -1,3 +1,4 @@
+using Hospital.View;
 using Model;
 using Repository;
 using System;
@@ -18,12 +19,17 @@ namespace Service
             return roomRepository.GetById(id);
       }
 
-        public ref ObservableCollection<Room> GetAll()
+        public ref MTObservableCollection<Room> GetAll()
       {
             return ref roomRepository.GetAll();
       }
-      
-      public bool DeleteRoom(int id)
+
+        public List<Room> GetAllByFloor(int floor)
+        {
+            return roomRepository.GetAllByFloor(floor);
+        }
+
+        public bool DeleteRoom(int id)
       {
             return roomRepository.DeleteRoom(id);
       }
@@ -32,8 +38,15 @@ namespace Service
       {
             return roomRepository.EditRoom(floor,name,id,availability,roomType);
       }
-      
-      public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
+
+        public bool EditRoomAvailability(Room room, bool newAvailability)
+        {
+
+            return this.EditRoom(room.Floor, room.Name, room.Id, newAvailability, room.RoomType);
+        }
+
+
+        public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
             int ids = roomRepository.GetAll().Count() == 0 ? 0 : roomRepository.GetAll().Max(Room => Room.Id);
 
