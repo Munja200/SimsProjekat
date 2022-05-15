@@ -116,11 +116,17 @@ namespace Hospital.View
                 new RoomRenovation(room).Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void ClickLogOut(object sender, RoutedEventArgs e)
         {
             new LogIn().Show();
             this.Close();
         }
+
+        private void EquipmentFilter(object sender, RoutedEventArgs e) 
+        {
+            new EquipmentFilterWindow().Show();   
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

@@ -196,6 +196,9 @@
     <Compile Include="View\EditWeekRequest.xaml.cs">
       <DependentUpon>EditWeekRequest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EquipmentFilterWindow.xaml.cs">
+      <DependentUpon>EquipmentFilterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExaminationAddReport.xaml.cs">
       <DependentUpon>ExaminationAddReport.xaml</DependentUpon>
     </Compile>
@@ -300,6 +303,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditWeekRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EquipmentFilterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
