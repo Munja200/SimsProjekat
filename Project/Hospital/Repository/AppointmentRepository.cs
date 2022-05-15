@@ -14,6 +14,7 @@ namespace Repository
         {
             appointmnetFileHandler = new FileHandler.AppointmnetFileHandler();
             appointments = new List<Appointment>();
+            this.GetAll();
         }
 
         public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
@@ -68,14 +69,25 @@ namespace Repository
 
             if (appointmnetFileHandler.Read() == null)
                 return appointments;
+            RoomRepository roomRepository = new RoomRepository();
+            appointments.Clear();
+            List<Appointment> newAppointments = appointmnetFileHandler.Read();
+            roomRepository.GetAll();
+            foreach (Appointment newAppointment in newAppointments)
+            {
+                if (newAppointment.Room != null)
+                    newAppointment.Room = roomRepository.GetById(newAppointment.Room.Id);
+                appointments.Add(newAppointment);
 
-            appointments = appointmnetFileHandler.Read();
+            }
 
+            
             return appointments;
         }
 
         public Appointment GetAppointmentById(int id)
         {
+            this.GetAll();
             foreach (Appointment appointment in appointments)
             {
                 if (appointment.Id.Equals(id))

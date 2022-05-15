@@ -19,6 +19,35 @@ namespace Model
         public Room Room { get; set; }
         public PatientAccount PatientAccount { get; set; }
 
+        public bool serialize { get; set; }
+        public bool ShouldSerializeserialize()
+        {
+            this.serialize = true;
+            return false;
+        }
+        public bool ShouldSerializeStartTime() { return serialize; }
+        public bool ShouldSerializeEndTime() { return serialize; }
+        public bool ShouldSerializeDuration() { return serialize; }
+        public bool ShouldSerializeScheduled() { return serialize; }
+        public bool ShouldSerializeAppointmetntType() { return serialize; }
+
+        public bool ShouldSerializeRoom()
+        {
+            if (this.Room != null)
+                this.Room.serialize = false;
+            return serialize;
+        }
+
+        public bool ShouldSerializeDoctor()
+        {
+            return serialize;
+        }
+        public bool ShouldSerializePatientAccount()
+        {
+            return serialize;
+        }
+
+
         [JsonIgnore]
         public System.Collections.Generic.List<Operation> operation;
 
