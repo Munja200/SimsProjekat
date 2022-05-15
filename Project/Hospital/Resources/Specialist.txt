@@ -7,7 +7,7 @@
 	"Password" : "doktor123", 
 	"Name" : "Milan",
 	"Surname" : "Milanovic",
-	"CitizenId" : 2,
+	"CitizenId" : 12,
 	"Gender" : 0,
 	"DateOfBirth" : "0001-01-01T00:00:00",
 	"Email" : "milance2@gmail.com",
@@ -57,7 +57,7 @@
 	"Password" : "doktor2453", 
 	"Name" : "Dragan",
 	"Surname" : "Dragutinovic",
-	"CitizenId" : 24,
+	"CitizenId" : 2,
 	"Gender" : 0,
 	"DateOfBirth" : "0002-01-01T00:00:00",
 	"Email" : "drago22@gmail.com",
@@ -83,7 +83,32 @@
 	"Password" : "doktor2453", 
 	"Name" : "Dragan",
 	"Surname" : "Dragutinovic",
-	"CitizenId" : 24,
+	"CitizenId" : 14,
+	"Gender" : 0,
+	"DateOfBirth" : "0002-01-01T00:00:00",
+	"Email" : "drago22@gmail.com",
+	"PhoneNumber" : "+38159856533",
+	"Address": {
+			 "streetName": "Neka ulica1",
+			 "number": "1a",
+			 "city": {
+				 "name": "Neki grad1",
+				 "country": {
+					"name": "Neka drzava1"
+						 }
+					 }
+				}
+		},
+	{
+	"Speciality" : 3, 
+	"AverageRating" : 8.82 ,
+	"Role" : 0, 
+	"WorkingTime" : {"StartTime" : "2022-04-28T00:10:00", "EndTime" : "2022-04-28T00:16:00", "Duration" : 8, "Employee" :[]},
+	"Username": "Drago",
+	"Password" : "doktor2453", 
+	"Name" : "Dragan",
+	"Surname" : "Dragutinovic",
+	"CitizenId" : 148,
 	"Gender" : 0,
 	"DateOfBirth" : "0002-01-01T00:00:00",
 	"Email" : "drago22@gmail.com",
@@ -100,6 +125,7 @@
 				}
 		},
 
+
 {
 	"Speciality" : 4, 
 	"AverageRating" : 8.82 ,
@@ -109,7 +135,7 @@
 	"Password" : "doktor2453", 
 	"Name" : "Dragan",
 	"Surname" : "Dragutinovic",
-	"CitizenId" : 24,
+	"CitizenId" : 6,
 	"Gender" : 0,
 	"DateOfBirth" : "0002-01-01T00:00:00",
 	"Email" : "drago22@gmail.com",
@@ -125,5 +151,7 @@
 					 }
 				}
 		}
+
+
 
 ]

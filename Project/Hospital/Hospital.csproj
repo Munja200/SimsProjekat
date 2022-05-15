@@ -64,6 +64,7 @@
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentTransferController.cs" />
     <Compile Include="Controller\InstructionsController.cs" />
+    <Compile Include="Controller\LogInController.cs" />
     <Compile Include="Controller\OperationController.cs" />
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
@@ -72,10 +73,12 @@
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\RoomEquipmentController.cs" />
     <Compile Include="Controller\SpecialistController.cs" />
+    <Compile Include="Controller\WeekRequestController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
     <Compile Include="FileHandler\DrugFileHandler.cs" />
     <Compile Include="FileHandler\ExaminationFileHandler.cs" />
     <Compile Include="FileHandler\InstructionsFileHandler.cs" />
+    <Compile Include="FileHandler\LogInFileHandler.cs" />
     <Compile Include="FileHandler\OperationFileHandler.cs" />
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="FileHandler\RoomEquipmentFileHandler.cs" />
     <Compile Include="FileHandler\RoomFileHandler.cs" />
     <Compile Include="FileHandler\SpecialistFileHandler.cs" />
+    <Compile Include="FileHandler\WeekRequestFileHandler.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\City.cs" />
@@ -118,12 +122,15 @@
     <Compile Include="Model\AppointmentType.cs" />
     <Compile Include="Model\Specialist.cs" />
     <Compile Include="Model\Speciality.cs" />
+    <Compile Include="Model\State.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\WeekRequest.cs" />
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\DrugRepository.cs" />
     <Compile Include="Repository\ExaminationRepository.cs" />
     <Compile Include="Repository\InstructionsRepository.cs" />
+    <Compile Include="Repository\LogInRepository.cs" />
     <Compile Include="Repository\OperationRepository.cs" />
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
@@ -131,10 +138,12 @@
     <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SpecialistRepository.cs" />
+    <Compile Include="Repository\WeekRequestRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\ExaminationService.cs" />
     <Compile Include="Service\InstructionsService.cs" />
+    <Compile Include="Service\LogInService.cs" />
     <Compile Include="Service\OperationService.cs" />
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
@@ -149,6 +158,10 @@
     <Compile Include="Service\RoomEquipmentService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
+    <Compile Include="Service\WeekRequestService.cs" />
+    <Compile Include="View\CreateWeekRequest.xaml.cs">
+      <DependentUpon>CreateWeekRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DirectorAddEquipment.xaml.cs">
       <DependentUpon>DirectorAddEquipment.xaml</DependentUpon>
     </Compile>
@@ -173,6 +186,9 @@
     <Compile Include="View\DoctorSelfTerms.xaml.cs">
       <DependentUpon>DoctorSelfTerms.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditWeekRequest.xaml.cs">
+      <DependentUpon>EditWeekRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExaminationAddReport.xaml.cs">
       <DependentUpon>ExaminationAddReport.xaml</DependentUpon>
     </Compile>
@@ -182,11 +198,30 @@
     <Compile Include="View\IssuingInstructions.xaml.cs">
       <DependentUpon>IssuingInstructions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\InvalidityDrug.xaml.cs">
+      <DependentUpon>InvalidityDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeDoctor.xaml.cs">
+      <DependentUpon>HomeDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IntroductionDoctor.xaml.cs">
+      <DependentUpon>IntroductionDoctor.xaml</DependentUpon>
+
+    </Compile>
     <Compile Include="View\IssuingPrescription.xaml.cs">
       <DependentUpon>IssuingPrescription.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EquipmentRoom.xaml.cs">
       <DependentUpon>EquipmentRoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListDrugs.xaml.cs">
+      <DependentUpon>ListDrugs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuDoctor.xaml.cs">
+      <DependentUpon>MenuDoctor.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
     <Compile Include="View\RoomRenovation.xaml.cs">
@@ -207,6 +242,9 @@
     <Compile Include="View\ShowPatient.xaml.cs">
       <DependentUpon>ShowPatient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ShowWeekRequest.xaml.cs">
+      <DependentUpon>ShowWeekRequest.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -219,6 +257,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CreateWeekRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DirectorAddEquipment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -251,6 +293,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditWeekRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ExaminationAddReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -263,11 +309,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\InvalidityDrug.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IntroductionDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\IssuingPrescription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EquipmentRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListDrugs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MenuDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -292,6 +362,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ShowPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowWeekRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -359,6 +433,78 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\EquipmentTransfer.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WeekRequest.txt" />
+ </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Employee.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\hospital.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\padlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\medical.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\message.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\doctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\notification.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\archive.png" />
+    <Resource Include="View\Images\arrowe_right.png" />
+    <Resource Include="View\Images\heartbeat.png" />
+    <Resource Include="View\Images\medkit.png" />
+    <Resource Include="View\Images\picture.png" />
+    <Resource Include="View\Images\plus.png" />
+    <Resource Include="View\Images\sign out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\stetoshope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\file_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\hsquare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

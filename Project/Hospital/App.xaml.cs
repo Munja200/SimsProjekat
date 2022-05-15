@@ -2,6 +2,7 @@
 using Hospital.Controller;
 using Hospital.Repository;
 using Hospital.Service;
+using Model;
 using Repository;
 using Service;
 using System;
@@ -36,10 +37,15 @@ namespace Hospital
         public EquipmentController equipmentController { get; set; }
         public RoomEquipmentController roomEquimpentController { get; set; }
         public EquipmentTransferController equipmentTransferController { get; set; }
+        public WeekRequestController weekRequestController { get; set; }
 
         public InstructionsController instructionsController { get; set; }
-
-
+        
+        public LogInController logInController { get; set; }
+        public Employee Employee { get; set; }
+        public string Password { get; set; }
+        public string Username { get; set; }
+        public int i { get; set; }
 
 
         public App()
@@ -49,7 +55,7 @@ namespace Hospital
             RoomService roomService = new RoomService(roomRepository);
             PatientAccountService patientAccountService = new PatientAccountService(patientAccountRepository);
             roomController = new RoomController(roomService);
-
+            i = 0;
 
             OperationRepository operationRepository = new OperationRepository();
             OperationService operationService = new OperationService(operationRepository);
@@ -98,6 +104,15 @@ namespace Hospital
             InstructionsRepository instructionsRepository = new InstructionsRepository();
             InstructionsService instructionsService = new InstructionsService(instructionsRepository);
             instructionsController = new InstructionsController(instructionsService);
+
+            WeekRequestRepository weekRequestRepository = new WeekRequestRepository();
+            WeekRequestService weekRequestService = new WeekRequestService(weekRequestRepository);
+            weekRequestController = new WeekRequestController(weekRequestService);
+
+            LogInRepository logInRepository = new LogInRepository();
+            LogInService logInService = new LogInService(logInRepository);
+            logInController = new LogInController(logInService);
+
 
         }
     }

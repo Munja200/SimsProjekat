@@ -1,3 +1,4 @@
+
 [{"Id":6,"Appointment":{"Id":255,"StartTime":"2022-05-13T18:00:00","EndTime":"2022-05-13T23:00:00","Duration":4,
 "Scheduled":false,"AppointmetntType":1,"Doctor":null,"Room":null,"PatientAccount":{"IsGuest":true,
 "HealthCardId":10,"Allergies":"paracetamol","Username":"milivoje","Password":"muja","Name":"Milan",
@@ -46,3 +47,4 @@ name":"Novi Sad","Country":{"name":"Srbija"}},"StreetName":"Masarikova","Number"
 "name":"Novi Sad","Country":{"name":"Srbija"}},"StreetName":"Futoska","Number":"18c",
 "City":{"country":{"name":"Srbija"},"name":"Novi Sad","Country":{"name":"Srbija"}}}}},
 "Prescription":null,"Report":{"Written":false,"Description":"","Id":32},"Instructions":null}]
+

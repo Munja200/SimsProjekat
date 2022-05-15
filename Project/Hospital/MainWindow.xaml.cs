@@ -22,27 +22,20 @@ namespace Hospital
         private void Secretary(object sender, RoutedEventArgs e)
         {
 
-            new SecretaryPatientAccountWindow().Show();
-            this.Close();
+            new LogIn().Show();
+            //this.Close();
 
         }
 
-        private void Doctor(object sender, RoutedEventArgs e)
+        private void Drugs(object sender, RoutedEventArgs e)
         {
-            new DoctorOperationWindow().Show();
+            new ListDrugs().Show();
             this.Close();
         }
 
-        private void SelfTerms(object sender, RoutedEventArgs e)
+        private void WeekRequest(object sender, RoutedEventArgs e)
         {
-            new DoctorSelfTerms().Show();
-            this.Close();
-        }
-        
-
-        private void Examination(object sender, RoutedEventArgs e)
-        {
-            new ShowExamination().Show();
+            new ShowWeekRequest().Show();
             this.Close();
         }
     }

@@ -1,0 +1,46 @@
+﻿[ {
+	"Role" : 0, 
+	"WorkingTime" : {"StartTime" : "2022-05-03T10:00:00", "EndTime" : "2022-05-03T11:00:00", "Duration" : 8, "Employee" :[]},
+	"Username": "Doktor",
+	"Password" : "doktor123", 
+	"Name" : "Milica",
+	"Surname" : "Savic",
+	"CitizenId" : 2,
+	"Gender" : 0,
+	"DateOfBirth" : "0001-01-01T00:00:00",
+	"Email" : "milance2@gmail.com",
+	"PhoneNumber" : "+38155466533",
+	"Address": {
+			 "streetName": "Neka ulica",
+			 "number": "12a",
+			 "city": {
+				 "name": "Neki grad",
+				 "country": {
+					"name": "Neka drzava"
+						 }
+					 }
+				}
+	},
+	{
+	"Role" : 2, 
+	"WorkingTime" : {"StartTime" : "2022-05-03T10:00:00", "EndTime" : "2022-05-03T11:00:00", "Duration" : 8, "Employee" :[]},
+	"Username": "Upravnik",
+	"Password" : "ftn", 
+	"Name" : "Radisa",
+	"Surname" : "Stojkic",
+	"CitizenId" : 2,
+	"Gender" : 0,
+	"DateOfBirth" : "0001-01-01T00:00:00",
+	"Email" : "milance2@gmail.com",
+	"PhoneNumber" : "+38155466533",
+	"Address": {
+			 "streetName": "Neka ulica",
+			 "number": "12a",
+			 "city": {
+				 "name": "Neki grad",
+				 "country": {
+					"name": "Neka drzava"
+						 }
+					 }
+				}
+		} ]
