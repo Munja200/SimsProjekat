@@ -20,8 +20,12 @@ namespace Controller
       {
             return roomEquipmentService.GetByEquipmentId(id);
         }
-      
-      public List<RoomEquipment> GetAll()
+        public List<RoomEquipment> GetByEquipmentIdAndQuantity(int equipmentId, int minQuantity, int maxQuantity)
+        {
+            return roomEquipmentService.GetByEquipmentIdAndQuantity(equipmentId, minQuantity, maxQuantity);
+        }
+
+        public List<RoomEquipment> GetAll()
       {
             return roomEquipmentService.GetAll();
       }

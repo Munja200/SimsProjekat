@@ -21,8 +21,13 @@ namespace Service
       {
             return roomEquipmentRepository.GetByEquipmentId(id);
         }
-      
-      public List<RoomEquipment> GetAll()
+
+        public List<RoomEquipment> GetByEquipmentIdAndQuantity(int equipmentId, int minQuantity, int maxQuantity)
+        {
+            return roomEquipmentRepository.GetByEquipmentIdAndQuantity(equipmentId, minQuantity, maxQuantity);
+        }
+
+        public List<RoomEquipment> GetAll()
       {
             return roomEquipmentRepository.GetAll();
         }

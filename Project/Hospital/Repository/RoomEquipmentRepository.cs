@@ -38,8 +38,19 @@ namespace Repository
             }
             return pom;
         }
-      
-      public List<RoomEquipment> GetAll()
+
+        public List<RoomEquipment> GetByEquipmentIdAndQuantity(int equipmentId, int minQuantity, int maxQuantity)
+        {
+            List<RoomEquipment> newRoomEquipments = new List<RoomEquipment>();
+            foreach (RoomEquipment roomEquipment in this.GetByEquipmentId(equipmentId))
+            {
+                if (roomEquipment.Quantity >= minQuantity && roomEquipment.Quantity <= maxQuantity)
+                    newRoomEquipments.Add(roomEquipment);
+            }
+            return newRoomEquipments;
+        }
+
+        public List<RoomEquipment> GetAll()
       {
             if (roomEquipmentFileHandler.Read() == null)
                 return  roomEquipments;
