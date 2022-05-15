@@ -62,6 +62,12 @@ namespace Hospital.View
             this.Close();
         }
 
+        public void ImageOperationClick(object sender, RoutedEventArgs e)
+        {
+            new DoctorOperationWindow().Show();
+            this.Close();
+        }
+
         public void ImageSelfTermsClick(object sender, RoutedEventArgs e)
         {
             new DoctorSelfTerms().Show();

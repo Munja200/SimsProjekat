@@ -33,11 +33,8 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-
         <Label Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"  FontWeight="Bold" Grid.Column="1" Margin="55,0,0,0" >My Hospital</Label>
         <Image Grid.Row="0" HorizontalAlignment="Left" Source="Images/hospital.ico" Width="32" Grid.Column="3" Margin="7,-2,0,2" />
-        <Image Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Images/heart.png" Width="430" Grid.ColumnSpan="5" />
-
         <Button BorderThickness="0"  Grid.Column="0" Grid.Row="0" Background="Transparent" Click="ImageMenuClick">
             <Image Source="Images/menu.png" Height="35" Width="56" HorizontalAlignment="Left"/>
         </Button>
@@ -66,6 +63,11 @@
             X2="0" Y2="0"  
             Stroke="Black"  
             StrokeThickness="4"></Line>
+
+        
+        
+        <Image Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Images/heart.png" Width="430" Grid.ColumnSpan="5" />
+
         <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="1" Background="Transparent" Click="ImageExaminationClick">
             <Grid>
                 <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Left"/>
@@ -78,7 +80,7 @@
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Self Terms</Label>
             </Grid>
         </Button>
-        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" >
+        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageOperationClick">
             <Grid>
                 <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Center" Margin="0,2,0,-4"/>
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Operations</Label>

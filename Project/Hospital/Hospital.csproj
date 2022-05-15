@@ -442,5 +442,11 @@
   <ItemGroup>
     <Resource Include="View\Images\hsquare.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\delete.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

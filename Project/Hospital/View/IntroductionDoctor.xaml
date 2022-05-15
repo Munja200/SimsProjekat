@@ -22,10 +22,6 @@
             <ColumnDefinition  />
         </Grid.ColumnDefinitions>
 
-        <Button  Grid.Column="0" Background="Transparent" Margin="-8,24,376,98" Click="ImageBackClick">
-            <Image Source="Images/back.png"/>
-        </Button>
-        
         <Image Grid.Column="0"  HorizontalAlignment="Right" Source="Images/play.png" Margin="0,24,10,96" Width="32" />
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="0,24,43,0">Demo:</Label>
 

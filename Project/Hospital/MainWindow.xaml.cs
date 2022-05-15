@@ -27,11 +27,5 @@ namespace Hospital
 
         }
 
-        private void Doctor(object sender, RoutedEventArgs e)
-        {
-            new DoctorOperationWindow().Show();
-            this.Close();
-        } 
-
     }
 }
