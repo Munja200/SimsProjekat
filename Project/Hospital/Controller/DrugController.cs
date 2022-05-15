@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Hospital.Model;
 using Hospital.Service;
 
@@ -22,9 +18,9 @@ namespace Hospital.Controller
             return _service.GetAll();
         }
 
-        public bool EditDrug(Drug drug) 
+        public bool EditDrug(Drug drug)
         {
-            return _service.EditDrug(drug); 
+            return _service.EditDrug(drug);
         }
     }
 }

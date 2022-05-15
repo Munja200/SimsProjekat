@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
+        
         Title="InvalidityDrug" Height="750" Width="430">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,8 +28,8 @@
         <TextBox Name="usingg" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" IsReadOnly="True"  BorderBrush="White" FontSize="15" Text="{Binding Drug.Using}" Width="191" Height="90" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,69,0,0" SelectionBrush="#FFF5F9FC"/>
 
 
-        <Label Grid.Row="2" Grid.Column="0" FontSize="25" Width="181" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,0,0,0">Is Valid:</Label>
-        <CheckBox x:Name="isValid" Grid.Column="1" Grid.Row="2" Height="26" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Drug.IsValid}" Margin="20,19,0,0" Width="95" RenderTransformOrigin="0.613,0.89" />
+        <Label Grid.Row="2" Grid.Column="0" FontSize="25" Width="181" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,0,0,0">Is Not Valid:</Label>
+        <CheckBox x:Name="isValid" Grid.Column="1" Grid.Row="2" Height="26" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Drug.IsNotValid}" Margin="20,19,0,0" Width="95" RenderTransformOrigin="0.613,0.89" />
         <Label Grid.Row="2" Grid.Column="0" FontSize="25" Width="181" Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="24,0,0,0">Reason For</Label>
         <Label Grid.Row="2" Grid.Column="0" FontSize="25" Width="181" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,99,0,0">Invalidity:</Label>
         <TextBox x:Name="reason" Grid.Row="2" Grid.Column="1" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding Drug.ReasonForInvalidity}" Margin="7,79,24,40"/>

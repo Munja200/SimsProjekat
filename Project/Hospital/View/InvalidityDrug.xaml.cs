@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Hospital.Controller;
 using Hospital.Model;
 
@@ -29,7 +18,7 @@ namespace Hospital.View
 
         public Drug Drug
         {
-            get { return  drug; }
+            get { return drug; }
             set
             {
                 drug = value;
@@ -53,7 +42,7 @@ namespace Hospital.View
 
             name.Content = drug.Name;
             usingg.Text = drug.Using;
-            isValid.IsChecked = drug.IsValid;
+            isValid.IsChecked = drug.IsNotValid;
             reason.Text = drug.ReasonForInvalidity;
 
         }

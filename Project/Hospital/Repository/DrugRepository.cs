@@ -29,16 +29,16 @@ namespace Hospital.Repository
         public bool EditDrug(Drug drug)
         {
 
-            foreach (Drug drugg in drugs )
+            foreach (Drug drugg in drugs)
             {
                 if (drugg.Id.Equals(drug.Id))
                 {
                     drugg.Id = drug.Id;
                     drugg.Name = drug.Name;
                     drugg.Using = drug.Using;
-                    drugg.IsValid = drug.IsValid;
+                    drugg.IsNotValid = drug.IsNotValid;
                     drugg.ReasonForInvalidity = drug.ReasonForInvalidity;
-                   
+
                     drugFileHandler.Write(drugs);
 
                     return true;
