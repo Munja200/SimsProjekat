@@ -1,3 +1,4 @@
+using Hospital.View;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,12 @@ namespace Repository
 {
    public class RoomRepository
    {
-        ObservableCollection<Room> rooms;
+        MTObservableCollection<Room> rooms;
         public RoomRepository()
      {
           roomFileHandler = new FileHandler.RoomFileHandler();
-          rooms = new ObservableCollection<Room>();
+          rooms = new MTObservableCollection<Room>();
+            this.GetAll();
      }
         public Room GetById(int id)
       {
@@ -24,20 +26,37 @@ namespace Repository
             return null;
         }
 
-        public ref ObservableCollection<Room> GetAll()
+        public ref MTObservableCollection<Room> GetAll()
       {
             if (roomFileHandler.Read() == null)
                 return ref rooms;
             rooms.Clear();
             List<Room> list = roomFileHandler.Read();
 
-            foreach (Room r in list)
-            { rooms.Add(r); }
+            foreach (Room room in list)
+            { rooms.Add(room); }
 
             return ref rooms;
         }
-      
-      public bool DeleteRoom(int id)
+
+        public List<Room> GetAllByFloor(int floor)
+        {
+
+            List<Room> list = new List<Room>();
+
+            foreach (Room room in rooms)
+            {
+                if (room.Floor == floor && room.RoomType != RoomType.storage)
+                {
+                    list.Add(room);
+                }
+            }
+
+            return list;
+
+        }
+
+        public bool DeleteRoom(int id)
       {
             foreach (Room room in rooms)
             {
@@ -53,17 +72,17 @@ namespace Repository
       
       public bool EditRoom(int floor, String name, int id, bool availability, RoomType roomType)
       {
-            foreach (Room rs in rooms)
+            foreach (Room newRoom in rooms)
             {
-                if (rs.Id.Equals(id))
+                if (newRoom.Id.Equals(id))
                 {
-                    rs.Id = id;
-                    rs.Floor = floor;
-                    rs.Name = name;
-                    rs.RoomType = roomType;
-                    rs.Availability = availability;
+                    newRoom.Id = id;
+                    newRoom.Floor = floor;
+                    newRoom.Name = name;
+                    newRoom.RoomType = roomType;
+                    newRoom.Availability = availability;
                     roomFileHandler.Write(rooms.ToList());
-
+                    this.GetAll();
                     return true;
                 }
             }

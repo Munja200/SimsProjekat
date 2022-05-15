@@ -3,7 +3,10 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,13 +17,49 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Hospital.View
 {
-    public partial class DirectorRoomWindow : Window
+    public class MTObservableCollection<T> : ObservableCollection<T>
+    {
+        public override event NotifyCollectionChangedEventHandler CollectionChanged;
+        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            NotifyCollectionChangedEventHandler CollectionChanged = this.CollectionChanged;
+            if (CollectionChanged != null)
+                foreach (NotifyCollectionChangedEventHandler nh in CollectionChanged.GetInvocationList())
+                {
+                    DispatcherObject dispObj = nh.Target as DispatcherObject;
+                    if (dispObj != null)
+                    {
+                        Dispatcher dispatcher = dispObj.Dispatcher;
+                        if (dispatcher != null && !dispatcher.CheckAccess())
+                        {
+                            dispatcher.BeginInvoke(
+                                (Action)(() => nh.Invoke(this,
+                                    new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset))),
+                                DispatcherPriority.DataBind);
+                            continue;
+                        }
+                    }
+                    nh.Invoke(this, e);
+                }
+        }
+    }
+    public partial class DirectorRoomWindow : Window, INotifyPropertyChanged
     {
         private RoomController roomController;
         private RoomEquipmentController roomEquipmentController;
+        private MTObservableCollection<Room> rooms;
+        public MTObservableCollection<Room> Rooms
+        {
+            get { return rooms; }
+            set
+            {
+                rooms = value; OnPropertyChanged("Rooms");
+            }
+        }
         public DirectorRoomWindow()
         {
             InitializeComponent();
@@ -28,7 +67,7 @@ namespace Hospital.View
             App app = Application.Current as App;
             roomController = app.roomController;
             roomEquipmentController = app.roomEquimpentController;
-            dataGridRooms.ItemsSource = roomController.GetAll();
+            rooms = roomController.GetAll();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -81,6 +120,11 @@ namespace Hospital.View
         {
             new LogIn().Show();
             this.Close();
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

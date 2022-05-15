@@ -69,6 +69,7 @@
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
     <Compile Include="Controller\PrescriptionController.cs" />
+    <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\RoomController.cs" />
     <Compile Include="Controller\RoomEquipmentController.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
     <Compile Include="FileHandler\PrescriptionFileHandler.cs" />
+    <Compile Include="FileHandler\RenovationFileHandler.cs" />
     <Compile Include="FileHandler\ReportFileHandler.cs" />
     <Compile Include="FileHandler\EquipmentFileHandler.cs" />
     <Compile Include="FileHandler\EquipmentTransferFileHandler.cs" />
@@ -114,6 +116,8 @@
     <Compile Include="Model\Prescription.cs" />
     <Compile Include="Model\Purpose.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
+    <Compile Include="Model\Renovation.cs" />
+    <Compile Include="Model\RenovationType.cs" />
     <Compile Include="Model\Report.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\RoomEquipment.cs" />
@@ -135,6 +139,7 @@
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
     <Compile Include="Repository\PrescriptionRepository.cs" />
+    <Compile Include="Repository\RenovationRepository.cs" />
     <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SpecialistRepository.cs" />
@@ -148,6 +153,7 @@
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
+    <Compile Include="Service\RenovationService.cs" />
     <Compile Include="Service\ReportService.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />
     <Compile Include="Repository\EquipmentTransferRepository.cs" />
@@ -158,6 +164,7 @@
     <Compile Include="Service\RoomEquipmentService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
+    <Compile Include="Service\ThreadRenovationService.cs" />
     <Compile Include="Service\WeekRequestService.cs" />
     <Compile Include="View\CreateWeekRequest.xaml.cs">
       <DependentUpon>CreateWeekRequest.xaml</DependentUpon>
@@ -206,7 +213,6 @@
     </Compile>
     <Compile Include="View\IntroductionDoctor.xaml.cs">
       <DependentUpon>IntroductionDoctor.xaml</DependentUpon>
-
     </Compile>
     <Compile Include="View\IssuingPrescription.xaml.cs">
       <DependentUpon>IssuingPrescription.xaml</DependentUpon>
@@ -436,7 +442,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\WeekRequest.txt" />
- </ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Employee.txt" />
   </ItemGroup>
@@ -505,6 +511,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Renovation.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

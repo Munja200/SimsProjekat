@@ -1,3 +1,4 @@
+using Hospital.View;
 using Model;
 using Service;
 using System;
@@ -18,12 +19,16 @@ namespace Controller
             return roomService.GetById(id);
       }
 
-      public ref ObservableCollection<Room> GetAll()
+      public ref MTObservableCollection<Room> GetAll()
       {
             return ref roomService.GetAll();
       }
-      
-      public bool DeleteRoom(int id)
+        public List<Room> GetAllByFloor(int floor)
+        {
+            return roomService.GetAllByFloor(floor);
+        }
+
+        public bool DeleteRoom(int id)
       {
             if (roomService.GetById(id).RoomType.Equals(RoomType.storage)) 
             {

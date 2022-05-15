@@ -45,45 +45,40 @@ namespace Service
 
         public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, PatientAccount patientAccount, Doctor doctor, Room room)
         {
-            if (DateTime.Compare(startTime.Date, DateTime.Today) < 0)
+            if ((DateTime.Compare(startTime.Date, DateTime.Today) < 0) ||(DateTime.Compare(endTime.Date, startTime.Date) < 0))
             {
                 return false;
             }
 
-            if (DateTime.Compare(endTime.Date, startTime.Date) < 0)
+            if (!this.IsTheRoomOccupied(startTime, endTime, room))
             {
-                return false;
+                return appointmentRepository.CreateRenovation(id, startTime, endTime, duration, scheduled, appointmetntType, patientAccount, doctor, room);
             }
+            else
+                return false;
 
+        }
 
-            foreach (Appointment ap in this.GetAll())
+        public bool IsTheRoomOccupied(DateTime startTime, DateTime endTime,Room room) {
+            foreach (Appointment appointment in this.GetAll())
             {
-                if (ap.Room!=null) {
-                    if (ap.Room.Id.Equals(room.Id))
+                if (appointment.Room != null)
+                {
+                    if (appointment.Room.Id.Equals(room.Id))
                     {
+                        if ((DateTime.Compare(startTime, appointment.StartTime) >= 0) && (DateTime.Compare(startTime, appointment.EndTime) < 0))
+                            { return true;}
+                        
+                        if ((DateTime.Compare(endTime, appointment.StartTime) >= 0) && (DateTime.Compare(endTime, appointment.EndTime) < 0))
+                            {return true;}
 
-                        if (DateTime.Compare(startTime, ap.StartTime) >= 0)
-                        {
-                            if (DateTime.Compare(startTime, ap.EndTime) < 0)
-                                return false;
-                        }
-
-                        if (DateTime.Compare(endTime, ap.StartTime) >= 0)
-                        {
-                            if (DateTime.Compare(endTime, ap.EndTime) < 0)
-                                return false;
-                        }
-
-                        if (DateTime.Compare(startTime, ap.StartTime) <= 0)
-                        {
-                            if (DateTime.Compare(endTime, ap.EndTime) >= 0)
-                                return false;
-                        }
+                        if ((DateTime.Compare(startTime, appointment.StartTime) <= 0) && (DateTime.Compare(endTime, appointment.EndTime) >= 0))
+                            {return true;}
                     }
-                } 
+                }
             }
 
-            return appointmentRepository.CreateRenovation(id, startTime, endTime, duration, scheduled, appointmetntType, patientAccount, doctor, room);
+            return false;
         }
 
         public Repository.AppointmentRepository appointmentRepository;
