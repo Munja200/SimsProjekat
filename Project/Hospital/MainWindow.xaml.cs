@@ -27,23 +27,5 @@ namespace Hospital
 
         }
 
-        private void Doctor(object sender, RoutedEventArgs e)
-        {
-            new DoctorOperationWindow().Show();
-            this.Close();
-        }
-
-        private void SelfTerms(object sender, RoutedEventArgs e)
-        {
-            new DoctorSelfTerms().Show();
-            this.Close();
-        }
-        
-
-        private void Examination(object sender, RoutedEventArgs e)
-        {
-            new ShowExamination().Show();
-            this.Close();
-        }
     }
 }
