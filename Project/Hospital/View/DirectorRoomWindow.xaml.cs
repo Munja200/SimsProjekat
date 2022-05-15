@@ -127,6 +127,17 @@ namespace Hospital.View
             new EquipmentFilterWindow().Show();   
         }
 
+
+        private void DrugReview(object sender, RoutedEventArgs e)
+        {
+            new DrugReview().Show();
+        }
+
+        private void AddDrug(object sender, RoutedEventArgs e)
+        {
+            new AddDrug().Show();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

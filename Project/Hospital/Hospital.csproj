@@ -108,6 +108,7 @@
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\EquipmentTransfer.cs" />
     <Compile Include="Model\Gender.cs" />
+    <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\Instructions.cs" />
     <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\Operation.cs" />
@@ -166,6 +167,12 @@
     <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="Service\ThreadRenovationService.cs" />
     <Compile Include="Service\WeekRequestService.cs" />
+    <Compile Include="View\AddDrug.xaml.cs">
+      <DependentUpon>AddDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddIngredientWindow.xaml.cs">
+      <DependentUpon>AddIngredientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateWeekRequest.xaml.cs">
       <DependentUpon>CreateWeekRequest.xaml</DependentUpon>
     </Compile>
@@ -192,6 +199,9 @@
     </Compile>
     <Compile Include="View\DoctorSelfTerms.xaml.cs">
       <DependentUpon>DoctorSelfTerms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DrugReview.xaml.cs">
+      <DependentUpon>DrugReview.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditWeekRequest.xaml.cs">
       <DependentUpon>EditWeekRequest.xaml</DependentUpon>
@@ -266,6 +276,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AddDrug.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddIngredientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreateWeekRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -299,6 +317,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DoctorSelfTerms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DrugReview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

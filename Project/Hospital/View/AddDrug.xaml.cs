@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,10 +30,10 @@ namespace Hospital.View
             String newName = name.Text;
             String newMname = mname.Text;
             String newDescript = descript.Text;
-            int temp;
+            int quantity;
             try
             {
-                temp = Int32.Parse(quant.Text);
+                quantity = Int32.Parse(quant.Text);
 
             }
             catch (Exception ex)
@@ -41,7 +42,8 @@ namespace Hospital.View
                 return;
             }
 
-           // new AddIngredient(new Equipment(0, newName, newMname, temp, newDescript, null)).Show();
+            new AddIngredientWindow(new Equipment(0, newName, newMname, quantity, newDescript, null)).Show();
+            this.Close();
         }
     }
 }

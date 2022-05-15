@@ -30,7 +30,7 @@ namespace Hospital.Model
 
         public override string ToString()
         {
-            return Drug.Name + " " + Frequency + "x dnevno, na " + Interval + "h od " + StartTime + ", " + Duration + " dana";
+            return Drug.Equipment.Name + " " + Frequency + "x dnevno, na " + Interval + "h od " + StartTime + ", " + Duration + " dana";
         }
     }
 }

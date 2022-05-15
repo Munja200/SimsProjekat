@@ -41,8 +41,12 @@ namespace Hospital.Repository
 
             foreach (Drug newDrug in drugFileHandler.Read())
             {
-                newDrug.Equipment = equipmentRepository.GetById(newDrug.Equipment.Id);
-                drugs.Add(newDrug);
+                if (newDrug.Equipment != null)
+                {
+                    newDrug.Equipment = equipmentRepository.GetById(newDrug.Equipment.Id);
+                }
+                    drugs.Add(newDrug);
+
             }
         }
 
