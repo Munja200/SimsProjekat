@@ -62,9 +62,9 @@ namespace Hospital.View
             this.Close();
         }
 
-        public void ImageOperationClick(object sender, RoutedEventArgs e)
+        public void ImageWeekRequestClick(object sender, RoutedEventArgs e)
         {
-            new DoctorOperationWindow().Show();
+            new ShowWeekRequest().Show();
             this.Close();
         }
 
@@ -74,6 +74,12 @@ namespace Hospital.View
             this.Close();
         }
 
-        
+        public void ImageDrugsClick(object sender, RoutedEventArgs e)
+        {
+            new ListDrugs().Show();
+            this.Close();
+        }
+
+
     }
 }

@@ -180,5 +180,10 @@ namespace Hospital.View
         
         }
 
+        private void Back(object sender, RoutedEventArgs e) {
+            new HomeDoctor().Show();
+            this.Close();
+        }
+
     }
 }
