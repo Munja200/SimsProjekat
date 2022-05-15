@@ -1,74 +1,50 @@
-[{"Id":6,
-"Appointment":{
-"Id":255,
-"StartTime":"2022-05-15T07:00:00",
-"EndTime":"2022-05-16T11:00:00","Duration":4,
-"Scheduled":false,"AppointmetntType":1,
-"Doctor":{
-	"AverageRating" : 8.82 ,
-	"Role" : 0, 
-	"WorkingTime" : {"StartTime" : "2022-04-28T17:00:00", "EndTime" : "2022-04-28T20:00:00", "Duration" : 8, "Employee" :[]},
-	"Username": "Drago",
-	"Password" : "doktor2453", 
-	"Name" : "Dragan",
-	"Surname" : "Dragutinovic",
-	"CitizenId" : 24,
-	"Gender" : 0,
-	"DateOfBirth" : "0002-01-01T00:00:00",
-	"Email" : "drago22@gmail.com",
-	"PhoneNumber" : "+38159856533",
-	"Address": {
-			 "streetName": "Neka ulica1",
-			 "number": "1a",
-			 "city": {
-				 "name": "Neki grad1",
-				 "country": {
-					"name": "Neka drzava1"
-						 }
-					 }
-				}
-		},
-"Room":null,"PatientAccount":null},
+
+[{"Id":6,"Appointment":{"Id":255,"StartTime":"2022-05-13T18:00:00","EndTime":"2022-05-13T23:00:00","Duration":4,
+"Scheduled":false,"AppointmetntType":1,"Doctor":null,"Room":null,"PatientAccount":{"IsGuest":true,
+"HealthCardId":10,"Allergies":"paracetamol","Username":"milivoje","Password":"muja","Name":"Milan",
+"Surname":"Milivojevic","CitizenId":2,"Gender":0,"DateOfBirth":"0001-01-01T00:00:00","Email":"nistabitno@gmail.com",
+"PhoneNumber":"+38155466533","Address":{"city":{"country":{"name":"Srbija"},"name":"Novi Sad","Country":{"name":"Srbija"}},
+"StreetName":"Futoski put","Number":"12a","City":{"country":{"name":"Srbija"},"name":"Novi Sad","Country":{"name":"Srbija"}}}}},
 "Prescription":{"Id":36,"Frequency":3,"Interval":8,"StartTime":"2022-05-02T21:00:00","Duration":39,"Drug":{"Name":"Bensedin"}},
-"Report":{"Written":true,"Description":"Pacijent se oseca mnogo bolje","Id":27}
-},
+"Report":{"Written":true,"Description":"Pacijent se oseca mnogo bolje","Id":27},
+"Instructions":{"Purpose":1,"StartTime":"2022-05-19T00:00:00","Emergency":true,
+"Specialist":{"appointment":null,"Speciality":0,"AverageRating":7.82,"role":0,"WorkingTime":{
+"employee":[],"StartTime":"2022-05-03T10:00:00","EndTime":"2022-05-03T11:00:00","Duration":8},
+"Username":"Milance","Password":"doktor123","Name":"Milan","Surname":"Milanovic","CitizenId":2,"Gender":0,
+"DateOfBirth":"0001-01-01T00:00:00","Email":"milance2@gmail.com","PhoneNumber":"+38155466533",
+"Address":{"city":{"country":{"name":"Neka drzava"},"name":"Neki grad","Country":{"name":"Neka drzava"}},
+"StreetName":"Neka ulica","Number":"12a","City":{"country":{"name":"Neka drzava"},"name":"Neki grad",
+"Country":{"name":"Neka drzava"}}}}}},
 
-{"Id":69,"Appointment":{"Id":45,"StartTime":"2022-05-04T02:00:00","EndTime":"2022-05-04T05:00:00","Duration":3,
-"Scheduled":true,"AppointmetntType":3,
-"Doctor":{
-	"AverageRating" : 8.82 ,
-	"Role" : 0, 
-	"WorkingTime" : {"StartTime" : "2022-05-03T03:00:00", "EndTime" : "2022-05-03T05:00:00", "Duration" : 8, "Employee" :[]},
-	"Username": "Drago",
-	"Password" : "doktor2453", 
-	"Name" : "Dragan",
-	"Surname" : "Dragutinovic",
-	"CitizenId" : 12,
-	"Gender" : 0,
-	"DateOfBirth" : "0002-01-01T00:00:00",
-	"Email" : "drago22@gmail.com",
-	"PhoneNumber" : "+38159856533",
-	"Address": {
-			 "streetName": "Neka ulica1",
-			 "number": "1a",
-			 "city": {
-				 "name": "Neki grad1",
-				 "country": {
-					"name": "Neka drzava1"
-						 }
-					 }
-				}
-		},
-"Room":null,
-"PatientAccount":null},
-"Prescription":null,
-"Report":{"Written":true,"Description":"Ustanovljena glavobolja,\r\ngrebanje grla,\r\nvrtoglavica,\r\nubrzan puls.","Id":29}},
+{"Id":69,"Appointment":{"Id":45,"StartTime":"2022-05-04T02:00:00",
+"EndTime":"2022-05-04T05:00:00","Duration":3,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"
+Room":null,"PatientAccount":{"IsGuest":true,"HealthCardId":10,"Allergies":"paracetamol",
+"Username":"milivoje","Password":"muja","Name":"Jovana","Surname":"Jovanovic","CitizenId":92,
+"Gender":0,"DateOfBirth":"0001-01-01T00:00:00","Email":"nistabitno@gmail.com","PhoneNumber":"063/596-63-98",
+"Address":{"city":{"country":{"name":"Srbija"},"name":"Vrsac","Country":{"name":"Srbija"}},"StreetName":"Suboticka",
+"Number":"22b","City":{"country":{"name":"Srbija"},"name":"Vrsac","Country":{"name":"Srbija"}}}}},
+"Prescription":null,"Report":{"Written":true,"Description":"Ustanovljena glavobolja,\r\ngrebanje grla,\r\nvrtoglavica,\r\nubrzan puls.",
+"Id":29},"Instructions": null},
 
-{"Id":9,"Appointment":{"Id":45,"StartTime":"2022-05-04T18:00:00","EndTime":"2022-05-04T21:00:00","Duration":3,"Scheduled":true,
-"AppointmetntType":3,"Doctor":null,"Room":null,"PatientAccount":null},"Prescription":null,
-"Report":{"Written":true,
-"Description":"Stanje pacijenta je super","Id":39}},
+{"Id":9,"Appointment":{"Id":45,"StartTime":"2022-05-04T17:00:00",
+"EndTime":"2022-05-04T21:00:00",
+"Duration":3,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,
+"PatientAccount":{"IsGuest":true,"HealthCardId":10,"Allergies":"paracetamol","
+Username":"milivoje","Password":"muja","Name":"Velibor","Surname":"Dudic","CitizenId":22,
+"Gender":0,"DateOfBirth":"0001-01-01T00:00:00","Email":"nistabitno@gmail.com"
+,"PhoneNumber":"065/562-96-89","Address":{"city":{"country":{"name":"Srbija"},"
+name":"Novi Sad","Country":{"name":"Srbija"}},"StreetName":"Masarikova","Number":"24",
+"City":{"country":{"name":"Srbija"},"name":"Novi Sad","Country":{"name":"Srbija"}}}}},
+"Prescription":null,"Report":{"Written":true,"Description":"Stanje pacijenta je super","Id":39},
+"Instructions":null},
 
-{"Id":29,"Appointment":{"Id":45,"StartTime":"2021-11-01T01:00:00","EndTime":"2021-12-08T03:00:00","Duration":2,
-"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,"PatientAccount":null},"Prescription":null,
-"Report":{"Written":false,"Description":"","Id":32}}]
+{"Id":29,
+"Appointment":{"Id":45,"StartTime":"2021-11-01T01:00:00","EndTime":"2021-12-08T03:00:00",
+"Duration":2,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null
+,"PatientAccount":{"IsGuest":true,"HealthCardId":10,"Allergies":"prasina","Username":"milivoje",
+"Password":"muja","Name":"Tijana","Surname":"Milic","CitizenId":39,"Gender":0,"DateOfBirth":"0001-01-01T00:00:00",
+"Email":"nistabitno@gmail.com","PhoneNumber":"062/396-22-59","Address":{"city":{"country":{"name":"Srbija"},
+"name":"Novi Sad","Country":{"name":"Srbija"}},"StreetName":"Futoska","Number":"18c",
+"City":{"country":{"name":"Srbija"},"name":"Novi Sad","Country":{"name":"Srbija"}}}}},
+"Prescription":null,"Report":{"Written":false,"Description":"","Id":32},"Instructions":null}]
+

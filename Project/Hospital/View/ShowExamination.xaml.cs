@@ -158,5 +158,27 @@ namespace Hospital.View
             }
 
         }
+
+        private void IssuingInstructions(object sender, RoutedEventArgs e)
+        {
+            var viewReportsWindow = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
+            Examination examination = (Examination)viewReportsWindow.dataGridExaminations.SelectedItem;
+
+            if (examination != null)
+            {
+                if ((DateTime.Now.Hour >= examination.Appointment.StartTime.Hour && DateTime.Now.Hour <= examination.Appointment.EndTime.Hour))
+                {
+                    //uput moze da se izda u toku pregleda
+                    new IssuingInstructions(examination).ShowDialog();
+                    Load();
+                }
+                else
+                {
+                    MessageBox.Show("The instructions can be issuing only during the examination date!", "Error");
+                }
+            }
+        
+        }
+
     }
 }

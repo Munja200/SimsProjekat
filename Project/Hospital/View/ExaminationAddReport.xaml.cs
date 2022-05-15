@@ -55,7 +55,7 @@ namespace Hospital.View
             var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
             Examination examination = (Examination)examinationW.dataGridExaminations.SelectedItem;
 
-            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription);
+            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
             this.Close();
 
         }

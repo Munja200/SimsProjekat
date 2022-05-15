@@ -21,14 +21,14 @@ namespace Hospital.Service
             return examinationRepository.GetAll();
         }
 
-        public bool CreateExamination(int id, Appointment appointment, Report report, Prescription prescription)
+        public bool CreateExamination(int id, Appointment appointment, Report report, Prescription prescription, Instructions instructions)
         {
-            return examinationRepository.CreateExamination(id, appointment, report, prescription);
+            return examinationRepository.CreateExamination(id, appointment, report, prescription, instructions);
         }
 
-        public bool EditExamination(int id, Appointment appointment, Report report, Prescription prescription)
+        public bool EditExamination(int id, Appointment appointment, Report report, Prescription prescription, Instructions instructions)
         {
-            return examinationRepository.EditExamination(id, appointment, report, prescription);
+            return examinationRepository.EditExamination(id, appointment, report, prescription, instructions);
         }
      
         public Repository.ExaminationRepository examinationRepository;
