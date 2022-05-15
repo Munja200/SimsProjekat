@@ -76,5 +76,11 @@ namespace Hospital.View
             if (room != null)
                 new RoomRenovation(room).Show();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            new LogIn().Show();
+            this.Close();
+        }
     }
 }
