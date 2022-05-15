@@ -164,6 +164,7 @@
     <Compile Include="Service\RoomEquipmentService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
+    <Compile Include="Service\ThreadRenovationService.cs" />
     <Compile Include="Service\WeekRequestService.cs" />
     <Compile Include="View\CreateWeekRequest.xaml.cs">
       <DependentUpon>CreateWeekRequest.xaml</DependentUpon>

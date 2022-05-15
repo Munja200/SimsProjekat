@@ -13,5 +13,9 @@
         <DatePicker x:Name="end" HorizontalAlignment="Left" Margin="229,202,0,0" VerticalAlignment="Top" Height="36" Width="131"/>
         <DatePicker x:Name="start" HorizontalAlignment="Left" Margin="227,106,0,0" VerticalAlignment="Top" Height="36" Width="131"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="159,270,0,0" VerticalAlignment="Top" Width="131" Height="32" Click="AddRenovation" />
+        <CheckBox x:Name="OneRoom" Content="Podeli sobu" HorizontalAlignment="Left" Margin="560,77,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="TwoRoom" Content="Spoj" HorizontalAlignment="Left" Margin="562,115,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SecondRoom" HorizontalAlignment="Left" Margin="563,153,0,0" VerticalAlignment="Top" Width="178" IsEditable="False" ItemsSource="{Binding Path=Rooms}" DisplayMemberPath="Name"
+                         SelectedValuePath="Id"></ComboBox>
     </Grid>
 </Window>

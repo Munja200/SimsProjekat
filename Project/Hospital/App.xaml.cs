@@ -117,7 +117,7 @@ namespace Hospital
             RenovationRepository renovationRepository = new RenovationRepository(appointmentRepository, roomRepository);
             RenovationService renovationService = new RenovationService(renovationRepository, appointmentService);
             renovationController = new RenovationController(renovationService);
-//            new Class1(roomEquipmentService, roomService, renovationService);
+            new ThreadRenovationService(roomEquipmentService, roomService, renovationService);
 
 
         }
