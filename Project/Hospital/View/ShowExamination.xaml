@@ -19,6 +19,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
             </Grid>
 
@@ -34,19 +35,23 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="top">
             <Grid>
-                <DataGrid x:Name="dataGridExaminations"  IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top"
-                  Height="532" Margin="6,15,0,0" Width="1007"
-                  SelectedItem="{Binding SelectedItem}" SelectedValuePath="Report"  >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Binding="{Binding  Id}"/>
-                        <DataGridTextColumn Header="Start Time" Binding="{Binding Appointment.StartTime}" />
-                        <DataGridTextColumn Header="End Time" Binding="{Binding Appointment.EndTime}" />
-                        <DataGridTextColumn Header="Duration" Binding="{Binding Appointment.Duration}" />
-                        <DataGridTextColumn Header="Report" Binding="{Binding Report.Description}"/>
-                        <DataGridTextColumn Header="Prescription" Binding="{Binding Prescription}" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <DataGrid x:Name="dataGridExaminations"  IsReadOnly="True" 
+                    SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    Height="350" Width="700"
+                    SelectedItem="{Binding SelectedItem}" SelectedValuePath="Report"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding  Id}"/>
+                            <DataGridTextColumn Header="Start Time" Binding="{Binding Appointment.StartTime}" />
+                            <DataGridTextColumn Header="End Time" Binding="{Binding Appointment.EndTime}" />
+                            <DataGridTextColumn Header="Duration" Binding="{Binding Appointment.Duration}" />
+                            <DataGridTextColumn Header="Report" Binding="{Binding Report.Description}"/>
+                            <DataGridTextColumn Header="Prescription"  Binding="{Binding Prescription}" />
+                            <DataGridTextColumn Header="Instructions"  Binding="{Binding Instructions.StartTime}" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
             </Grid>
         </DockPanel>
     </DockPanel>

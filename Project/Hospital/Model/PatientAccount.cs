@@ -15,5 +15,11 @@ namespace Model
             this.HealthCardId = healthCardId;
             this.Allergies = allergies;
         }
+
+    public override string ToString()
+    {
+        return Name + " " + Surname + ", " + PhoneNumber + ", " + Address;
+    }
+
     }
 }

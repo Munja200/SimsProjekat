@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Hospital.Controller;
 using Hospital.Model;
 using Model;
@@ -34,9 +23,9 @@ namespace Hospital.View
         private Instructions instructions;
 
         public ObservableCollection<ComboItem<Specialist>> Specialists { get; set; }
+        public ObservableCollection<string> PurposeT { get; set; }
 
-
-        public Instructions Instructions 
+        public Instructions Instructions
         {
             get { return instructions; }
             set
@@ -73,7 +62,10 @@ namespace Hospital.View
             instructionsController = app.instructionsController;
             specialistController = app.specialistController;
 
-            patient.Content = examination.Appointment.PatientAccount.Name;
+            PurposeT = new ObservableCollection<string>();
+            PurposeT.Add("Operation");
+            PurposeT.Add("Examination");
+
             Load();
         }
 
@@ -87,8 +79,6 @@ namespace Hospital.View
                 Specialists.Add(new ComboItem<Specialist> { Name = specialist.Speciality.ToString(), Value = specialist });
 
             }
-
-
         }
 
         private void SubmitButton(object sender, RoutedEventArgs e)
@@ -96,7 +86,6 @@ namespace Hospital.View
             var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
             Examination examination = (Examination)examinationW.dataGridExaminations.SelectedItem;
             examination.Instructions = instructions;
-
 
             examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
             this.Close();

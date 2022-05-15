@@ -8,7 +8,7 @@ namespace Hospital.Model
 {
     public enum Purpose
     {
-        operation,
-        examination
+        Operation,
+        Examination
     }
 }

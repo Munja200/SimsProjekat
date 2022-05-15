@@ -164,9 +164,6 @@ namespace Hospital.View
             var viewReportsWindow = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
             Examination examination = (Examination)viewReportsWindow.dataGridExaminations.SelectedItem;
 
-            new IssuingInstructions(examination).ShowDialog();
-            Load();
-            /*
             if (examination != null)
             {
                 if ((DateTime.Now.Hour >= examination.Appointment.StartTime.Hour && DateTime.Now.Hour <= examination.Appointment.EndTime.Hour))
@@ -179,8 +176,7 @@ namespace Hospital.View
                 {
                     MessageBox.Show("The instructions can be issuing only during the examination date!", "Error");
                 }
-            */
-
+            }
         
         }
 
