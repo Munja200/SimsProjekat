@@ -1,0 +1,30 @@
+﻿<Window x:Class="Hospital.View.ListDrugs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View"
+        mc:Ignorable="d"
+        Title="ListDrugs" Height="450" Width="800">
+
+    <DockPanel>
+        <DockPanel DockPanel.Dock="top">
+            <Label FontSize="22">List of drugs:</Label>
+            <Button DockPanel.Dock="Right" Padding="5" Width="120" Margin="5" Click="InvalidityDrug">Invalidity Drug</Button>
+            <Separator Grid.Column="1" Grid.Row="0"></Separator>
+        </DockPanel>
+        <DockPanel >
+            <Grid Width="492">
+                <DataGrid x:Name="dataGridDrugs"  IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top"
+                  SelectedItem="{Binding SelectedItem}" Width="490" Margin="0,4,0,0"  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding  Name}" Width="*"/>
+                        <DataGridTextColumn Header="Using" Binding="{Binding Using}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+
+</Window>

@@ -26,6 +26,27 @@ namespace Hospital.Repository
             return drugs;
         }
 
-      
+        public bool EditDrug(Drug drug)
+        {
+
+            foreach (Drug drugg in drugs)
+            {
+                if (drugg.Id.Equals(drug.Id))
+                {
+                    drugg.Id = drug.Id;
+                    drugg.Name = drug.Name;
+                    drugg.Using = drug.Using;
+                    drugg.IsNotValid = drug.IsNotValid;
+                    drugg.ReasonForInvalidity = drug.ReasonForInvalidity;
+
+                    drugFileHandler.Write(drugs);
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 }

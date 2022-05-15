@@ -55,5 +55,34 @@ namespace Hospital.View
             if (operation != null)
                 new DoctorEditOperation(operation).ShowDialog();
         }
+
+        public void ImageMenuClick(object sender, RoutedEventArgs e)
+        {
+            new MenuDoctor().Show();
+            this.Close();
+        }
+
+        public void ImageHomeClick(object sender, RoutedEventArgs e)
+        {
+            new HomeDoctor().Show();
+            this.Close();
+        }
+
+        public void ImageDoctorClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void ImageCalendarClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void ImageMessageClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void ImageNotificationClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
