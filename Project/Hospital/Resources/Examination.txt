@@ -25,7 +25,7 @@ Room":null,"PatientAccount":{"IsGuest":true,"HealthCardId":10,"Allergies":"parac
 "Prescription":null,"Report":{"Written":true,"Description":"Ustanovljena glavobolja,\r\ngrebanje grla,\r\nvrtoglavica,\r\nubrzan puls.",
 "Id":29},"Instructions": null},
 
-{"Id":9,"Appointment":{"Id":45,"StartTime":"2022-05-04T18:00:00",
+{"Id":9,"Appointment":{"Id":45,"StartTime":"2022-05-04T17:00:00",
 "EndTime":"2022-05-04T21:00:00",
 "Duration":3,"Scheduled":true,"AppointmetntType":3,"Doctor":null,"Room":null,
 "PatientAccount":{"IsGuest":true,"HealthCardId":10,"Allergies":"paracetamol","
