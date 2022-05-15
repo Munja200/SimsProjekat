@@ -64,8 +64,8 @@
             Stroke="Black"  
             StrokeThickness="4"></Line>
 
-        
-        
+
+
         <Image Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Images/heart.png" Width="430" Grid.ColumnSpan="5" />
 
         <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="1" Background="Transparent" Click="ImageExaminationClick">
@@ -80,13 +80,14 @@
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Self Terms</Label>
             </Grid>
         </Button>
-        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageOperationClick">
+        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageWeekRequestClick">
             <Grid>
                 <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Center" Margin="0,2,0,-4"/>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Operations</Label>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold" Margin="0,53,0,0">Week</Label>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold" Margin="0,78,0,0">Requests</Label>
             </Grid>
         </Button>
-        <Button BorderThickness="0" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" >
+        <Button BorderThickness="0" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageDrugsClick" >
             <Grid>
                 <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Right"/>
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Drugs</Label>

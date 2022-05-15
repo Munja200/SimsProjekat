@@ -70,6 +70,12 @@ namespace Hospital.View
             Load();
         }
 
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            new HomeDoctor().Show();
+            this.Close();
+        }
+
 
     }
 }

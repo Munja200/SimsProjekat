@@ -11,6 +11,8 @@
         <DockPanel DockPanel.Dock="top">
             <Label FontSize="22">List of drugs:</Label>
             <Button DockPanel.Dock="Right" Padding="5" Width="120" Margin="5" Click="InvalidityDrug">Invalidity Drug</Button>
+            <Button DockPanel.Dock="Right" Padding="5" Width="50" Margin="5" Click="Back">back</Button>
+
             <Separator Grid.Column="1" Grid.Row="0"></Separator>
         </DockPanel>
         <DockPanel >

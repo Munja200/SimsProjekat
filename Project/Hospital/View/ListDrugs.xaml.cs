@@ -49,6 +49,12 @@ namespace Hospital.View
             if (drug != null)
                 new InvalidityDrug(drug).ShowDialog();
         }
-        
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            new HomeDoctor().Show();
+            this.Close();
+        }
+
     }
 }
