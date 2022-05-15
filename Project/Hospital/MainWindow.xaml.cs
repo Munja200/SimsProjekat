@@ -32,5 +32,11 @@ namespace Hospital
             new ListDrugs().Show();
             this.Close();
         }
+
+        private void WeekRequest(object sender, RoutedEventArgs e)
+        {
+            new ShowWeekRequest().Show();
+            this.Close();
+        }
     }
 }

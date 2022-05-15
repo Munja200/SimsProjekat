@@ -10,6 +10,7 @@ namespace Model
       immunologist,
       pediatrician,
       psychiatrist,
-      urologist
-   }
+      urologist,
+      general_practice
+    }
 }

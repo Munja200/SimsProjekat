@@ -9,6 +9,9 @@
     <Grid>
         <Button Content="Upravnik" HorizontalAlignment="Left" Margin="302,120,0,0" VerticalAlignment="Top" Width="155" Height="47" Click= "Director"/>
         <Button Content="Sekretar" HorizontalAlignment="Left" Margin="552,121,0,0" VerticalAlignment="Top" Width="155" Height="47" Click="Secretary"/>
+
+        <Button Content="Week Request" HorizontalAlignment="Left" Margin="266,207,0,0" VerticalAlignment="Top" Width="155" Height="47" Click="WeekRequest"/>
         <Button Content="Drugs" HorizontalAlignment="Left" Margin="61,334,0,0" VerticalAlignment="Top" Width="155" Height="47" Click="Drugs"/>
+
     </Grid>
 </Window>
