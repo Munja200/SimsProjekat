@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Controller;
 using Hospital.Controller;
 using Hospital.Model;
@@ -61,7 +51,7 @@ namespace Hospital.View
             weekRequestController = app.weekRequestController;
             specialistController = app.specialistController;
             operationController = app.operationController;
-            examinationController = app.examinationController;    
+            examinationController = app.examinationController;
 
 
             description.Text = weekRequest.Description;
@@ -110,7 +100,7 @@ namespace Hospital.View
                 weekRequestController.EditWeekRequest(weekRequest.Id, weekRequest.Specialist, weekRequest.StartTime, weekRequest.EndTime, weekRequest.Description, weekRequest.State, weekRequest.Emergency);
                 this.Close();
             }
-          
+
         }
 
         public bool RequestCreatedMinTwoDaysEarlier()

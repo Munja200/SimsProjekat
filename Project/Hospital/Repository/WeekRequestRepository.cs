@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Hospital.Model;
 using Model;
 
@@ -20,7 +17,7 @@ namespace Hospital.Repository
         }
         public bool CreateWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, bool emergency)
         {
-            requests.Add(new WeekRequest(GenerateId(),specialist, startTime, endTime, description, state,  emergency));
+            requests.Add(new WeekRequest(GenerateId(), specialist, startTime, endTime, description, state, emergency));
             weekRequestFileHandler.Write(requests);
             return true;
         }

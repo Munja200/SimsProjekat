@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Controller;
 using Hospital.Controller;
 using Hospital.Model;
@@ -98,32 +88,34 @@ namespace Hospital.View
                 if (!RequestCreatedWhenOperationNoScheduled()) { valid = false; }
                 if (!RequestCreatedMinTwoDaysEarlier()) { valid = false; }
                 if (!RequestCreatedSameSpecialists()) { valid = false; }
-                if(!RequestCreatedWhenExaminationNoScheduled()) { valid = false; }
+                if (!RequestCreatedWhenExaminationNoScheduled()) { valid = false; }
 
             }
             //ako je zahtev hitan onda ga kreiraj odmah bez obzira na sva ogranicenja
 
-            if (valid) 
+            if (valid)
             {
                 weekRequestController.CreateWeekRequest(weekRequest.Id, weekRequest.Specialist, weekRequest.StartTime, weekRequest.EndTime, weekRequest.Description, weekRequest.State, weekRequest.Emergency);
                 this.Close();
             }
         }
 
-        
-        public bool RequestCreatedMinTwoDaysEarlier() {
+
+        public bool RequestCreatedMinTwoDaysEarlier()
+        {
 
             //dva dana ranije
             if (DateTime.Now > weekRequest.StartTime.AddDays(-2))
             {
                 MessageBox.Show("The request must be submitted at least two days earlier!", "Error");
                 return false;
-                
+
             }
             return true;
         }
 
-        public bool RequestCreatedWhenOperationNoScheduled() {
+        public bool RequestCreatedWhenOperationNoScheduled()
+        {
 
             //za termine zakazanih operacija
             foreach (Operation operation in operationController.GetAll())
@@ -145,7 +137,7 @@ namespace Hospital.View
             //za termine zakazanih pregleda
             foreach (Examination examination in examinationController.GetAll())
             {
-                if (examination.Appointment.Doctor == null) 
+                if (examination.Appointment.Doctor == null)
                 {
                     continue;
                 }
@@ -161,7 +153,8 @@ namespace Hospital.View
             return true;
         }
 
-        public bool RequestCreatedSameSpecialists() {
+        public bool RequestCreatedSameSpecialists()
+        {
 
             // da postoji barem jedan specijalista jedne specijalnosti
             int specCount = 0;
@@ -193,7 +186,7 @@ namespace Hospital.View
             return true;
 
         }
-        
+
 
         private void CancelButton(object sender, RoutedEventArgs e)
         {

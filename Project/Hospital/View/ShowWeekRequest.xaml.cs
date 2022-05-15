@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Hospital.Controller;
 using Hospital.Model;
 
@@ -30,8 +20,10 @@ namespace Hospital.View
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
+
             weekRequestController = app.weekRequestController;
             specialistController = app.specialistController;
+
             Load();
         }
         public void Load()
@@ -63,7 +55,7 @@ namespace Hospital.View
             WeekRequest weekRequest = (WeekRequest)viewRequestsWindow.dataGridRequest.SelectedItem;
 
             if (weekRequest != null)
-               new EditWeekRequest(weekRequest).ShowDialog();
+                new EditWeekRequest(weekRequest).ShowDialog();
         }
 
         private void Click_Reject(object sender, RoutedEventArgs e)
