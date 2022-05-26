@@ -32,7 +32,7 @@
 	"Password" : "doktor2453", 
 	"Name" : "Dragan",
 	"Surname" : "Dragutinovic",
-	"CitizenId" : 24,
+	"CitizenId" : 8,
 	"Gender" : 0,
 	"DateOfBirth" : "0002-01-01T00:00:00",
 	"Email" : "drago22@gmail.com",

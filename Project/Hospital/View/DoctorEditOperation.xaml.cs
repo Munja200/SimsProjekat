@@ -67,6 +67,12 @@ namespace Hospital.View
             Rooms = new ObservableCollection<ComboItem<Room>>();
             Appointments = new ObservableCollection<ComboItem<Appointment>>();
 
+
+            //GetAllOperationTypes();
+            //GetAllSpecialists();
+            //GetAllRooms();
+            //GetAllAppointments();
+
             foreach (OperationType operationType in operationTypeController.GetAll())
             {
                 OperationTypes.Add(new ComboItem<OperationType> { Name = operationType.OperationDescription, Value = operationType });
@@ -105,7 +111,65 @@ namespace Hospital.View
                 Appointments.Add(new ComboItem<Appointment> { Name = appointment.StartTime.ToString(), Value = appointment });
             }
 
+
+
         }
+
+        /*
+        public void GetAllOperationTypes() 
+        {
+            foreach (OperationType operationType in operationTypeController.GetAll())
+            {
+                OperationTypes.Add(new ComboItem<OperationType> { Name = operationType.OperationDescription, Value = operationType });
+            }
+        }
+
+        public void GetAllSpecialists() 
+        {
+            foreach (Specialist specialist in specialistController.GetAll())
+            {
+
+                if (specialist.WorkingTime.StartTime.Hour > DateTime.Now.Hour && specialist.WorkingTime.EndTime.Hour < DateTime.Now.Hour)
+                {
+                    continue;
+                }
+
+                Specialists.Add(new ComboItem<Specialist> { Name = specialist.Speciality.ToString(), Value = specialist });
+            }
+
+        }
+
+        public void GetAllRooms()
+        {
+            foreach (Room room in roomController.GetAll())
+            {
+
+                if (room.RoomType != RoomType.operationRoom)
+                {
+                    continue;
+                }
+
+                Rooms.Add(new ComboItem<Room> { Name = room.Name, Value = room });
+            }
+
+        }
+
+        public void GetAllAppointments()
+        {
+            foreach (Appointment appointment in appointmentController.GetAll())
+            {
+
+                if (appointment.Scheduled)
+                {
+                    continue;
+                }
+
+                Appointments.Add(new ComboItem<Appointment> { Name = appointment.StartTime.ToString(), Value = appointment });
+            }
+
+        }
+
+        */
 
         private void CencelButton(object sender, RoutedEventArgs e)
         {

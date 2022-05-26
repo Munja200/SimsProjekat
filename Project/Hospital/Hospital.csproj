@@ -236,9 +236,6 @@
     <Compile Include="View\ListDrugs.xaml.cs">
       <DependentUpon>ListDrugs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LogIn.xaml.cs">
-      <DependentUpon>LogIn.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\MenuDoctor.xaml.cs">
       <DependentUpon>MenuDoctor.xaml</DependentUpon>
     </Compile>
@@ -368,10 +365,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LogIn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MenuDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -449,13 +442,7 @@
     <Resource Include="Resources\Patient.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Report.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Examination.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\SelfAppointment.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drug.txt" />

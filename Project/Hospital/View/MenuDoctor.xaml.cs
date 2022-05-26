@@ -63,6 +63,12 @@ namespace Hospital.View
             this.Close();
         }
 
-    
+        public void LogOutClick(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
+
+
     }
 }

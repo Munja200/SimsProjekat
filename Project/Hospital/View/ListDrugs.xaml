@@ -21,7 +21,7 @@
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top"
                   SelectedItem="{Binding SelectedItem}" Width="490" Margin="0,4,0,0"  >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding  Name}" Width="*"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding  Equipment.Name}" Width="*"/>
                         <DataGridTextColumn Header="Using" Binding="{Binding Using}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>

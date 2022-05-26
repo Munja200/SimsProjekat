@@ -162,6 +162,7 @@ namespace Hospital.View
             int specCount = 0;
             int specCountWeek = 0;
 
+            /*
             foreach (Specialist spec in specialistController.GetAll())
             {
                 if (spec.CitizenId != weekRequest.Specialist.CitizenId && spec.Speciality == weekRequest.Specialist.Speciality)
@@ -178,6 +179,10 @@ namespace Hospital.View
                     specCountWeek++;
                 }
             }
+            */
+
+            CountSpecialists(specCount);
+            CountSpecialistsWeekRequests(specCountWeek);
 
             if (specCount == specCountWeek)
             {
@@ -189,6 +194,31 @@ namespace Hospital.View
 
         }
 
+        public int CountSpecialists(int specCount)
+        {
+
+            foreach (Specialist spec in specialistController.GetAll())
+            {
+                if (spec.CitizenId != weekRequest.Specialist.CitizenId && spec.Speciality == weekRequest.Specialist.Speciality)
+                {
+                   return specCount++;
+                }
+            }
+            return 0;
+        }
+
+        public int CountSpecialistsWeekRequests(int specCountWeek)
+        {
+            foreach (WeekRequest week in weekRequestController.GetAll())
+            {
+                if (week.Specialist.CitizenId != weekRequest.Specialist.CitizenId && week.Specialist.Speciality == weekRequest.Specialist.Speciality &&
+                    weekRequest.StartTime >= week.StartTime && weekRequest.StartTime <= week.EndTime)
+                {
+                   return specCountWeek++;
+                }
+            }
+            return 0;
+        }
 
         private void CancelButton(object sender, RoutedEventArgs e)
         {
