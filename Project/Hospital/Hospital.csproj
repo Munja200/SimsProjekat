@@ -173,8 +173,14 @@
     <Compile Include="View\AddIngredientWindow.xaml.cs">
       <DependentUpon>AddIngredientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChangeDrugWindow.xaml.cs">
+      <DependentUpon>ChangeDrugWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateWeekRequest.xaml.cs">
       <DependentUpon>CreateWeekRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DefectiveDrugWindow.xaml.cs">
+      <DependentUpon>DefectiveDrugWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DirectorAddEquipment.xaml.cs">
       <DependentUpon>DirectorAddEquipment.xaml</DependentUpon>
@@ -284,7 +290,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ChangeDrugWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreateWeekRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DefectiveDrugWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

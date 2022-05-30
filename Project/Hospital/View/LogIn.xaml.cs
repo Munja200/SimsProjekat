@@ -46,7 +46,7 @@ namespace Hospital.View
                 valid.Visibility = Visibility.Hidden;
                 app.Password = app.Employee.Password;
                 app.Username = app.Employee.Username;
-                if (app.Employee.role.Equals(EmployeeRole.doctor))
+                if (app.Employee.Role.Equals(EmployeeRole.doctor))
                 {
                     new IntroductionDoctor().Show();
                     this.Close();

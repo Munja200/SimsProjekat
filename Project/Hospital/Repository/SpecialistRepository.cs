@@ -46,7 +46,7 @@ namespace Hospital.Repository
 
                     specialist.Speciality = speciality;
                     specialist.AverageRating = averageRating;
-                    specialist.role = role;
+                    specialist.Role = role;
                     specialist.WorkingTime = workingTime;
                     specialist.Username = username;
                     specialist.Password = password;
