@@ -11,6 +11,8 @@ namespace Hospital.Repository
     {
 
         public List<Employee> employees;
+        public FileHandler.LogInFileHandler logInFileHandler;
+
         public LogInRepository()
         {
             logInFileHandler = new FileHandler.LogInFileHandler();
@@ -30,8 +32,6 @@ namespace Hospital.Repository
             }
                 return null;
         }
-
-        public FileHandler.LogInFileHandler logInFileHandler;
 
     }
 }

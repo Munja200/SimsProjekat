@@ -8,10 +8,12 @@ namespace Hospital.Model
 {
     public class Ingredient
     {
+        public string Name { get; set; }
+
         public Ingredient(string name)
         {
             this.Name = name;
         }
-        public string Name { get; set; }
+        
     }
 }

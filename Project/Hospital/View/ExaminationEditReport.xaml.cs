@@ -14,51 +14,17 @@ namespace Hospital.View
     /// </summary>
     public partial class ExaminationEditReport : Window
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private ExaminationController examinationController;
         private Report report;
-
         private Examination examination;
-        public event PropertyChangedEventHandler PropertyChanged;
 
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-        public ExaminationEditReport(Examination examination)
-        {
-            InitializeComponent();
-            this.DataContext = this;
-            report = new Report();
-            App app = Application.Current as App;
-            var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
-            Examination = examination;
-
-            descriptionO.Text = examination.Report.Description;
-            writtenO.IsChecked = examination.Report.Written;
-            examinationController = app.examinationController;
-
-        }
-
-        private void EditButton(object sender, RoutedEventArgs e)
-        {
-            var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
-            Examination examination = (Examination)examinationW.dataGridExaminations.SelectedItem;
-
-            //validacija polja Description za izvestaj da nije null
-            if(examination.Report.Description == null)
-            {
-                MessageBox.Show("Field value od report description must not be null", "Error");
-
-            }
-
-            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
-            this.Close();
-
-        }
-
         public Report Report
         {
             get { return report; }
@@ -79,7 +45,62 @@ namespace Hospital.View
             }
         }
 
-        private void CencelButton(object sender, RoutedEventArgs e)
+        public ExaminationEditReport(Examination examination)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            report = new Report();
+            App app = Application.Current as App;
+            var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
+            Examination = examination;
+
+            descriptionO.Text = examination.Report.Description;
+            writtenO.IsChecked = examination.Report.Written;
+
+            examinationController = app.examinationController;
+
+        }
+
+        private void EditButton(object sender, RoutedEventArgs e)
+        {
+            bool valid = true;
+
+            if (!ReportDuringTheExaminationPeriod()) { valid = false; }
+
+            if (valid)
+            {
+                examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
+                this.Close();
+            }
+
+        }
+
+        public bool ReportAfterExaminationPeriod()
+        {
+            if (DateTime.Now >= examination.Appointment.EndTime)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("The report can be created/changed only after or during the examination!", "Error");
+                return false;
+            }
+        }
+
+        public bool ReportDuringTheExaminationPeriod()
+        {
+            if ((DateTime.Now >= examination.Appointment.StartTime && DateTime.Now <= examination.Appointment.EndTime))
+            {
+                return true;
+            }
+            else
+            {
+                return ReportAfterExaminationPeriod();
+            }
+        }
+
+        private void CancelButton(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

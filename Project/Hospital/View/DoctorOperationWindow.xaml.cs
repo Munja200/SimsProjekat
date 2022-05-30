@@ -20,7 +20,9 @@ namespace Hospital.View
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
+
             operationController = app.operationController;
+
             Load();
         }
 

@@ -40,7 +40,6 @@ namespace Hospital.View
             foreach (Room r in roomController.GetAll()) { States.Add(r); }
 
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var viewRoomsWindow = Application.Current.Windows.OfType<EquipmentRoom>().FirstOrDefault();
@@ -97,7 +96,7 @@ namespace Hospital.View
 
             }
         }
-
+        
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var viewRoomsWindow = Application.Current.Windows.OfType<EquipmentRoom>().FirstOrDefault();

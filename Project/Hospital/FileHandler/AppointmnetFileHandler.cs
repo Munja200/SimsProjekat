@@ -25,10 +25,24 @@ namespace FileHandler
                     appointment.Room.serialize = true;
                 appointment.serialize = true;
             }
+
+            //SupplyingThePatientViaId(appointments);
+
             string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(appointments);
             System.IO.File.WriteAllText(path, serializedOperations);
 
         }
-   
+
+        public void SupplyingThePatientViaId(List<Appointment>appointments) 
+        {
+            foreach (Appointment appointment in appointments)
+            {
+                if (appointment.PatientAccount != null)
+                    appointment.PatientAccount.serialize = true;
+                appointment.serialize = true;
+            }
+        }
+
+
    }
 }

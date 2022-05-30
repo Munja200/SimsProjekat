@@ -29,7 +29,7 @@ namespace Hospital.Repository
         }
         public bool CreateDrug(Drug drug)
         {
-            drugs.Add(new Drug(drug.Ingredients, drug.Id, drug.Equipment, drug.Replacements,"",true,""));
+            drugs.Add(new Drug(drug.Ingredients, drug.Id, drug.Equipment, drug.Replacements, "", true, ""));
             drugFileHandler.Write(drugs);
             return true;
         }
@@ -45,7 +45,7 @@ namespace Hospital.Repository
                 {
                     newDrug.Equipment = equipmentRepository.GetById(newDrug.Equipment.Id);
                 }
-                    drugs.Add(newDrug);
+                drugs.Add(newDrug);
 
             }
         }
@@ -53,15 +53,14 @@ namespace Hospital.Repository
         public bool EditDrug(Drug drug)
         {
 
-            foreach (Drug drugg in drugs)
+            foreach (Drug drug1 in drugs)
             {
-                if (drugg.Id.Equals(drug.Id))
+                if (drug1.Id.Equals(drug.Id))
                 {
-                    drugg.Id = drug.Id;
-                    //drugg.Equipment.Name = drug.Name;
-                    drugg.Using = drug.Using;
-                    drugg.IsNotValid = drug.IsNotValid;
-                    drugg.ReasonForInvalidity = drug.ReasonForInvalidity;
+                    drug1.Id = drug.Id;
+                    drug1.Using = drug.Using;
+                    drug1.IsNotValid = drug.IsNotValid;
+                    drug1.ReasonForInvalidity = drug.ReasonForInvalidity;
 
                     drugFileHandler.Write(drugs);
 

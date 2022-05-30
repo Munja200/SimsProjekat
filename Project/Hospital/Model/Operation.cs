@@ -1,21 +1,17 @@
-using System;
-using Newtonsoft.Json;
-
 namespace Model
 {
-   public class Operation
-   {
+    public class Operation
+    {
         public int Id { get; set; }
         public int Duration { get; set; }
-
         public OperationType OperationType { get; set; }
         public Specialist Specialist { get; set; }
         public Room Room { get; set; }
-        
+
         public Appointment Appointmentt { get; set; }
 
         public Operation(int idd, int durationn, OperationType operationTypee, Specialist specialistt, Room roomm, Appointment appointmentt)
-        { 
+        {
             Id = idd;
             Duration = durationn;
             OperationType = operationTypee;

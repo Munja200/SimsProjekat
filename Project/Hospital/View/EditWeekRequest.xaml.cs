@@ -16,15 +16,20 @@ namespace Hospital.View
     /// </summary>
     public partial class EditWeekRequest : Window
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private WeekRequestController weekRequestController;
         private SpecialistController specialistController;
         private OperationController operationController;
         private ExaminationController examinationController;
         private WeekRequest weekRequest;
-        public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<string> StateSS { get; set; }
         public ObservableCollection<ComboItem<Specialist>> Specialists { get; set; }
 
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public WeekRequest WeekRequest
         {
             get { return weekRequest; }
@@ -35,11 +40,6 @@ namespace Hospital.View
             }
         }
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public EditWeekRequest(WeekRequest weekRequest)
         {
             InitializeComponent();
@@ -48,16 +48,20 @@ namespace Hospital.View
             var requestW = Application.Current.Windows.OfType<ShowWeekRequest>().FirstOrDefault();
             WeekRequest = weekRequest;
 
-            weekRequestController = app.weekRequestController;
-            specialistController = app.specialistController;
-            operationController = app.operationController;
-            examinationController = app.examinationController;
-
+            GetControllers(app);
 
             description.Text = weekRequest.Description;
             emergency.IsChecked = weekRequest.Emergency;
 
             Load();
+        }
+
+        public void GetControllers(App app)
+        {
+            weekRequestController = app.weekRequestController;
+            specialistController = app.specialistController;
+            operationController = app.operationController;
+            examinationController = app.examinationController;
         }
 
         public void Load()
@@ -70,20 +74,22 @@ namespace Hospital.View
             StateSS.Add("confirmed");
             state.SelectedValue = "waiting";
 
+            GetAllSpecialists();
+
+        }
+
+        public void GetAllSpecialists()
+        {
             foreach (Specialist specialist in specialistController.GetAll())
             {
                 Specialists.Add(new ComboItem<Specialist> { Name = specialist.Speciality.ToString(), Value = specialist });
             }
-
         }
 
         private void EditButton(object sender, RoutedEventArgs e)
         {
-            // bool canAdd = true;
             bool valid = true;
 
-
-            //ako zahtev nije hitan
             if (!weekRequest.Emergency)
             {
 
@@ -93,7 +99,6 @@ namespace Hospital.View
                 if (!RequestCreatedWhenExaminationNoScheduled()) { valid = false; }
 
             }
-            //ako je zahtev hitan onda ga kreiraj odmah bez obzira na sva ogranicenja
 
             if (valid)
             {
@@ -106,7 +111,6 @@ namespace Hospital.View
         public bool RequestCreatedMinTwoDaysEarlier()
         {
 
-            //dva dana ranije
             if (DateTime.Now > weekRequest.StartTime.AddDays(-2))
             {
                 MessageBox.Show("The request must be submitted at least two days earlier!", "Error");
@@ -119,7 +123,6 @@ namespace Hospital.View
         public bool RequestCreatedWhenOperationNoScheduled()
         {
 
-            //za termine zakazanih operacija
             foreach (Operation operation in operationController.GetAll())
             {
                 if (operation.Specialist.CitizenId == weekRequest.Specialist.CitizenId &&
@@ -136,7 +139,6 @@ namespace Hospital.View
         public bool RequestCreatedWhenExaminationNoScheduled()
         {
 
-            //za termine zakazanih pregleda
             foreach (Examination examination in examinationController.GetAll())
             {
                 if (examination.Appointment.Doctor == null)
@@ -158,66 +160,46 @@ namespace Hospital.View
         public bool RequestCreatedSameSpecialists()
         {
 
-            // da postoji barem jedan specijalista jedne specijalnosti
-            int specCount = 0;
-            int specCountWeek = 0;
+            int countSpecialists = CountSpecialists();
+            int countSpecialistsForWeek = CountSpecialistsWeekRequests();
 
-            /*
-            foreach (Specialist spec in specialistController.GetAll())
-            {
-                if (spec.CitizenId != weekRequest.Specialist.CitizenId && spec.Speciality == weekRequest.Specialist.Speciality)
-                {
-                    specCount++;
-                }
-            }
-
-            foreach (WeekRequest week in weekRequestController.GetAll())
-            {
-                if (week.Specialist.CitizenId != weekRequest.Specialist.CitizenId && week.Specialist.Speciality == weekRequest.Specialist.Speciality &&
-                    weekRequest.StartTime >= week.StartTime && weekRequest.StartTime <= week.EndTime)
-                {
-                    specCountWeek++;
-                }
-            }
-            */
-
-            CountSpecialists(specCount);
-            CountSpecialistsWeekRequests(specCountWeek);
-
-            if (specCount == specCountWeek)
+            if (countSpecialists == countSpecialistsForWeek)
             {
                 MessageBox.Show("There must be at least one doctor of this specialty in the hospital!", "Error");
                 return false;
             }
-
             return true;
-
         }
 
-        public int CountSpecialists(int specCount)
+        public int CountSpecialists()
         {
+            int specialistsInSystem = 0;
 
             foreach (Specialist spec in specialistController.GetAll())
             {
                 if (spec.CitizenId != weekRequest.Specialist.CitizenId && spec.Speciality == weekRequest.Specialist.Speciality)
                 {
-                   return specCount++;
+                    specialistsInSystem++;
                 }
             }
-            return 0;
+
+            return specialistsInSystem;
         }
 
-        public int CountSpecialistsWeekRequests(int specCountWeek)
+        public int CountSpecialistsWeekRequests()
         {
+            int specialistsForWeekRequest = 0;
+
             foreach (WeekRequest week in weekRequestController.GetAll())
             {
                 if (week.Specialist.CitizenId != weekRequest.Specialist.CitizenId && week.Specialist.Speciality == weekRequest.Specialist.Speciality &&
                     weekRequest.StartTime >= week.StartTime && weekRequest.StartTime <= week.EndTime)
                 {
-                   return specCountWeek++;
+                    specialistsForWeekRequest++;
                 }
             }
-            return 0;
+
+            return specialistsForWeekRequest;
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)

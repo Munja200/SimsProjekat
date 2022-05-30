@@ -60,13 +60,11 @@ namespace Hospital.View
 
         private void Click_Reject(object sender, RoutedEventArgs e)
         {
-            //new DoctorAddOperation().ShowDialog();
             Load();
         }
 
         private void Click_Approve(object sender, RoutedEventArgs e)
         {
-            //new DoctorAddOperation().ShowDialog();
             Load();
         }
 
@@ -75,7 +73,6 @@ namespace Hospital.View
             new HomeDoctor().Show();
             this.Close();
         }
-
 
     }
 }

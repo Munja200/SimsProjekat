@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital.View"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        
         mc:Ignorable="d"
         Title="IssuingInstructions" Height="450" Width="800">
     <DockPanel>
@@ -37,7 +39,8 @@
                 <Label Name="patient" Grid.Row="2" Grid.Column="1"  Height="30" Content="{Binding Examination.Appointment.PatientAccount}" Margin="59,9,44,11"/>
 
                 <ComboBox Grid.Column="1" Grid.Row="1" Height="30" ItemsSource="{Binding Specialists}" DisplayMemberPath="Name" SelectedValuePath="Value" SelectedValue="{Binding Path=Instructions.Specialist}" Margin="59,14,44,12" />
-                <DatePicker Name="start" Grid.Row="3"  Grid.Column="1" Height="30" HorizontalAlignment="Left"  Width="492" SelectedDate="{Binding Instructions.StartTime}" Margin="59,14,0,18" ></DatePicker>
+
+                <DatePicker x:Name="start" Grid.Row="3"  Grid.Column="1" Height="30" HorizontalAlignment="Left"  Width="492" DisplayDateStart="{x:Static sys:DateTime.Now}"  SelectedDate="{x:Static sys:DateTime.Now}" Margin="59,14,0,18" ></DatePicker>
                 <ComboBox x:Name="purpose" Grid.Column="1" Grid.Row="4" Width="492" Height="30" HorizontalAlignment="Left" IsEditable="False" ItemsSource="{Binding Path=PurposeT}" Margin="59,18,0,13" ></ComboBox>
                 <CheckBox x:Name="emergency" Grid.Column="1" Grid.Row="5" Width="56" BorderBrush="Black" HorizontalAlignment="Left" IsChecked="{Binding Examination.Instructions.Emergency}" Margin="59,21,0,17" />
 

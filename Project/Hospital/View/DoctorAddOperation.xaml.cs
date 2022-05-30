@@ -26,6 +26,8 @@ namespace Hospital.View
     /// </summary>
     public partial class DoctorAddOperation : Window
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private OperationController operationController;
         private OperationTypeController operationTypeController;
         private SpecialistController specialistController;
@@ -33,11 +35,24 @@ namespace Hospital.View
         private RoomController roomController;
         private Operation operation;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<ComboItem<OperationType>> OperationTypes { get; set; }
+        public ObservableCollection<ComboItem<Specialist>> Specialists { get; set; }
+        public ObservableCollection<ComboItem<Room>> Rooms { get; set; }
+        public ObservableCollection<ComboItem<Appointment>> Appointments { get; set; }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public Operation Operation
+        {
+            get { return operation; }
+            set
+            {
+                operation = value;
+                OnPropertyChanged(nameof(Operation));
+            }
         }
 
         public DoctorAddOperation()
@@ -47,12 +62,19 @@ namespace Hospital.View
             DataContext = this;
             operation = new Operation();
             App app = Application.Current as App;
+
+            GetControllers(app);
+
+            Load();
+        }
+
+        public void GetControllers(App app) 
+        {
             operationController = app.operationController;
             operationTypeController = app.operationTypeController;
             specialistController = app.specialistController;
             appointmentController = app.appointmentController;
             roomController = app.roomController;
-            Load();
         }
 
         public void Load() 
@@ -62,28 +84,47 @@ namespace Hospital.View
             Rooms = new ObservableCollection<ComboItem<Room>>();
             Appointments = new ObservableCollection<ComboItem<Appointment>> ();
 
-            foreach (OperationType operationType in operationTypeController.GetAll()) 
+            GetAllOperationTypes();
+            GetAllSpecialists();
+            GetAllRooms();
+            GetAllAppointments();
+
+        }
+        private void AddButton(object sender, RoutedEventArgs e)
+        {
+            operationController.CreateOperation(operation.Id, operation.Duration, operation.OperationType, operation.Specialist, operation.Room, operation.Appointment);
+            this.Close();
+        }
+
+        public void GetAllOperationTypes()
+        {
+            foreach (OperationType operationType in operationTypeController.GetAll())
             {
                 OperationTypes.Add(new ComboItem<OperationType> { Name = operationType.OperationDescription, Value = operationType });
             }
+        }
 
+        public void GetAllSpecialists()
+        {
             foreach (Specialist specialist in specialistController.GetAll())
             {
-                
-                if (specialist.WorkingTime.StartTime.Hour >= DateTime.Now.Hour && specialist.WorkingTime.EndTime.Hour <= DateTime.Now.Hour) 
-                {
 
+                if (specialist.WorkingTime.StartTime.Hour > DateTime.Now.Hour && specialist.WorkingTime.EndTime.Hour < DateTime.Now.Hour)
+                {
                     continue;
                 }
 
-               Specialists.Add(new ComboItem<Specialist> { Name = specialist.Speciality.ToString(), Value = specialist });
-               
+                Specialists.Add(new ComboItem<Specialist> { Name = specialist.Speciality.ToString(), Value = specialist });
             }
 
+        }
+
+        public void GetAllRooms()
+        {
             foreach (Room room in roomController.GetAll())
             {
-                
-                if (room.RoomType != RoomType.operationRoom) 
+
+                if (room.RoomType != RoomType.operationRoom)
                 {
                     continue;
                 }
@@ -91,38 +132,21 @@ namespace Hospital.View
                 Rooms.Add(new ComboItem<Room> { Name = room.Name, Value = room });
             }
 
+        }
+
+        public void GetAllAppointments()
+        {
             foreach (Appointment appointment in appointmentController.GetAll())
             {
-                
-                if (appointment.Scheduled) 
+
+                if (appointment.Scheduled)
                 {
                     continue;
                 }
-                
+
                 Appointments.Add(new ComboItem<Appointment> { Name = appointment.StartTime.ToString(), Value = appointment });
             }
 
-        }
-
-        public ObservableCollection<ComboItem<OperationType>> OperationTypes { get; set; }
-        public ObservableCollection<ComboItem<Specialist>> Specialists { get; set; }
-        public ObservableCollection<ComboItem<Room>> Rooms{ get; set; }
-        public ObservableCollection<ComboItem<Appointment>> Appointments { get; set; }
-
-        private void AddButton(object sender, RoutedEventArgs e)
-        {   
-            operationController.CreateOperation(operation.Id, operation.Duration, operation.OperationType, operation.Specialist, operation.Room, operation.Appointment);
-            this.Close();
-        }
-        
-        public Operation Operation 
-        {
-            get { return operation; }
-            set 
-            {
-                operation = value;
-                OnPropertyChanged(nameof(Operation));
-            }
         }
 
         private void CencelButton(object sender, RoutedEventArgs e)

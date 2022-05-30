@@ -11,6 +11,8 @@ namespace Hospital.Service
 {
     public class ExaminationService
     {
+        public Repository.ExaminationRepository examinationRepository;
+
         public ExaminationService(ExaminationRepository examinationRepository)
         {
             this.examinationRepository = examinationRepository;
@@ -31,6 +33,5 @@ namespace Hospital.Service
             return examinationRepository.EditExamination(id, appointment, report, prescription, instructions);
         }
      
-        public Repository.ExaminationRepository examinationRepository;
     }
 }

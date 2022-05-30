@@ -60,7 +60,7 @@ namespace Repository
             return false;
         }
       
-      public bool Edit(int id, String name, String manufacturer, int quantity, String description, Medicine medicine)
+      public bool Edit(int id, String name, String manufacturer, int quantity, String description)
       {
             foreach (Equipment es in equipments)
             {
@@ -71,7 +71,6 @@ namespace Repository
                     es.Manufacturer = manufacturer;
                     es.Quantity = quantity;
                     es.Description = description;
-                    es.Medicine = medicine;
                     equipmentFileHandler.Write(equipments.ToList());
 
                     return true;
@@ -81,9 +80,9 @@ namespace Repository
             return false;
         }
       
-      public bool Create(int id, String name, String manufacturer, int quantity, String description, Medicine medicine)
+      public bool Create(int id, String name, String manufacturer, int quantity, String description)
       {
-            equipments.Add(new Equipment(id, name, manufacturer, quantity, description, medicine));
+            equipments.Add(new Equipment(id, name, manufacturer, quantity, description));
             equipmentFileHandler.Write(equipments.ToList());
             return true;
         }

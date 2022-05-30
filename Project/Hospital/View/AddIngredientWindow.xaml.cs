@@ -62,7 +62,7 @@ namespace Hospital.View
             {
                 int ids = equipmentController.GetAll().Count() == 0 ? 0 : equipmentController.GetAll().Max(Equipment => Equipment.Id);
                 Equipment.Id = ++ids;
-                if (!equipmentController.Create(Equipment.Id, Equipment.Name, Equipment.Manufacturer, Equipment.Quantity, Equipment.Description, null))
+                if (!equipmentController.Create(Equipment.Id, Equipment.Name, Equipment.Manufacturer, Equipment.Quantity, Equipment.Description))
                     return;
                 drugController.CreateDrug(new Drug(Ingredients.ToList(), 0, Equipment, Replacements.ToList(), "", true, ""));
                 

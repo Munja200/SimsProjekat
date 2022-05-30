@@ -6,6 +6,8 @@ namespace Hospital.Service
 {
     public class InstructionsService
     {
+        public Repository.InstructionsRepository instructionsRepository;
+
         public InstructionsService(InstructionsRepository instructionsRepository)
         {
             this.instructionsRepository = instructionsRepository;
@@ -16,7 +18,6 @@ namespace Hospital.Service
             return instructionsRepository.GetAll();
         }
 
-        public Repository.InstructionsRepository instructionsRepository;
     }
 
 }

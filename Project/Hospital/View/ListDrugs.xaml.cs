@@ -29,11 +29,12 @@ namespace Hospital.View
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
-            drugController = app.drugController;
             var drugW = Application.Current.Windows.OfType<ListDrugs>().FirstOrDefault();
+
+            drugController = app.drugController;
+
             Load();
         }
-
         public void Load()
         {
             List<Drug> list = drugController.GetAll();
