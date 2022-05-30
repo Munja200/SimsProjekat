@@ -31,5 +31,20 @@ namespace Hospital.Service
 
             return drugRepository.EditDrug(drug);
         }
+
+        public List<Drug> GetAllInvalidDrug()
+        {
+            List<Drug> newDrugs = new List<Drug>();
+            List<Drug> drugs = drugRepository.GetAll();
+            foreach (Drug drug in drugs)
+            {
+                if (drug.IsNotValid == true)
+                {
+                    newDrugs.Add(drug);
+                }
+
+            }
+            return newDrugs;
+        }
     }
 }
