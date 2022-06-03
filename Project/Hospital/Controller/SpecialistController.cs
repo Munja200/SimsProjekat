@@ -24,7 +24,8 @@ namespace Hospital.Controller
             }
 
         public bool CreateSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, 
-            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address)
+            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, 
+            Address address)
         {
             return _service.CreateSpecialist(speciality, averageRating, role, workingTime, username, password, name, surname, citid, gender, dateOfBirth,
                 email, phoneNumber, address);
@@ -37,7 +38,8 @@ namespace Hospital.Controller
         }
 
         public bool EditSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, 
-            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address)
+            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber,
+            Address address)
         {
             return _service.EditSpecialist(speciality, averageRating, role, workingTime, username, password, name, surname, citid, gender, dateOfBirth,
                 email, phoneNumber, address);

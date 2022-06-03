@@ -8,9 +8,10 @@ namespace Model
     {
         public Speciality Speciality { get; set; }
 
-        public Specialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, string password, string name,
-            string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address) : base(name, surname, citid, gender,
-                dateOfBirth, email, phoneNumber, address, username, password, role, workingTime, averageRating)
+        public Specialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username,
+            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, 
+            string phoneNumber, Address address) : base(name, surname, citid, gender, dateOfBirth, email, phoneNumber, address,
+            username, password, role, workingTime, averageRating)
         {
             Speciality = speciality;
             AverageRating = averageRating;
@@ -39,6 +40,11 @@ namespace Model
         {
             return other != null &&
                    Speciality == other.Speciality;
+        }
+
+        public override string ToString()
+        {
+            return Name + ", " + Speciality;
         }
 
     }

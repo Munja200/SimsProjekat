@@ -81,14 +81,12 @@ namespace Repository
             if (appointmnetFileHandler.Read() == null)
                 return appointments;
             RoomRepository roomRepository = new RoomRepository();
-            PatientAccountRepository patientRepository = new PatientAccountRepository();
 
             appointments.Clear();
 
             List<Appointment> newAppointments = appointmnetFileHandler.Read();
 
             roomRepository.GetAll();
-            patientRepository.GetAll();
 
             foreach (Appointment newAppointment in newAppointments)
             {

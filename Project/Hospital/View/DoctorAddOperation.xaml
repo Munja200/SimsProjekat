@@ -9,7 +9,7 @@
     <DockPanel>
         <DockPanel DockPanel.Dock="Bottom">
             <Button DockPanel.Dock="Left" Width="100" Padding="10" Margin="18" IsDefault="True" FontSize="15" Click="AddButton" >Add</Button>
-            <Button DockPanel.Dock="Right" Width="100" Padding="10" Margin="18" IsCancel="True" FontSize="15" Click="CencelButton">Cencel</Button>
+            <Button DockPanel.Dock="Right" Width="100" Padding="10" Margin="18" IsCancel="True" FontSize="15" Click="CancelButton">Cancel</Button>
             <Separator DockPanel.Dock="Bottom"></Separator>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch">

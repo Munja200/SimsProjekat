@@ -17,6 +17,20 @@ namespace Model
         public Room Room { get; set; }
         public PatientAccount PatientAccount { get; set; }
 
+        public Appointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType,
+            Doctor doctor, Room room, PatientAccount patientAccount)
+        {
+            Id = id;
+            StartTime = startTime;
+            EndTime = endTime;
+            Duration = duration;
+            Scheduled = scheduled;
+            AppointmetntType = appointmetntType;
+            Doctor = doctor;
+            Room = room;
+            PatientAccount = patientAccount;
+
+        }
 
         public bool serialize { get; set; }
         public bool ShouldSerializeserialize()
@@ -51,21 +65,6 @@ namespace Model
 
         [JsonIgnore]
         public System.Collections.Generic.List<Operation> operation;
-
-        public Appointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, 
-            PatientAccount patientAccount)
-        {
-            Id = id;
-            StartTime = startTime;
-            EndTime = endTime;
-            Duration = duration;
-            Scheduled = scheduled;
-            AppointmetntType = appointmetntType;
-            Doctor = doctor;
-            Room = room;
-            PatientAccount = patientAccount;
-
-        }
 
         [JsonIgnore]
         public System.Collections.Generic.List<Operation> Operation

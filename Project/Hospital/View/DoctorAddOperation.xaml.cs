@@ -92,7 +92,8 @@ namespace Hospital.View
         }
         private void AddButton(object sender, RoutedEventArgs e)
         {
-            operationController.CreateOperation(operation.Id, operation.Duration, operation.OperationType, operation.Specialist, operation.Room, operation.Appointment);
+            operationController.CreateOperation(operation.Id, operation.Duration, operation.OperationType, operation.Specialist, operation.Room,
+                operation.Appointment);
             this.Close();
         }
 
@@ -149,7 +150,7 @@ namespace Hospital.View
 
         }
 
-        private void CencelButton(object sender, RoutedEventArgs e)
+        private void CancelButton(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

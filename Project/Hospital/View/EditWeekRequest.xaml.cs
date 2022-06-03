@@ -102,7 +102,8 @@ namespace Hospital.View
 
             if (valid)
             {
-                weekRequestController.EditWeekRequest(weekRequest.Id, weekRequest.Specialist, weekRequest.StartTime, weekRequest.EndTime, weekRequest.Description, weekRequest.State, weekRequest.Emergency);
+                weekRequestController.EditWeekRequest(weekRequest.Id, weekRequest.Specialist, weekRequest.StartTime, weekRequest.EndTime,
+                    weekRequest.Description, weekRequest.State,weekRequest.StatusComment, weekRequest.Emergency);
                 this.Close();
             }
 

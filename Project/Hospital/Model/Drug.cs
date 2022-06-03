@@ -17,7 +17,8 @@ namespace Hospital.Model
 
 
         [Newtonsoft.Json.JsonConstructor]
-        public Drug(List<Ingredient> ingredients, int id, Equipment equipment, List<String> replacements, string @using, bool isValid, string reasonForInvalidity)
+        public Drug(List<Ingredient> ingredients, int id, Equipment equipment, List<String> replacements, string @using, bool isValid, 
+            string reasonForInvalidity)
         {
             this.Ingredients = ingredients;
             this.Id = id;

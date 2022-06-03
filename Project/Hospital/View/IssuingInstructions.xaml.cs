@@ -96,7 +96,8 @@ namespace Hospital.View
 
             if (valid)
             {
-                examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
+                examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription,
+                    examination.Instructions);
                 this.Close();
             }
 

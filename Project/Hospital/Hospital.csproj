@@ -524,5 +524,11 @@
   <ItemGroup>
     <Resource Include="Resources\Renovation.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\reset.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

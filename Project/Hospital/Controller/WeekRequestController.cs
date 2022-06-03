@@ -20,9 +20,15 @@ namespace Hospital.Controller
             return _service.GetAll();
         }
 
-        public bool CreateWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, bool emergency)
+        public List<WeekRequest> GetBySpecialistsCitizenId(int specialistCitizenId)
         {
-            return _service.CreateWeekRequest(id, specialist, startTime, endTime, description, state, emergency);
+            return _service.GetBySpecialistsCitizenId(specialistCitizenId);
+        }
+
+        public bool CreateWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, 
+            String comment, bool emergency)
+        {
+            return _service.CreateWeekRequest(id, specialist, startTime, endTime, description, state, comment, emergency);
         }
 
         public bool DeleteWeekRequest(int id)
@@ -35,9 +41,10 @@ namespace Hospital.Controller
             return _service.GetWeekRequestById(id);
         }
 
-        public bool EditWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, bool emergency)
+        public bool EditWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, 
+            String comment, bool emergency)
         {
-            return _service.EditWeekRequest(id, specialist, startTime, endTime, description, state, emergency);
+            return _service.EditWeekRequest(id, specialist, startTime, endTime, description, state, comment, emergency);
         }
 
     }

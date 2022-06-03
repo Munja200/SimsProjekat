@@ -18,11 +18,12 @@ namespace Hospital.Repository
             specialistFileHandler = new FileHandler.SpecialistFileHandler();
             specialists = new List<Specialist>();
         }
-        public bool CreateSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, string password, string name,
-            string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address)
+        public bool CreateSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username,
+            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber,
+            Address address)
         {
-            specialists.Add(new Specialist(speciality, averageRating, role, workingTime, username, password, name, surname, citid, gender, dateOfBirth, email, phoneNumber, 
-                address));
+            specialists.Add(new Specialist(speciality, averageRating, role, workingTime, username, password, name, surname, citid, gender,
+                dateOfBirth, email, phoneNumber, address));
             specialistFileHandler.Write(specialists);
             return true;
         }
@@ -40,21 +41,23 @@ namespace Hospital.Repository
             return false;
         }
 
-        public bool EditSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, string password, string name, 
-            string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address)
+        public bool EditSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username,
+            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber,
+            Address address)
         {
 
             foreach (Specialist specialist in specialists)
             {
-                SpecialistsSpecialityEquals(specialist, speciality,  averageRating, role, workingTime, username, password, name, surname, citid, gender, dateOfBirth, email, 
-                    phoneNumber, address);
+                SpecialistsSpecialityEquals(specialist, speciality,  averageRating, role, workingTime, username, password, name, surname,
+                    citid, gender, dateOfBirth, email, phoneNumber, address);
             }
 
             return false;
         }
 
-        public bool SpecialistsSpecialityEquals(Specialist specialist, Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, 
-            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address)
+        public bool SpecialistsSpecialityEquals(Specialist specialist, Speciality speciality, float averageRating, EmployeeRole role, 
+            WorkingTime workingTime, string username, string password, string name, string surname, int citid, Gender gender, 
+            DateTime dateOfBirth, string email, string phoneNumber, Address address)
         {
             if (specialist.Speciality.Equals(speciality))
             {

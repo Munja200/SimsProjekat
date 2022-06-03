@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using Hospital.Controller;
 using Hospital.Model;
+using Model;
 
 namespace Hospital.View
 {
@@ -14,6 +15,9 @@ namespace Hospital.View
     {
         private WeekRequestController weekRequestController;
         private SpecialistController specialistController;
+        public ObservableCollection<WeekRequest> weekRequests;
+
+        public ObservableCollection<ComboItem<Specialist>> Specialists { get; set; }
 
         public ShowWeekRequest()
         {
@@ -29,8 +33,44 @@ namespace Hospital.View
         public void Load()
         {
             List<WeekRequest> list = weekRequestController.GetAll();
-            ObservableCollection<WeekRequest> collection = new ObservableCollection<WeekRequest>(list);
-            dataGridRequest.ItemsSource = collection;
+            weekRequests = new ObservableCollection<WeekRequest>(list);
+
+            Specialists = new ObservableCollection<ComboItem<Specialist>>();
+            dataGridRequest.ItemsSource = weekRequests;
+
+            GetAllSpecialists();
+        }
+
+        
+        public void GetAllSpecialists()
+        {
+            foreach (Specialist specialist in specialistController.GetAll())
+            {
+                Specialists.Add(new ComboItem<Specialist> { Name =specialist.Name.ToString() + ", " + specialist.Speciality.ToString(),
+                    CitizenId = specialist.CitizenId,  Value = specialist });
+            }
+        }
+
+        private void ImageLoupe(object sender, RoutedEventArgs e)
+        {
+            ComboItem<Specialist> specialistId = (ComboItem<Specialist>)idSpecialists.SelectedItem;
+            int id = specialistId.CitizenId;
+
+            weekRequests.Clear();
+
+            foreach (WeekRequest weekRequest in weekRequestController.GetBySpecialistsCitizenId(id))
+            {
+                weekRequests.Add(weekRequest);
+            }
+            return;
+
+        }
+
+        private void ImageReset(object sender, RoutedEventArgs e)
+        {
+            List<WeekRequest> list = weekRequestController.GetAll();
+            weekRequests = new ObservableCollection<WeekRequest>(list);
+            dataGridRequest.ItemsSource = weekRequests;
         }
 
         private void Click_Create(object sender, RoutedEventArgs e)
@@ -56,16 +96,6 @@ namespace Hospital.View
 
             if (weekRequest != null)
                 new EditWeekRequest(weekRequest).ShowDialog();
-        }
-
-        private void Click_Reject(object sender, RoutedEventArgs e)
-        {
-            Load();
-        }
-
-        private void Click_Approve(object sender, RoutedEventArgs e)
-        {
-            Load();
         }
 
         private void Back(object sender, RoutedEventArgs e)

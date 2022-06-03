@@ -74,7 +74,6 @@ namespace Hospital.View
             StateSS.Add("confirmed");
             state.SelectedValue = "waiting";
 
-
             GetAllSpecialists();
 
         }
@@ -104,7 +103,7 @@ namespace Hospital.View
             if (valid)
             {
                 weekRequestController.CreateWeekRequest(weekRequest.Id, weekRequest.Specialist, weekRequest.StartTime, weekRequest.EndTime,
-                    weekRequest.Description, weekRequest.State, weekRequest.Emergency);
+                    weekRequest.Description, weekRequest.State, weekRequest.StatusComment, weekRequest.Emergency);
                 this.Close();
             }
         }

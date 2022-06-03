@@ -63,12 +63,17 @@ namespace Hospital.View
             var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
             Examination = examination;
 
-            examinationController = app.examinationController;
-            drugController = app.drugController;
-            patientAccountController = app.patientAccountController;
+            GetControllers(app);
 
             Load();
 
+        }
+
+        public void GetControllers(App app) 
+        {
+            examinationController = app.examinationController;
+            drugController = app.drugController;
+            patientAccountController = app.patientAccountController;
         }
 
         public void Load()
@@ -95,7 +100,8 @@ namespace Hospital.View
 
             if (valid)
             {
-                examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
+                examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription,
+                    examination.Instructions);
                 this.Close();
             }
         }
@@ -179,18 +185,9 @@ namespace Hospital.View
         {
             foreach (Ingredient ingredient in examination.Appointment.PatientAccount.IngredientsAllergies)
             {
-                /*
-                foreach (Ingredient ingredient1 in drugIngredients)
-                {
-                    if (ingredient.Name.Equals(ingredient1.Name))
-                    {
-                        MessageBox.Show("The patient is allergic to the ingredient of the prescribed drug!", "Error");
-                        return false;
 
-                    }
-                }
-                */
-                FindSameNameIngredients(drugIngredients, ingredient);
+                if (!FindSameNameIngredients(drugIngredients, ingredient)) { return false; }
+
             }
             return true;
 

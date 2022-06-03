@@ -46,6 +46,11 @@ namespace Hospital.View
 
             Appointment = appointment;
 
+            GetAppointmentData(appointment);
+        }
+
+        public void GetAppointmentData(Appointment appointment) 
+        {
 
             guest.IsChecked = appointment.PatientAccount.IsGuest;
             name.Content = appointment.PatientAccount.Name;
@@ -60,8 +65,6 @@ namespace Hospital.View
             phonenumber.Content = appointment.PatientAccount.PhoneNumber;
             //allergies.Text = appointment.PatientAccount.Allergies;
             Allergies = new ObservableCollection<ComboItem<String>>();
-
-
         }
 
     }

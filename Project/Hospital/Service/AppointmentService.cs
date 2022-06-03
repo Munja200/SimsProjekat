@@ -42,11 +42,6 @@ namespace Service
 
         }
 
-        public bool IsAppointmentTaken(ref Appointment apointment)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType,
             PatientAccount patientAccount, Doctor doctor, Room room)
         {
