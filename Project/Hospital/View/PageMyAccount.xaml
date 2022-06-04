@@ -1,0 +1,60 @@
+﻿<Page x:Class="Hospital.View.PageMyAccount"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Hospital.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" d:DesignWidth="430"
+      Title="PageMyAccount">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
+
+        <Button BorderThickness="0" Grid.Column="0" Grid.Row="0" Height="32" Width="32" HorizontalAlignment="Left" Background="Transparent" Click="ImageBackClick">
+            <Grid>
+                <Image Source="Images/back.png" HorizontalAlignment="Left"/>
+            </Grid>
+        </Button>
+        <Label Grid.Column="0" Grid.ColumnSpan="3" FontWeight="DemiBold" Grid.Row="0" FontSize="28" HorizontalAlignment="Left" Margin="47,0,0,0">My Account</Label>
+        <Image Source="Images/plusic.png" Grid.Row="0" Height="32" Width="32" Grid.Column="4" HorizontalAlignment="Left" Margin="36,8,0,7"/>
+        <Border BorderThickness="3" BorderBrush="#FF000000" Grid.Column="0" Height="250" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Grid.ColumnSpan="5">
+            <Image Source="Images/doctor.jpg" Stretch="Fill" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="5" />
+        </Border>
+        <Image Source="Images/edit.png" Grid.Row="2" Height="21" Width="22" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,78,0,0"/>
+        <Image Source="Images/camera.png" Grid.Row="2" Height="32" Width="32" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,76,0,0"/>
+        <Border BorderThickness="3" CornerRadius="7" BorderBrush="#FF000000" Grid.Column="2" Grid.Row="3" Height="64" Width="64" VerticalAlignment="Top">
+            <Image Source="Images/doctor.png" Stretch="Fill" Grid.Row="3" Height="64" Width="64" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        </Border>
+        <Label FontWeight="DemiBold" FontSize="22" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Margin="0,60,0,0">Cardiologist</Label>
+        <Label FontWeight="DemiBold" FontSize="32" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom">Dr.Doctor Doctorson</Label>
+        <Image Source="Images/star.jpg" Grid.Row="4" Height="25" Width="25" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,5,0"/>
+        <Image Source="Images/star.jpg" Grid.Row="4" Height="25" Width="25" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image Source="Images/star.jpg" Grid.Row="4" Height="25" Width="25" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Image Source="Images/star.jpg" Grid.Row="4" Height="25" Width="25" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Image Source="Images/halfstar.png" Grid.Row="4" Height="26" Width="26" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,0,0,0"/>
+
+        <Image Source="Images/organisation.png" Grid.Row="4" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,50,0,0"/>
+        <Label Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="77,42,0,0">Organisation</Label>
+
+        <Image Source="Images/settings.png" Grid.Row="4" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,95,0,0"/>
+        <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="24" Margin="0,0,84,18">Settings</Label>
+
+
+    </Grid>
+</Page>
