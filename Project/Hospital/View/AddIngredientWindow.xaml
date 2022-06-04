@@ -15,5 +15,6 @@
         <Button Content="Odustani" HorizontalAlignment="Left" Margin="142,362,0,0" VerticalAlignment="Top" Width="94" Height="27" Click="Close"/>
         <ListBox x:Name="listIngredients" ItemsSource="{Binding}" DisplayMemberPath="Name" Margin="24,56,260.8,240.8"/>
         <ListBox x:Name="listReplacements" ItemsSource="{Binding}" Margin="26,270,246.8,64.8" />
+        <Button x:Name="deleteIngredient" IsEnabled="False" Content="Obrisi sastojak" HorizontalAlignment="Left" Margin="535,10,0,0" VerticalAlignment="Top" Width="88" Click="deleteIngredientClick"/>
     </Grid>
 </Window>

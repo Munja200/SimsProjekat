@@ -26,5 +26,9 @@ namespace Hospital.Controller
         {
             return drugService.EditDrug(drug);
         }
+        public List<Drug> GetAllInvalidDrug()
+        {
+            return drugService.GetAllInvalidDrug();
+        }
     }
 }

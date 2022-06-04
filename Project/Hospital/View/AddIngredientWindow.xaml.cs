@@ -60,9 +60,14 @@ namespace Hospital.View
         {
             if (Ingredients.Count > 0)
             {
+
                 int ids = equipmentController.GetAll().Count() == 0 ? 0 : equipmentController.GetAll().Max(Equipment => Equipment.Id);
                 Equipment.Id = ++ids;
                 if (!equipmentController.Create(Equipment.Id, Equipment.Name, Equipment.Manufacturer, Equipment.Quantity, Equipment.Description))
+
+                Equipment.Id = GenerateEquipmentId();
+                if (!equipmentController.Create(Equipment.Id, Equipment.Name, Equipment.Manufacturer, Equipment.Quantity, Equipment.Description, null))
+
                     return;
                 drugController.CreateDrug(new Drug(Ingredients.ToList(), 0, Equipment, Replacements.ToList(), "", true, ""));
                 
@@ -70,6 +75,10 @@ namespace Hospital.View
                 roomEquipmentController.Create(newRoom, Equipment, Equipment.Quantity, 0);
                 this.Close();
             }
+        }
+        private int GenerateEquipmentId() {
+            int id = equipmentController.GetAll().Count() == 0 ? 0 : equipmentController.GetAll().Max(Equipment => Equipment.Id);
+            return id++;
         }
 
         private void Close(object sender, RoutedEventArgs e)
@@ -84,6 +93,18 @@ namespace Hospital.View
                 Replacements.Add(replacement.Text);
                 replacement.Text = "";
             }
+        }
+        private void listIngredientsSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            deleteIngredient.IsEnabled = true;
+        }
+
+        private void deleteIngredientClick(object sender, RoutedEventArgs e)
+        {
+            Ingredient ingredient = (Ingredient)listIngredients.SelectedItem;
+
+            Ingredients.Remove(ingredient);
+            deleteIngredient.IsEnabled = false;
         }
     }
 }

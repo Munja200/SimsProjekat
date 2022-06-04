@@ -1,0 +1,31 @@
+﻿<Window x:Class="Hospital.View.ChangeDrugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.View"
+        mc:Ignorable="d"
+        Title="ChangeDrugWindow" Height="650" Width="800">
+    <Grid Margin="0,0,-3.4,-5">
+        <Button Content="Izmeni" HorizontalAlignment="Left" Margin="513,548,0,0" VerticalAlignment="Top" Width="75" Click="ChangeDrugClick"/>
+        <Label Content="Naziv" HorizontalAlignment="Left" Margin="81,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.583,2.764"/>
+        <Label Content="Proizvodjac" HorizontalAlignment="Left" Margin="82,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.583,2.764"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="83,9,76,538">
+
+            <TextBlock x:Name="razlog"   Text="{Binding Describe}" HorizontalAlignment="Left" TextWrapping="Wrap" IsEnabled="False"  VerticalAlignment="Top" />
+
+        </ScrollViewer>
+        <TextBox x:Name="ime" HorizontalAlignment="Left" Height="23" Margin="241,99,0,0" TextWrapping="Wrap" Text="{Binding NewName}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="proizvodjac" HorizontalAlignment="Left" Height="23" Margin="240,143,0,0" TextWrapping="Wrap" Text="{Binding Manu}" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Nazad" HorizontalAlignment="Left" Margin="106,548,0,0" VerticalAlignment="Top" Width="75" Click="Close"/>
+        <Button Content="Dodaj sastojak" HorizontalAlignment="Left" Margin="321,191,0,0" VerticalAlignment="Top" Width="103" Click="AddingIngredient" Height="20"/>
+        <Button Content="Dodaj zamenu za lek" HorizontalAlignment="Left" Margin="329,360,0,0" VerticalAlignment="Top" Width="119" Height="27" RenderTransformOrigin="1.32,2.245" Click="AddReplacement"/>
+        <TextBox x:Name="ingredient" Text="" HorizontalAlignment="Left" Height="21" Margin="82,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <TextBox x:Name="replacement" HorizontalAlignment="Left" Height="21" Margin="80,359,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <ListBox x:Name="listIngredients" ItemsSource="{Binding }" DisplayMemberPath="Name" Margin="83,231,221,312" SelectionChanged="listIngredientsSelectionChanged"/>
+        <ListBox x:Name="listReplacements" ItemsSource="{Binding }" Margin="82,413,216,118" SelectionChanged="listReplacementsSelectionChanged" />
+        <Button x:Name="deleteIngredient" IsEnabled="False" Content="Obrisi sastojak" HorizontalAlignment="Left" Margin="460,191,0,0" VerticalAlignment="Top" Width="109" Click="deleteIngredientClick" Height="21"/>
+        <Button x:Name="deleteReplacement" IsEnabled="False"  Content="Obrisi zamenu" HorizontalAlignment="Left" Margin="477,359,0,0" VerticalAlignment="Top" Width="97" Click="deleteReplacementClick" RenderTransformOrigin="0.183,10.047" Height="30"/>
+
+    </Grid>
+</Window>
