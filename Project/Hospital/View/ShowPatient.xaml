@@ -54,7 +54,15 @@
         <Label Name="email" Grid.Row="6" Grid.Column="1" FontSize="20" Content="{Binding User.Email}"></Label>
         <Label Name="hcid" Grid.Row="6" Grid.Column="3" FontSize="20" Content="{Binding PatientAccount.HealthCardId}"></Label>
         <Label Name="phonenumber" Grid.Row="7" Grid.Column="1" FontSize="20" Content="{Binding User.PhoneNumber}"></Label>
-        <Label Name="allergies" Grid.Row="7" Grid.Column="3" FontSize="20" Content="{Binding PatientAccount.Allergies}"></Label>
+
+
+        <ListBox x:Name="allergies" Grid.Row="7" Grid.Column="4" FontSize="10" ItemsSource="{Binding Allergies}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Path=.}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Window>

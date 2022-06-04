@@ -42,7 +42,7 @@ namespace Hospital.View
                 return;
             }
 
-            new AddIngredientWindow(new Equipment(0, newName, newMname, quantity, newDescript, null)).Show();
+            new AddIngredientWindow(new Equipment(0, newName, newMname, quantity, newDescript)).Show();
             this.Close();
         }
     }

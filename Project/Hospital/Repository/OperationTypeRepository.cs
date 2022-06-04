@@ -10,25 +10,27 @@ namespace Hospital.Repository
     public class OperationTypeRepository
     {
         public List<OperationType> operationtypes;
+        public FileHandler.OperationTypeFileHandler operationTypeFileHandler;
+
         public OperationTypeRepository()
         {
             operationTypeFileHandler = new FileHandler.OperationTypeFileHandler();
             operationtypes = new List<OperationType>();
         }
-        public bool CreateOperationType(int oc, string od)
+        public bool CreateOperationType(int operationCode, string operationDescription)
         {
-            operationtypes.Add(new OperationType(oc, od));
+            operationtypes.Add(new OperationType(operationCode, operationDescription));
             operationTypeFileHandler.Write(operationtypes);
             return true;
         }
 
         public bool DeleteOperationType(int oc)
         {
-            foreach (OperationType operationtype in operationtypes)
+            foreach (OperationType operationType in operationtypes)
             {
-                if (operationtype.OperationCode.Equals(oc))
+                if (operationType.OperationCode.Equals(oc))
                 {
-                    operationtypes.Remove(operationtype);
+                    operationtypes.Remove(operationType);
                     operationTypeFileHandler.Write(operationtypes);
                     return true;
                 }
@@ -36,15 +38,15 @@ namespace Hospital.Repository
             return false;
         }
 
-        public bool EditOperationType(int oc, string od)
+        public bool EditOperationType(int operationCode, string operationDescription)
         {
 
             foreach (OperationType operationtype in operationtypes)
             {
-                if (operationtype.OperationCode.Equals(oc))
+                if (operationtype.OperationCode.Equals(operationCode))
                 {
-                    operationtype.OperationCode = oc;
-                    operationtype.OperationDescription = od;
+                    operationtype.OperationCode = operationCode;
+                    operationtype.OperationDescription = operationDescription;
 
                     return true;
                 }
@@ -63,17 +65,15 @@ namespace Hospital.Repository
             return operationtypes;
         }
 
-        public OperationType GetOperationById(int oc)
+        public OperationType GetOperationById(int operationCode)
         {
             foreach (OperationType operationtype in operationtypes)
             {
-                if (operationtype.OperationCode.Equals(oc))
+                if (operationtype.OperationCode.Equals(operationCode))
                     return operationtype;
             }
             return null;
         }
-
-        public FileHandler.OperationTypeFileHandler operationTypeFileHandler;
 
     }
 

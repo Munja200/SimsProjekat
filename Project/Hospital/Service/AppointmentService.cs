@@ -7,6 +7,8 @@ namespace Service
 {
     public class AppointmentService
     {
+        public Repository.AppointmentRepository appointmentRepository;
+
         public AppointmentService(AppointmentRepository appointmentRepository)
         {
             this.appointmentRepository = appointmentRepository;
@@ -17,7 +19,8 @@ namespace Service
             return appointmentRepository.GetAll();
         }
 
-        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
+        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, 
+            Doctor doctor, Room room, PatientAccount patientAccount)
         {
             return appointmentRepository.CreateAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
@@ -27,7 +30,8 @@ namespace Service
             return appointmentRepository.DeleteAppointment(id);
         }
 
-        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
+        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, 
+            Doctor doctor, Room room, PatientAccount patientAccount)
         {
             return appointmentRepository.EditAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
@@ -38,12 +42,8 @@ namespace Service
 
         }
 
-        public bool IsAppointmentTaken(ref Appointment apointment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, PatientAccount patientAccount, Doctor doctor, Room room)
+        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType,
+            PatientAccount patientAccount, Doctor doctor, Room room)
         {
             if ((DateTime.Compare(startTime.Date, DateTime.Today) < 0) ||(DateTime.Compare(endTime.Date, startTime.Date) < 0))
             {
@@ -81,7 +81,6 @@ namespace Service
             return false;
         }
 
-        public Repository.AppointmentRepository appointmentRepository;
 
     }
 }

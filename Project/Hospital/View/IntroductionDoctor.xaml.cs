@@ -24,12 +24,6 @@ namespace Hospital.View
             InitializeComponent();
         }
 
-        public void ImageBackClick(object sender, RoutedEventArgs e) 
-        {
-            new LogIn().Show();
-            this.Close();
-        }
-
         public void StartClick(object sender, RoutedEventArgs e)
         {
             new HomeDoctor().Show();

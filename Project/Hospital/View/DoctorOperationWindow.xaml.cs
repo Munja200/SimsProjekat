@@ -20,7 +20,9 @@ namespace Hospital.View
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
+
             operationController = app.operationController;
+
             Load();
         }
 
@@ -58,8 +60,9 @@ namespace Hospital.View
 
         public void ImageMenuClick(object sender, RoutedEventArgs e)
         {
-            new MenuDoctor().Show();
-            this.Close();
+            //new MenuDoctor().Show();
+            //this.Close();
+            
         }
 
         public void ImageHomeClick(object sender, RoutedEventArgs e)

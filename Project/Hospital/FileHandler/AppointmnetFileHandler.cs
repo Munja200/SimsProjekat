@@ -11,7 +11,6 @@ namespace FileHandler
 
         public List<Appointment> Read()
         {
-
             string serializedOperations = System.IO.File.ReadAllText(path);
             List<Appointment> appointments = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Appointment>>(serializedOperations);
             return appointments;
@@ -25,10 +24,12 @@ namespace FileHandler
                     appointment.Room.serialize = true;
                 appointment.serialize = true;
             }
+
             string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(appointments);
             System.IO.File.WriteAllText(path, serializedOperations);
 
         }
-   
+
+
    }
 }

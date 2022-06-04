@@ -96,6 +96,7 @@
     <Compile Include="FileHandler\SpecialistFileHandler.cs" />
     <Compile Include="FileHandler\WeekRequestFileHandler.cs" />
     <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Allergy.cs" />
     <Compile Include="Model\Appointment.cs" />
     <Compile Include="Model\City.cs" />
     <Compile Include="Model\ComboItem.cs" />
@@ -110,7 +111,6 @@
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\Instructions.cs" />
-    <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\Operation.cs" />
     <Compile Include="Model\OperationType.cs" />
     <Compile Include="Model\PatientAccount.cs" />
@@ -209,9 +209,6 @@
     <Compile Include="View\EquipmentFilterWindow.xaml.cs">
       <DependentUpon>EquipmentFilterWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExaminationAddReport.xaml.cs">
-      <DependentUpon>ExaminationAddReport.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ExaminationEditReport.xaml.cs">
       <DependentUpon>ExaminationEditReport.xaml</DependentUpon>
     </Compile>
@@ -236,11 +233,29 @@
     <Compile Include="View\ListDrugs.xaml.cs">
       <DependentUpon>ListDrugs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LogIn.xaml.cs">
-      <DependentUpon>LogIn.xaml</DependentUpon>
+    <Compile Include="View\PageCreateOperation.xaml.cs">
+      <DependentUpon>PageCreateOperation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MenuDoctor.xaml.cs">
-      <DependentUpon>MenuDoctor.xaml</DependentUpon>
+    <Compile Include="View\PageEditOperation.xaml.cs">
+      <DependentUpon>PageEditOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageHomeDoctor.xaml.cs">
+      <DependentUpon>PageHomeDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageMenuDoctor.xaml.cs">
+      <DependentUpon>PageMenuDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageMessage.xaml.cs">
+      <DependentUpon>PageMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageMyAccount.xaml.cs">
+      <DependentUpon>PageMyAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageNotification.xaml.cs">
+      <DependentUpon>PageNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageOperationDoctor.xaml.cs">
+      <DependentUpon>PageOperationDoctor.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\priavte.cs" />
     <Compile Include="View\RoomRenovation.xaml.cs">
@@ -332,10 +347,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExaminationAddReport.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ExaminationEditReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -368,11 +379,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LogIn.xaml">
+    <Page Include="View\PageCreateOperation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MenuDoctor.xaml">
+    <Page Include="View\PageEditOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageHomeDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageMenuDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageMyAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageOperationDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -449,13 +484,7 @@
     <Resource Include="Resources\Patient.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Report.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Examination.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\SelfAppointment.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drug.txt" />
@@ -543,6 +572,42 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Renovation.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\usercircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\star.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\halfstar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\doctor.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\plusic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\organisation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Images\th.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

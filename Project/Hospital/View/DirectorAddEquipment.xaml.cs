@@ -76,7 +76,7 @@ namespace Hospital.View
                 return;
             }
 
-            if (!equipmentController.Create(0, na, ma, temp, des, null))
+            if (!equipmentController.Create(0, na, ma, temp, des))
             {
                 MessageBox.Show("Nije uspelo dodavanje", "Error");
                 this.Close();

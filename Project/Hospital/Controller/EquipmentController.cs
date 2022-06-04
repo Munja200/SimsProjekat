@@ -32,14 +32,14 @@ namespace Controller
             return equipmentService.Delete(id);
         }
       
-      public bool Edit(int id, String name, String manufacturer, int quantity, String description, Medicine medicine)
+      public bool Edit(int id, String name, String manufacturer, int quantity, String description)
       {
-            return equipmentService.Edit(id, name, manufacturer, quantity, description, medicine);
+            return equipmentService.Edit(id, name, manufacturer, quantity, description);
       }
       
-      public bool Create(int id, String name, String manufacturer, int quantity, String description, Medicine medicine)
+      public bool Create(int id, String name, String manufacturer, int quantity, String description)
       {
-            return equipmentService.Create(id, name, manufacturer, quantity, description, medicine);
+            return equipmentService.Create(id, name, manufacturer, quantity, description);
       }
       
       public Service.EquipmentService equipmentService;

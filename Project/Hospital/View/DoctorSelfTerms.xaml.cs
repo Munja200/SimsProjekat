@@ -28,7 +28,9 @@ namespace Hospital.View
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
+
             appointmentController = app.appointmentController;
+
             Load();
         }
 

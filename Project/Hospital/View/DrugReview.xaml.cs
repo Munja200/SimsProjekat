@@ -55,7 +55,11 @@ namespace Hospital.View
                 {
                     Ingredients.Clear();
                     Replacements.Clear();
-                    foreach (Ingredient ingredient in drug.Ingredients) { Ingredients.Add(ingredient); }
+               
+                    foreach (Ingredient ingredient in drug.Ingredients) 
+                    { 
+                                            Ingredients.Add(ingredient); 
+                    }
                     foreach (String replacement in drug.Replacements) { Replacements.Add(replacement); }
                     listIngredients.ItemsSource = Ingredients;
                     listReplacements.ItemsSource = Replacements;

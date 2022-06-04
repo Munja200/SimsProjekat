@@ -11,6 +11,8 @@ namespace Hospital.Service
 {
     public class PrescriptionService
     {
+        public Repository.PrescriptionRepository prescriptionRepository;
+
         public PrescriptionService(PrescriptionRepository prescriptionRepository)
         {
             this.prescriptionRepository = prescriptionRepository;
@@ -41,7 +43,6 @@ namespace Hospital.Service
             return prescriptionRepository.EditPrescription(id, frequency, interval, startTime, duration, drug);
         }
 
-        public Repository.PrescriptionRepository prescriptionRepository;
 
     }
 }

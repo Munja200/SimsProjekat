@@ -12,6 +12,8 @@ namespace Hospital.Repository
     {
 
         public List<Prescription> prescriptions;
+        public FileHandler.PrescriptionFileHandler prescriptionFileHandler;
+
 
         public PrescriptionRepository()
         {
@@ -83,8 +85,6 @@ namespace Hospital.Repository
             }
             return null;
         }
-
-        public FileHandler.PrescriptionFileHandler prescriptionFileHandler;
 
     }
 }

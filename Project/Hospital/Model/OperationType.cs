@@ -8,10 +8,10 @@ namespace Model
         public int OperationCode { get; set; }
         public string OperationDescription { get; set; }
 
-        public OperationType(int oc, string od)
+        public OperationType(int operationCode, string operationDescription)
         {
-            OperationCode = oc;
-            OperationDescription = od;
+            OperationCode = operationCode;
+            OperationDescription = operationDescription;
 
         }
 

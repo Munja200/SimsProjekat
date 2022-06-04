@@ -12,6 +12,8 @@ namespace Hospital.Repository
     {
 
         public List<Report> reports;
+        public FileHandler.ReportFileHandler reportFileHandler;
+
 
         public ReportRepository()
         {
@@ -96,8 +98,6 @@ namespace Hospital.Repository
             }
             return null;
         }
-
-        public FileHandler.ReportFileHandler reportFileHandler;
 
     }
 

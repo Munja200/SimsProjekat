@@ -9,6 +9,8 @@ namespace Repository
    {
 
         public List<Operation> operations;
+        public FileHandler.OperationFileHandler operationFileHandler;
+
         public OperationRepository()
         {
             operationFileHandler = new FileHandler.OperationFileHandler();
@@ -53,16 +55,16 @@ namespace Repository
       public bool EditOperation(int id, int duration, OperationType operationType, Specialist specialist, Room room, Appointment appointment)
       {
 
-            foreach (Operation op in operations)
+            foreach (Operation operation in operations)
             {
-                if (op.Id.Equals(id))
+                if (operation.Id.Equals(id))
                 {
-                    op.Id = id;
-                    op.Duration = duration;
-                    op.OperationType = operationType;
-                    op.Specialist = specialist;
-                    op.Room = room;
-                    op.Appointment = appointment;
+                    operation.Id = id;
+                    operation.Duration = duration;
+                    operation.OperationType = operationType;
+                    operation.Specialist = specialist;
+                    operation.Room = room;
+                    operation.Appointment = appointment;
                     operationFileHandler.Write(operations);
 
                     return true;
@@ -91,8 +93,6 @@ namespace Repository
             }
             return null;
         }
-      
-      public FileHandler.OperationFileHandler operationFileHandler;
-   
+         
    }
 }

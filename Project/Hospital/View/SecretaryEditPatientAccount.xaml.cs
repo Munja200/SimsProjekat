@@ -110,7 +110,7 @@ namespace Hospital.View
             }
             if (!patientAccountController.Update(patient.Name, patient.Surname, patient.CitizenId, patient.DateOfBirth, 
                 patient.Email, patient.PhoneNumber, patient.Username, patient.Password, patient.IsGuest, 
-                patient.HealthCardId, null, patient.Address, patient.Gender))
+                patient.HealthCardId, null, null, patient.Address, patient.Gender))
             {
                 MessageBox.Show("Nije uspela izmena", "Error");
             }

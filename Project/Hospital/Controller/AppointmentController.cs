@@ -8,7 +8,16 @@ namespace Controller
     public class AppointmentController
     {
         public List<Appointment> appointments;
-        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
+
+        public Service.AppointmentService appointmentService;
+
+        public AppointmentController(AppointmentService appointmentService)
+        {
+            this.appointmentService = appointmentService;
+        }
+
+        public bool CreateAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType,
+            Doctor doctor, Room room, PatientAccount patientAccount)
         {
             return appointmentService.CreateAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
@@ -18,7 +27,8 @@ namespace Controller
             return appointmentService.DeleteAppointment(id);
         }
 
-        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, Doctor doctor, Room room, PatientAccount patientAccount)
+        public bool EditAppointment(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType,
+            Doctor doctor, Room room, PatientAccount patientAccount)
         {
             return appointmentService.EditAppointment(id, startTime, endTime, duration, scheduled, appointmetntType, doctor, room, patientAccount);
         }
@@ -44,16 +54,11 @@ namespace Controller
 
         }
 
-        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, PatientAccount patientAccount, Doctor doctor, Room room)
+        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType, 
+            PatientAccount patientAccount, Doctor doctor, Room room)
         {
             return appointmentService.CreateRenovation(id, startTime, endTime, duration, scheduled, appointmetntType, patientAccount, doctor, room);
         }
 
-        public Service.AppointmentService appointmentService;
-
-        public AppointmentController(AppointmentService appointmentService)
-        {
-            this.appointmentService = appointmentService;
-        }
     }
 }

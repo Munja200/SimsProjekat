@@ -1,9 +1,6 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Model;
 
 namespace Hospital.Model
 {
@@ -18,8 +15,10 @@ namespace Hospital.Model
         public bool IsNotValid { get; set; }
         public string ReasonForInvalidity { get; set; }
 
+
         [Newtonsoft.Json.JsonConstructor]
-        public Drug(List<Ingredient> ingredients, int id, Equipment equipment, List<String> replacements, string @using, bool isValid, string reasonForInvalidity)
+        public Drug(List<Ingredient> ingredients, int id, Equipment equipment, List<String> replacements, string @using, bool isValid, 
+            string reasonForInvalidity)
         {
             this.Ingredients = ingredients;
             this.Id = id;
@@ -44,6 +43,7 @@ namespace Hospital.Model
                 this.Equipment.serialize = false;
             return true;
         }
+
 
     }
 }

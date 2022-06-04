@@ -1,0 +1,58 @@
+﻿<Page x:Class="Hospital.View.PageHomeDoctor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Hospital.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" d:DesignWidth="430"
+      Title="PageHomeDoctor">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Images/heart.png" Width="430" Grid.ColumnSpan="5" />
+
+        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="1" Background="Transparent" Click="ImageExaminationClick">
+            <Grid>
+                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Left"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Examination</Label>
+            </Grid>
+        </Button>
+        <Button BorderThickness="0" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="1" Background="Transparent" Click="ImageSelfTermsClick">
+            <Grid>
+                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Right"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Self Terms</Label>
+            </Grid>
+        </Button>
+        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageWeekRequestClick">
+            <Grid>
+                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Center" Margin="0,2,0,-4"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold" Margin="0,53,0,0">Week</Label>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold" Margin="0,78,0,0">Requests</Label>
+            </Grid>
+        </Button>
+        <Button BorderThickness="0" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageDrugsClick" >
+            <Grid>
+                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Right"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Drugs</Label>
+            </Grid>
+        </Button>
+
+    </Grid>
+</Page>
