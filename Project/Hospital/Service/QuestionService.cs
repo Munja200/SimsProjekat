@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.Service
 {
-    class QuestionService
+    public class QuestionService
     {
         private const int NumberOfInterviewerQuestions = 9;
         public QuestionRepository questionRepository;
@@ -25,42 +25,16 @@ namespace Hospital.Service
 
         private List<Question> GetAllQuestionForEmployees()
         {
-            List<Question> questions = new List<Question>();
-            foreach (Question question in this.GetAll())
-            {
-                if (question.Employee != null)
-                {
-                    questions.Add(question);
-                }
-            }
-            return questions;
+            return questionRepository.GetAllQuestionForEmployee();
         }
         private List<Question> GetAllQuestionForHospital()
-        {
-            List<Question> questions = new List<Question>();
-            foreach (Question question in this.GetAll())
-            {
-                if (question.Employee == null)
-                {
-                    questions.Add(question);
-                }
-            }
-            return questions;
+        {      
+            return questionRepository.GetAllQuestionForHospital();
         }
 
         private List<Question> GetAllByEmployee(int id)
         {
-            List<Question> newQuestions = new List<Question>();
-
-            foreach (Question question in this.GetAllQuestionForEmployees())
-            {
-                if (question.Employee.CitizenId.Equals(id))
-                {
-                    newQuestions.Add(question);
-                }
-            }
-
-            return newQuestions;
+            return questionRepository.GetAllByEmployee(id);   
         }
         
         private int CountGrades(int grade, List<Question> questions)
@@ -75,17 +49,9 @@ namespace Hospital.Service
             return number;
         }
 
-        private List<Question> GetAllByQuestionNumber(int questionNumber, int id)
+        private List<Question> GetAllByQuestionNumber(int questionNumber,List<Question> questions)
         {
-            List<Question> questions = new List<Question>();
-
-            foreach (Question question in this.GetAllByEmployee(id))
-            {
-                if (question.QuestionNumber == questionNumber)
-                    questions.Add(question);
-            }
-
-            return questions;
+            return questionRepository.GetAllByQuestionNumber(questionNumber, questions);
         }
 
         private float AverageQuestionGrade(List<Question> questions)
@@ -107,21 +73,21 @@ namespace Hospital.Service
                 return 0;
             return sum / counter;
         }
-        private String GetQuestionText(int questionNumber, int id)
+        private String GetQuestionText(int questionNumber, List<Question> oldQuestions)
         {
 
-            List<Question> question = this.GetAllByQuestionNumber(questionNumber, id);
-            if (question.Count == 0)
+            List<Question> questions = this.GetAllByQuestionNumber(questionNumber, oldQuestions);
+            if (questions.Count == 0)
                 return "";
-            return question[0].QuestionText;
+            return questions[0].QuestionText;
         }
 
-        private Results GetResultForOneQuestion(int questionNumber, int id)
+        private Results GetResultForOneQuestion(int questionNumber, List<Question> oldQuestions)
         {
             Results result = new Results();
-            result.AverageGrades = AverageQuestionGrade(this.GetAllByQuestionNumber(questionNumber, id));
-            result.Question = GetQuestionText(questionNumber, id);
-            List<Question> questions = this.GetAllByQuestionNumber(questionNumber, id);
+            result.AverageGrades = AverageQuestionGrade(this.GetAllByQuestionNumber(questionNumber, oldQuestions));
+            result.Question = GetQuestionText(questionNumber, oldQuestions);
+            List<Question> questions = this.GetAllByQuestionNumber(questionNumber, oldQuestions);
             result.CountOne = CountGrades(1, questions);
             result.CountTwo = CountGrades(2, questions);
             result.CountThree = CountGrades(3, questions);
@@ -137,17 +103,24 @@ namespace Hospital.Service
             List<Results> results = new List<Results>();
 
             if (employeeRepository.GetById(employee.CitizenId) == null)
-            {
                 return results;
-            }
-
+          
             for (int i = 1; i <= NumberOfInterviewerQuestions; i++)
-            {
-                results.Add(GetResultForOneQuestion(i, employee.CitizenId));
-            }
+                results.Add(GetResultForOneQuestion(i, this.GetAllByEmployee(employee.CitizenId)));    
 
             return results;
         }
+
+
+        public List<Results> GetResultsForHospital()
+        {
+            List<Results> results = new List<Results>();
+            for (int i = 1; i <= NumberOfInterviewerQuestions; i++)
+                results.Add(GetResultForOneQuestion(i, this.GetAllQuestionForHospital()));
+
+            return results;
+        }
+
 
         public float GetTotalGrade(List<Results> results)
         {

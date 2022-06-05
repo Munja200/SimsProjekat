@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.Model
 {
-    class Results
+    public class Results
     {
         public float AverageGrades { get; set; }
         public String Question { get; set; }

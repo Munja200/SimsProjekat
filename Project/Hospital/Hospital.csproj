@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\DrugController.cs" />
+    <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\ExaminationController.cs" />
     <Compile Include="Controller\EquipmentController.cs" />
     <Compile Include="Controller\EquipmentTransferController.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Controller\OperationTypeController.cs" />
     <Compile Include="Controller\PatientAccountController.cs" />
     <Compile Include="Controller\PrescriptionController.cs" />
+    <Compile Include="Controller\QuestionController.cs" />
     <Compile Include="Controller\RenovationController.cs" />
     <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\RoomController.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Controller\WeekRequestController.cs" />
     <Compile Include="FileHandler\AppointmnetFileHandler.cs" />
     <Compile Include="FileHandler\DrugFileHandler.cs" />
+    <Compile Include="FileHandler\EmployeeFileHandler.cs" />
     <Compile Include="FileHandler\ExaminationFileHandler.cs" />
     <Compile Include="FileHandler\InstructionsFileHandler.cs" />
     <Compile Include="FileHandler\LogInFileHandler.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="FileHandler\OperationTypeFileHandler.cs" />
     <Compile Include="FileHandler\PatientAccountFileHandler.cs" />
     <Compile Include="FileHandler\PrescriptionFileHandler.cs" />
+    <Compile Include="FileHandler\QuestionFileHandler.cs" />
     <Compile Include="FileHandler\RenovationFileHandler.cs" />
     <Compile Include="FileHandler\ReportFileHandler.cs" />
     <Compile Include="FileHandler\EquipmentFileHandler.cs" />
@@ -116,10 +120,12 @@
     <Compile Include="Model\PatientAccount.cs" />
     <Compile Include="Model\Prescription.cs" />
     <Compile Include="Model\Purpose.cs" />
+    <Compile Include="Model\Question.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
     <Compile Include="Model\Renovation.cs" />
     <Compile Include="Model\RenovationType.cs" />
     <Compile Include="Model\Report.cs" />
+    <Compile Include="Model\Results.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\RoomEquipment.cs" />
     <Compile Include="Model\RoomSchedule.cs" />
@@ -133,6 +139,7 @@
     <Compile Include="Model\WorkingTime.cs" />
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\DrugRepository.cs" />
+    <Compile Include="Repository\EmployeeRepository.cs" />
     <Compile Include="Repository\ExaminationRepository.cs" />
     <Compile Include="Repository\InstructionsRepository.cs" />
     <Compile Include="Repository\LogInRepository.cs" />
@@ -140,6 +147,7 @@
     <Compile Include="Repository\OperationTypeRepository.cs" />
     <Compile Include="Repository\PatientAccountRepository.cs" />
     <Compile Include="Repository\PrescriptionRepository.cs" />
+    <Compile Include="Repository\QuestionRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs" />
     <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
@@ -147,6 +155,7 @@
     <Compile Include="Repository\WeekRequestRepository.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DrugService.cs" />
+    <Compile Include="Service\EmployeeService.cs" />
     <Compile Include="Service\ExaminationService.cs" />
     <Compile Include="Service\InstructionsService.cs" />
     <Compile Include="Service\LogInService.cs" />
@@ -154,6 +163,7 @@
     <Compile Include="Service\OperationTypeService.cs" />
     <Compile Include="Service\PatientAccountService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
+    <Compile Include="Service\QuestionService.cs" />
     <Compile Include="Service\RenovationService.cs" />
     <Compile Include="Service\ReportService.cs" />
     <Compile Include="Repository\EquipmentRepository.cs" />
@@ -220,6 +230,9 @@
     </Compile>
     <Compile Include="View\ExaminationEditReport.xaml.cs">
       <DependentUpon>ExaminationEditReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GradesWindow.xaml.cs">
+      <DependentUpon>GradesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\IssuingInstructions.xaml.cs">
       <DependentUpon>IssuingInstructions.xaml</DependentUpon>
@@ -351,6 +364,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExaminationEditReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GradesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -558,5 +575,9 @@
   <ItemGroup>
     <Resource Include="Resources\Renovation.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\QuestionGrades.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

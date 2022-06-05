@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hospital.Repository
 {
-    class EmployeeRepository
+    public class EmployeeRepository
     {
         public List<Employee> employees;
 

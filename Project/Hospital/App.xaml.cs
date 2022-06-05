@@ -42,6 +42,9 @@ namespace Hospital
 
         public InstructionsController instructionsController { get; set; }
         
+        public QuestionController questionController { get; set; }
+        public EmployeeController employeeController { get; set; }
+
         public LogInController logInController { get; set; }
         public Employee Employee { get; set; }
         public string Password { get; set; }
@@ -119,6 +122,13 @@ namespace Hospital
             renovationController = new RenovationController(renovationService);
             new ThreadRenovationService(roomEquipmentService, roomService, renovationService);
 
+            EmployeeRepository employeeRepository = new EmployeeRepository();
+            EmployeeService employeeService = new EmployeeService(employeeRepository);
+            employeeController = new EmployeeController(employeeService);
+
+            QuestionRepository questionRepository = new QuestionRepository(employeeRepository);
+            QuestionService questionService = new QuestionService(questionRepository);
+            questionController = new QuestionController(questionService);
 
         }
     }
