@@ -9,6 +9,8 @@ namespace Hospital.Service
 {
     public class OperationTypeService
     {
+        public Repository.OperationTypeRepository operationtypeRepository;
+
         public OperationTypeService(OperationTypeRepository operationtypeRepository)
         {
             this.operationtypeRepository = operationtypeRepository;
@@ -39,7 +41,6 @@ namespace Hospital.Service
             return operationtypeRepository.EditOperationType(oc, od);
         }
 
-        public Repository.OperationTypeRepository operationtypeRepository;
 
     }
 

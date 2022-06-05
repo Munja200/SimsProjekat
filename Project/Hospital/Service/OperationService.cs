@@ -6,6 +6,8 @@ namespace Service
 {
     public class OperationService
     {
+        public Repository.OperationRepository operationRepository;
+
         public OperationService(OperationRepository operationRepository)
         {
             this.operationRepository = operationRepository;
@@ -35,8 +37,6 @@ namespace Service
         {
             return operationRepository.EditOperation(id, duration, operationType, specialist, room, appointment);
         }
-
-        public Repository.OperationRepository operationRepository;
 
     }
 }

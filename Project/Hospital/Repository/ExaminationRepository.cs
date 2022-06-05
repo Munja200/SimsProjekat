@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hospital.Model;
 using Model;
+using Repository;
 
 namespace Hospital.Repository
 {
@@ -25,7 +26,18 @@ namespace Hospital.Repository
             if (examinationFileHandler.Read() == null)
                 return examinations;
 
-            examinations = examinationFileHandler.Read();
+            AppointmentRepository appointmentRepository = new AppointmentRepository();
+            List<Examination> newExaminations = examinationFileHandler.Read();
+
+            examinations.Clear();
+            appointmentRepository.GetAll();
+
+            foreach (Examination newExamination in newExaminations)
+            {
+                if (newExamination.Appointment != null)
+                    newExamination.Appointment = appointmentRepository.GetAppointmentById(newExamination.Appointment.Id);
+                examinations.Add(newExamination);
+            }
 
             return examinations;
         }

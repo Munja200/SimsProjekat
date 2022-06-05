@@ -9,6 +9,9 @@ namespace Controller
    {
         private readonly OperationService _service;
 
+        public Service.OperationService operationService;
+
+
         public OperationController(OperationService service)
         {
             _service = service;
@@ -39,9 +42,6 @@ namespace Controller
         {
             return _service.GetOperationById(id);
         }
-
-
-        public Service.OperationService operationService;
    
    }
 }

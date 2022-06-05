@@ -13,8 +13,14 @@ namespace Hospital.View
     public partial class InvalidityDrug : Window
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         private DrugController drugController;
         private Drug drug;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public Drug Drug
         {
@@ -26,11 +32,6 @@ namespace Hospital.View
             }
         }
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public InvalidityDrug(Drug drug)
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace Hospital.View
             App app = Application.Current as App;
             var drugW = Application.Current.Windows.OfType<ListDrugs>().FirstOrDefault();
             Drug = drug;
+
             drugController = app.drugController;
 
             name.Content = drug.Equipment.Name;

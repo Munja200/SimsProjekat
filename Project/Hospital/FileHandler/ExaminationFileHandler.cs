@@ -23,6 +23,13 @@ namespace Hospital.FileHandler
 
         public void Write(List<Examination> examinations)
         {
+            foreach (Examination examination in examinations)
+            {
+                if (examination.Appointment != null)
+                    examination.Appointment.serialize = true;
+                examination.serialize = true;
+            }
+
             string serializedExaminations = Newtonsoft.Json.JsonConvert.SerializeObject(examinations);
             System.IO.File.WriteAllText(path, serializedExaminations);
 

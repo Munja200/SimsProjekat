@@ -25,24 +25,16 @@
             <ColumnDefinition  />
         </Grid.ColumnDefinitions>
 
-        <Rectangle Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="5" >
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF09AA96" Offset="0"/>
-                    <GradientStop Color="#FFC0EBF1" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
         <Label Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18"  FontWeight="Bold" Grid.Column="1" Margin="55,0,0,0" >My Hospital</Label>
         <Image Grid.Row="0" HorizontalAlignment="Left" Source="Images/hospital.ico" Width="32" Grid.Column="3" Margin="7,-2,0,2" />
         <Button BorderThickness="0"  Grid.Column="0" Grid.Row="0" Background="Transparent" Click="ImageMenuClick">
             <Image Source="Images/menu.png" Height="35" Width="56" HorizontalAlignment="Left"/>
         </Button>
-        <Line  Grid.Row="1" Grid.ColumnSpan="5" HorizontalAlignment="Left" VerticalAlignment="Top"
+        <Line  Grid.Row="0" Grid.ColumnSpan="5" VerticalAlignment="Bottom"
             X1="430" Y1="0"  
             X2="0" Y2="0"  
             Stroke="Black"  
-            StrokeThickness="4"></Line>
+            StrokeThickness="3"></Line>
         <Button  Grid.Column="0" Grid.Row="6" Background="Transparent" Click="ImageNotificationClick">
             <Image Source="Images/notification.png"  Height="58" Width="56" HorizontalAlignment="Left"/>
         </Button>
@@ -64,35 +56,14 @@
             Stroke="Black"  
             StrokeThickness="4"></Line>
 
-
-
-        <Image Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Images/heart.png" Width="430" Grid.ColumnSpan="5" />
-
-        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="1" Background="Transparent" Click="ImageExaminationClick">
-            <Grid>
-                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Left"/>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Examination</Label>
-            </Grid>
-        </Button>
-        <Button BorderThickness="0" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="1" Background="Transparent" Click="ImageSelfTermsClick">
-            <Grid>
-                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Right"/>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Self Terms</Label>
-            </Grid>
-        </Button>
-        <Button BorderThickness="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageWeekRequestClick">
-            <Grid>
-                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Center" Margin="0,2,0,-4"/>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold" Margin="0,53,0,0">Week</Label>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold" Margin="0,78,0,0">Requests</Label>
-            </Grid>
-        </Button>
-        <Button BorderThickness="0" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="180" Width="180" Grid.Row="3" Background="Transparent" Click="ImageDrugsClick" >
-            <Grid>
-                <Image Source="Images/notes.png"  Height="180" Width="180" HorizontalAlignment="Right"/>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="DemiBold">Drugs</Label>
-            </Grid>
-        </Button>
+        <Frame x:Name="Home" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="5">
+            <Frame.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF09AA96" Offset="0"/>
+                    <GradientStop Color="#FFC0EBF1" Offset="1"/>
+                </LinearGradientBrush>
+            </Frame.Background>
+        </Frame>
 
     </Grid>
 

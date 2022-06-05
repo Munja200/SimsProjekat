@@ -22,32 +22,42 @@ namespace Hospital.View
         public HomeDoctor()
         {
             InitializeComponent();
+            Home.Content = new PageHomeDoctor();
+            this.DataContext = this;
         }
 
         public void ImageMenuClick(object sender, RoutedEventArgs e)
         {
-            new MenuDoctor().Show();
-            this.Close();
+            //new MenuDoctor().Show();
+            //this.Close();
+            Home.Content = new PageMenuDoctor();
+
         }
 
         public void ImageNotificationClick(object sender, RoutedEventArgs e)
         {
+            Home.Content = new PageNotification();
 
         }
 
         public void ImageMessageClick(object sender, RoutedEventArgs e)
         {
+            Home.Content = new PageMessage();
 
         }
 
         public void ImageHomeClick(object sender, RoutedEventArgs e)
         {
-            new HomeDoctor().Show();
-            this.Close();
+            //new HomeDoctor().Show();
+            //this.Close();
+
+            Home.Content = new PageHomeDoctor();
+
         }
 
         public void ImageDoctorClick(object sender, RoutedEventArgs e)
         {
+            Home.Content = new PageMyAccount();
 
         }
 
@@ -55,7 +65,7 @@ namespace Hospital.View
         {
 
         }
-
+        /*
         public void ImageExaminationClick(object sender, RoutedEventArgs e)
         {
             new ShowExamination().Show();
@@ -79,7 +89,7 @@ namespace Hospital.View
             new ListDrugs().Show();
             this.Close();
         }
-
+        */
 
     }
 }

@@ -118,7 +118,7 @@ namespace Hospital.View
 
         private void ClickLogOut(object sender, RoutedEventArgs e)
         {
-            new LogIn().Show();
+            new MainWindow().Show();
             this.Close();
         }
 

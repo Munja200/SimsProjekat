@@ -11,16 +11,19 @@ namespace Hospital.Model
         public DateTime EndTime { get; set; }
         public string Description { get; set; }
         public State State { get; set; }
+        public String StatusComment { get; set; }
         public bool Emergency { get; set; }
 
-        public WeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, bool emergency)
+        public WeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state,
+            string statusComment, bool emergency)
         {
             Id = id;
-            this.Specialist = specialist;
+            Specialist = specialist;
             StartTime = startTime;
             EndTime = endTime;
             Description = description;
-            this.State = state;
+            State = state;
+            StatusComment = statusComment;
             Emergency = emergency;
         }
 

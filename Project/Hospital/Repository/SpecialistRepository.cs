@@ -11,23 +11,28 @@ namespace Hospital.Repository
     public class SpecialistRepository
     {
         public List<Specialist> specialists;
+        public FileHandler.SpecialistFileHandler specialistFileHandler;
+
         public SpecialistRepository()
         {
             specialistFileHandler = new FileHandler.SpecialistFileHandler();
             specialists = new List<Specialist>();
         }
-        public bool CreateSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address)
+        public bool CreateSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username,
+            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber,
+            Address address)
         {
-            specialists.Add(new Specialist(speciality, averageRating, role, workingTime, username, password, name, surname, citid, gender, dateOfBirth, email, phoneNumber, address));
+            specialists.Add(new Specialist(speciality, averageRating, role, workingTime, username, password, name, surname, citid, gender,
+                dateOfBirth, email, phoneNumber, address));
             specialistFileHandler.Write(specialists);
             return true;
         }
 
-        public bool DeleteSpecialist(Speciality speciality)
+        public bool DeleteSpecialist(int citizenId)
         {
             foreach (Specialist specialist in specialists)
             {
-                if (specialist.Speciality.Equals(speciality))
+                if (specialist.CitizenId.Equals(citizenId))
                     specialists.Remove(specialist);
                     specialistFileHandler.Write(specialists);
                     return true;
@@ -36,13 +41,26 @@ namespace Hospital.Repository
             return false;
         }
 
-        public bool EditSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username, string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber, Address address)
+        public bool EditSpecialist(Speciality speciality, float averageRating, EmployeeRole role, WorkingTime workingTime, string username,
+            string password, string name, string surname, int citid, Gender gender, DateTime dateOfBirth, string email, string phoneNumber,
+            Address address)
         {
 
             foreach (Specialist specialist in specialists)
             {
-                if (specialist.Speciality.Equals(speciality))
-                {
+                SpecialistsSpecialityEquals(specialist, speciality,  averageRating, role, workingTime, username, password, name, surname,
+                    citid, gender, dateOfBirth, email, phoneNumber, address);
+            }
+
+            return false;
+        }
+
+        public bool SpecialistsSpecialityEquals(Specialist specialist, Speciality speciality, float averageRating, EmployeeRole role, 
+            WorkingTime workingTime, string username, string password, string name, string surname, int citid, Gender gender, 
+            DateTime dateOfBirth, string email, string phoneNumber, Address address)
+        {
+            if (specialist.Speciality.Equals(speciality))
+            {
 
                     specialist.Speciality = speciality;
                     specialist.AverageRating = averageRating;
@@ -59,10 +77,8 @@ namespace Hospital.Repository
                     specialist.PhoneNumber = phoneNumber;
                     specialist.Address = address;
 
-                    return true;
-                }
+                return true;
             }
-
             return false;
         }
 
@@ -76,16 +92,15 @@ namespace Hospital.Repository
             return specialists;
         }
 
-        public Specialist GetSpecialistById(Speciality speciality)
+        public Specialist GetSpecialistById(int citizenId)
         {
             foreach (Specialist specialist in specialists)
             {
-                if (specialist.Speciality.Equals(speciality))
+                if (specialist.CitizenId.Equals(citizenId))
                     return specialist;
             }
             return null;
         }
 
-        public FileHandler.SpecialistFileHandler specialistFileHandler;
     }
 }

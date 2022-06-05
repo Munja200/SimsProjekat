@@ -11,7 +11,9 @@ namespace Model
         public WorkingTime WorkingTime { get; set; }
         public bool Serialize { get; set; }
 
-        public Employee(String name, String surname, int citizenId, Gender gender, DateTime dateOfBirth, String email, String phoneNumber, Address address, String username, String password, EmployeeRole role, WorkingTime workingTime) : base(name, surname, citizenId, gender, dateOfBirth, email, phoneNumber, address, username, password)
+        public Employee(String name, String surname, int citizenId, Gender gender, DateTime dateOfBirth, String email, String phoneNumber,
+            Address address, String username, String password, EmployeeRole role, WorkingTime workingTime) : 
+            base(name, surname, citizenId, gender, dateOfBirth, email, phoneNumber, address, username, password)
         {
             Role = role;
             WorkingTime = workingTime;

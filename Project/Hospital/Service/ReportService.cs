@@ -7,6 +7,8 @@ namespace Hospital.Service
 {
     public class ReportService
     {
+        public Repository.ReportRepository reportRepository;
+
         public ReportService(ReportRepository reportRepository)
         {
             this.reportRepository = reportRepository;
@@ -37,6 +39,5 @@ namespace Hospital.Service
             return reportRepository.EditReport(written, description, id);
         }
 
-        public Repository.ReportRepository reportRepository;
     }
 }

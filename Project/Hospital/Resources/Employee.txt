@@ -2,7 +2,7 @@
 	"Role" : 0, 
 	"WorkingTime" : {"StartTime" : "2022-05-03T10:00:00", "EndTime" : "2022-05-03T11:00:00", "Duration" : 8, "Employee" :[]},
 	"Username": "Doktor",
-	"Password" : "doktor123", 
+	"Password" : "ftn", 
 	"Name" : "Milica",
 	"Surname" : "Savic",
 	"CitizenId" : 3,

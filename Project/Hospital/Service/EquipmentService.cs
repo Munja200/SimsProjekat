@@ -31,12 +31,12 @@ namespace Service
             return equipmentRepository.Delete(id);
       }
       
-      public bool Edit(int id, String name, String manufacturer, int quantity, String description, Medicine medicine)
+      public bool Edit(int id, String name, String manufacturer, int quantity, String description)
       {
-            return equipmentRepository.Edit(id, name , manufacturer, quantity, description, medicine);
+            return equipmentRepository.Edit(id, name , manufacturer, quantity, description);
       }
       
-      public bool Create(int id, String name, String manufacturer, int quantity, String description, Medicine medicine)
+      public bool Create(int id, String name, String manufacturer, int quantity, String description)
       {
             if (quantity <= 0) 
             {
@@ -48,11 +48,11 @@ namespace Service
                 if (e.Name.ToLower().Equals(name.ToLower()))
                 {
                     int pom = e.Quantity + quantity;
-                    return equipmentRepository.Edit(e.Id, e.Name, e.Manufacturer, pom, e.Description, e.Medicine);
+                    return equipmentRepository.Edit(e.Id, e.Name, e.Manufacturer, pom, e.Description);
                 }
             }
             int ids = equipmentRepository.GetAll().Count() == 0 ? 0 : equipmentRepository.GetAll().Max(Equipment => Equipment.Id);
-            return equipmentRepository.Create(++ids, name, manufacturer, quantity, description, medicine);
+            return equipmentRepository.Create(++ids, name, manufacturer, quantity, description);
       }
       
       public Repository.EquipmentRepository equipmentRepository;

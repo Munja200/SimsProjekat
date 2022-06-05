@@ -7,18 +7,19 @@ namespace Hospital.Repository
 {
     public class WeekRequestRepository
     {
-        public List<WeekRequest> requests;
+        public List<WeekRequest> weekRequests;
         public FileHandler.WeekRequestFileHandler weekRequestFileHandler;
 
         public WeekRequestRepository()
         {
             weekRequestFileHandler = new FileHandler.WeekRequestFileHandler();
-            requests = new List<WeekRequest>();
+            weekRequests = new List<WeekRequest>();
         }
-        public bool CreateWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, bool emergency)
+        public bool CreateWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, 
+            String comment,  bool emergency)
         {
-            requests.Add(new WeekRequest(GenerateId(), specialist, startTime, endTime, description, state, emergency));
-            weekRequestFileHandler.Write(requests);
+            weekRequests.Add(new WeekRequest(GenerateId(), specialist, startTime, endTime, description, state, comment, emergency));
+            weekRequestFileHandler.Write(weekRequests);
             return true;
         }
 
@@ -26,7 +27,7 @@ namespace Hospital.Repository
         {
             int id = 0;
 
-            foreach (WeekRequest weekRequest in requests)
+            foreach (WeekRequest weekRequest in weekRequests)
             {
                 if (weekRequest.Id > id)
                 {
@@ -39,58 +40,79 @@ namespace Hospital.Repository
 
         public bool DeleteWeekRequest(int id)
         {
-            foreach (WeekRequest weekRequest in requests)
+            foreach (WeekRequest weekRequest in weekRequests)
             {
                 if (weekRequest.Id.Equals(id))
                 {
-                    requests.Remove(weekRequest);
-                    weekRequestFileHandler.Write(requests);
+                    weekRequests.Remove(weekRequest);
+                    weekRequestFileHandler.Write(weekRequests);
                     return true;
                 }
             }
             return false;
         }
 
-        public bool EditWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state, bool emergency)
+        public bool EditWeekRequest(int id, Specialist specialist, DateTime startTime, DateTime endTime, string description, State state,
+            String comment, bool emergency)
         {
 
-            foreach (WeekRequest wr in requests)
+            foreach (WeekRequest weekRequest in weekRequests)
             {
-                if (wr.Id.Equals(id))
-                {
-                    wr.Id = id;
-                    wr.Specialist = specialist;
-                    wr.StartTime = startTime;
-                    wr.EndTime = endTime;
-                    wr.Description = description;
-                    wr.State = state;
-                    wr.Emergency = emergency;
-
-                    weekRequestFileHandler.Write(requests);
-
-                    return true;
-                }
+                WeekRequestEqualsId(weekRequest, id, specialist, startTime, endTime, description, state, comment, emergency);
             }
 
+            return false;
+        }
+
+        public bool WeekRequestEqualsId(WeekRequest weekRequest, int id, Specialist specialist, DateTime startTime, DateTime endTime,
+            string description, State state, String comment, bool emergency)
+        {
+            if (weekRequest.Id.Equals(id))
+            {
+                weekRequest.Id = id;
+                weekRequest.Specialist = specialist;
+                weekRequest.StartTime = startTime;
+                weekRequest.EndTime = endTime;
+                weekRequest.Description = description;
+                weekRequest.State = state;
+                weekRequest.StatusComment = comment;
+                weekRequest.Emergency = emergency;
+
+                weekRequestFileHandler.Write(weekRequests);
+
+                return true;
+            }
             return false;
         }
 
         public List<WeekRequest> GetAll()
         {
             if (weekRequestFileHandler.Read() == null)
-                return requests;
+                return weekRequests;
 
-            requests = weekRequestFileHandler.Read();
+            weekRequests = weekRequestFileHandler.Read();
 
-            return requests;
+            return weekRequests;
+        }
+
+        public List<WeekRequest> GetBySpecialistsCitizenId(int specialistCitizenId)
+        {
+            List<WeekRequest> specialistsWeekRequests = new List<WeekRequest>();
+
+            foreach (WeekRequest weekRequest in weekRequests)
+            {
+                if (weekRequest.Specialist.CitizenId.Equals(specialistCitizenId))
+                    specialistsWeekRequests.Add(weekRequest);
+            }
+            return specialistsWeekRequests;
         }
 
         public WeekRequest GetWeekRequestById(int id)
         {
-            foreach (WeekRequest wr in requests)
+            foreach (WeekRequest weekRequest in weekRequests)
             {
-                if (wr.Id.Equals(id))
-                    return wr;
+                if (weekRequest.Id.Equals(id))
+                    return weekRequest;
             }
             return null;
         }

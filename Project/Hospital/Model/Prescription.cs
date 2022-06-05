@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
 
 namespace Hospital.Model
 {
@@ -16,7 +11,10 @@ namespace Hospital.Model
         public int Duration { get; set; }
         public Drug Drug { get; set; }
 
-        public Prescription() { StartTime = DateTime.Now; }
+        public Prescription() 
+        { 
+            StartTime = DateTime.Now; 
+        }
 
         public Prescription(int id, int frequency, int interval, DateTime startTime, int duration, Drug drug)
         {

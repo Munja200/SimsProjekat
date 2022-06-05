@@ -97,8 +97,8 @@ namespace Hospital.View
             City city = new City(nameCity, country);
             Address address = new Address(nameStreet, numberBuilding, city);
             PatientAccount pat;
-            pat = new PatientAccount(nameM, surnameM, jmbgM, genderM, dateOfBirthM, emailM, phoneNumberM, address, usernameM, passwordM, guestM, healthCardIdM, null);
-            patientAccountController.Create(nameM, surnameM, jmbgM, dateOfBirthM, emailM, phoneNumberM, usernameM, passwordM, guestM, healthCardIdM, null, address, genderM);
+            pat = new PatientAccount(nameM, surnameM, jmbgM, genderM, dateOfBirthM, emailM, phoneNumberM, address, usernameM, passwordM, guestM, healthCardIdM, null, null);
+            patientAccountController.Create(nameM, surnameM, jmbgM, dateOfBirthM, emailM, phoneNumberM, usernameM, passwordM, guestM, healthCardIdM, null,null, address, genderM);
             this.Close();
         }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hospital.Model;
-using Model;
+﻿using Hospital.Model;
 
 namespace Model
 {
@@ -26,5 +20,32 @@ namespace Model
             Prescription = prescription;
             Instructions = instructions;
         }
+
+        public bool serialize { get; set; }
+        public bool ShouldSerializeserialize()
+        {
+            this.serialize = true;
+            return false;
+        }
+
+        public bool ShouldSerializeAppointment()
+        {
+            if (this.Appointment != null)
+                this.Appointment.serialize = false;
+            return serialize;
+        }
+        public bool ShouldSerializePrescription()
+        {
+            return serialize;
+        }
+        public bool ShouldSerializeReport()
+        {
+            return serialize;
+        }
+        public bool ShouldSerializeInst5ructions()
+        {
+            return serialize;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -25,6 +26,11 @@ namespace Hospital.View
         public ObservableCollection<ComboItem<Specialist>> Specialists { get; set; }
         public ObservableCollection<string> PurposeT { get; set; }
 
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public Instructions Instructions
         {
             get { return instructions; }
@@ -44,11 +50,6 @@ namespace Hospital.View
             }
         }
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public IssuingInstructions(Examination examination)
         {
             InitializeComponent();
@@ -58,15 +59,20 @@ namespace Hospital.View
             var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
             Examination = examination;
 
-            examinationController = app.examinationController;
-            instructionsController = app.instructionsController;
-            specialistController = app.specialistController;
+            GetControllers(app);
 
             PurposeT = new ObservableCollection<string>();
             PurposeT.Add("Operation");
             PurposeT.Add("Examination");
 
             Load();
+        }
+
+        public void GetControllers(App app) 
+        {
+            examinationController = app.examinationController;
+            instructionsController = app.instructionsController;
+            specialistController = app.specialistController;
         }
 
         public void Load()
@@ -83,13 +89,31 @@ namespace Hospital.View
 
         private void SubmitButton(object sender, RoutedEventArgs e)
         {
-            var examinationW = Application.Current.Windows.OfType<ShowExamination>().FirstOrDefault();
-            Examination examination = (Examination)examinationW.dataGridExaminations.SelectedItem;
             examination.Instructions = instructions;
+            bool valid = true;
 
-            examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription, examination.Instructions);
-            this.Close();
+            if (!InstructionsDuringTheExaminationPeriod()) { valid = false; }
 
+            if (valid)
+            {
+                examinationController.EditExamination(examination.Id, examination.Appointment, examination.Report, examination.Prescription,
+                    examination.Instructions);
+                this.Close();
+            }
+
+        }
+
+        public bool InstructionsDuringTheExaminationPeriod()
+        {
+            if ((DateTime.Now >= examination.Appointment.StartTime && DateTime.Now <= examination.Appointment.EndTime))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("The instructions can be issuing only during the examination date!", "Error");
+                return false;
+            }
         }
 
 

@@ -9,6 +9,8 @@ namespace Hospital.Model
     public class ComboItem<T>
     {
         public string Name { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
         public T Value { get; set; }
+        public int CitizenId { get; set; }
     }
 }
