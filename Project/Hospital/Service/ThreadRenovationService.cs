@@ -44,6 +44,7 @@ namespace Hospital.Service
             }
         }
 
+        //Ovo je rekao da treba refaktorisati
         public bool CheckListRenovation(List<Renovation> renovations) {
             bool flag = false;
             foreach (Renovation newRenovation in renovations)

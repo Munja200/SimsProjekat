@@ -62,20 +62,20 @@ namespace Hospital.Repository
             if (specialist.Speciality.Equals(speciality))
             {
 
-                specialist.Speciality = speciality;
-                specialist.AverageRating = averageRating;
-                specialist.role = role;
-                specialist.WorkingTime = workingTime;
-                specialist.Username = username;
-                specialist.Password = password;
-                specialist.Name = name;
-                specialist.Surname = surname;
-                specialist.CitizenId = citid;
-                specialist.Gender = gender;
-                specialist.DateOfBirth = dateOfBirth;
-                specialist.Email = email;
-                specialist.PhoneNumber = phoneNumber;
-                specialist.Address = address;
+                    specialist.Speciality = speciality;
+                    specialist.AverageRating = averageRating;
+                    specialist.Role = role;
+                    specialist.WorkingTime = workingTime;
+                    specialist.Username = username;
+                    specialist.Password = password;
+                    specialist.Name = name;
+                    specialist.Surname = surname;
+                    specialist.CitizenId = citid;
+                    specialist.Gender = gender;
+                    specialist.DateOfBirth = dateOfBirth;
+                    specialist.Email = email;
+                    specialist.PhoneNumber = phoneNumber;
+                    specialist.Address = address;
 
                 return true;
             }

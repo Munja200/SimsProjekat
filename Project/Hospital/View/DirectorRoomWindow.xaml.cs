@@ -137,6 +137,15 @@ namespace Hospital.View
         {
             new AddDrug().Show();
         }
+        private void InvalidDeugsRewiew(object sender, RoutedEventArgs e)
+        {
+            new DefectiveDrugWindow().Show();
+        }
+
+        private void GradesRewiew(object sender, RoutedEventArgs e)
+        {
+            new GradesWindow().Show();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
