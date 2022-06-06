@@ -6,6 +6,9 @@ namespace Controller
 {
     public class RoomEquipmentController
     {
+
+        public RoomEquipmentService roomEquipmentService;
+
         public RoomEquipmentController(RoomEquipmentService roomEquipmentService)
         {
             this.roomEquipmentService = roomEquipmentService;
@@ -54,22 +57,19 @@ namespace Controller
             return roomEquipmentService.DeleteById(id);
         }
 
-        public bool Edit(Room room, Equipment equipment, int quantity, int id)
+        public bool Edit(RoomEquipment roomEquipment)
         {
-            return roomEquipmentService.Edit(room, equipment, quantity, id);
+            return roomEquipmentService.Edit(roomEquipment);
         }
 
-        public bool Create(Room room, Equipment equipment, int quantity, int id)
+        public bool Create(RoomEquipment roomEquipment)
         {
-            return roomEquipmentService.Create(room, equipment, quantity, id);
+            return roomEquipmentService.Create(roomEquipment);
         }
 
         public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
         {
             return roomEquipmentService.MoveEquipment(equipmentTransfer);
         }
-
-        public Service.RoomEquipmentService roomEquipmentService;
-
     }
 }

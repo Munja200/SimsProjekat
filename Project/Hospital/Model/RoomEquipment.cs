@@ -8,30 +8,29 @@ namespace Model
 {
    public class RoomEquipment
    {
-      public RoomEquipment(Room room, Equipment equipment, int quantity, int id) 
-      {
+        public RoomEquipment(Room room, Equipment equipment, int quantity, int id) 
+        {
             Quantity = quantity;
             Id = id;
             Equipment = equipment;
             Room = room;
-      }
-      public int Quantity { get; set; }
-      public int Id { get; set; }
+        }
+        public int Quantity { get; set; }
+        public int Id { get; set; }
       
-      public Equipment Equipment { get; set; }
+        public Equipment Equipment { get; set; }
 
-      public Room Room { get; set; }
+        public Room Room { get; set; }
         public bool ShouldSerializeRoom()
         {
-            this.Room.serialize = false;
+            this.Room.Serialize = false;
             return true;
         }
 
         public bool ShouldSerializeEquipment()
         {
-            this.Equipment.serialize = false;
+            this.Equipment.Serialize = false;
             return true;
         }
-
     }
 }

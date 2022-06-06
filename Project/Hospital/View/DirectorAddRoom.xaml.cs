@@ -27,7 +27,7 @@ namespace Hospital.View
 
         public ObservableCollection<string> RoomT { get; set; }
         public ObservableCollection<string> State { get; set; }
-
+        public event PropertyChangedEventHandler PropertyChanged;
         private RoomController roomController;
 
         public DirectorAddRoom()
@@ -38,14 +38,18 @@ namespace Hospital.View
             App app = Application.Current as App;
             roomController = app.roomController;
 
-            RoomT = new ObservableCollection<string>();
+            Initialization();
+        }
 
+        private void Initialization() {
+            RoomT = new ObservableCollection<string>();
             RoomT.Add("office");
             RoomT.Add("operationRoom");
             RoomT.Add("emergencyRoom");
             RoomT.Add("appointmentRoom");
             RoomT.Add("sickroom");
             RoomT.Add("storage");
+
             State = new ObservableCollection<string>();
             State.Add("Aktivna");
             State.Add("Neaktivna");
@@ -71,38 +75,30 @@ namespace Hospital.View
             }
 
             RoomType roomType = (RoomType)Enum.Parse(typeof(RoomType), roomTypeR.Text);
-            String name = nameR.Text;
-            String availability = stateR.Text;
-            Room r;
+            Room room;
 
             if (!floorR.Text.Equals("") && !nameR.Text.Equals(""))
             {
-                if (availability.Equals("Aktivna"))
-                {
-                    r = new Room(0, floor, roomType, name, true);
-                }
-                else
-                {
-                    r = new Room(0, floor, roomType, name, false);
-                }
-
-                if (!roomController.CreateRoom(r.Floor, r.Name, 0, r.Availability, r.RoomType))
-                {
+                if (stateR.Text.Equals("Aktivna"))
+                    room = new Room(0, floor, roomType, nameR.Text, true);
+                else                
+                    room = new Room(0, floor, roomType, nameR.Text, false);
+                
+                if (!roomController.CreateRoom(new Room(0, room.Floor, room.RoomType, room.Name, room.Availability)))
                     MessageBox.Show("Nije uspelo dodavanje", "Error");
-                }
+                
                 this.Close();
                 return;
             }
             MessageBox.Show("Nije uspelo dodavanje", "Error");
             this.Close();
         }
-        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void Button_Close(object sender, RoutedEventArgs e)
+        private void Close(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

@@ -15,11 +15,12 @@ namespace Hospital.Service
         private Thread myThread;
         public EquipmentTransferRepository equipmentTransferRepository;
         public RoomEquipmentRepository roomEquipmentRepository;
-        private List<EquipmentTransfer> equipmentTs;
+        private List<EquipmentTransfer> equipmentTransfers;
+        
         public ThreadEquipmentService(RoomEquipmentRepository roomEquipmentRepository, EquipmentTransferRepository equipmentTransferRepository){
             this.equipmentTransferRepository = equipmentTransferRepository;
             this.roomEquipmentRepository = roomEquipmentRepository;
-            equipmentTs = new List<EquipmentTransfer>();
+            equipmentTransfers = new List<EquipmentTransfer>();
             myThread = new Thread(CheckDate);
             myThread.IsBackground = true;
             myThread.Start();
@@ -28,24 +29,29 @@ namespace Hospital.Service
         public void CheckDate() {
             while (true)
             {
-                equipmentTs = equipmentTransferRepository.GetAll();
-                bool flag = false;
-                if (equipmentTs != null) {
-                    foreach (EquipmentTransfer et in equipmentTs)
-                    {
-                        if (DateTime.Compare(et.SheduledDate.Date, DateTime.Today) == 0) {
-                            roomEquipmentRepository.MoveEquipment(et);
-                            flag = true;
-                            equipmentTransferRepository.Delete(et.Id);
-                            break;
-                        }
-                    }
-                }
-                if (!flag) {
-                    //Thread.Sleep(3600 * 1000);
+                equipmentTransfers = equipmentTransferRepository.GetAll();
+                bool flag = FindFirstEquipmentTransferForTodayDate();
+           
+                if (!flag) 
                     Thread.Sleep(30 * 1000);
-                }
             }
         }
+
+        private bool FindFirstEquipmentTransferForTodayDate() {
+            if (equipmentTransfers != null)
+            {
+                foreach (EquipmentTransfer equipmentTransfer in equipmentTransfers)
+                {
+                    if (DateTime.Compare(equipmentTransfer.SheduledDate.Date, DateTime.Today) == 0)
+                    {
+                        roomEquipmentRepository.MoveEquipment(equipmentTransfer);
+                        equipmentTransferRepository.Delete(equipmentTransfer.Id);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }

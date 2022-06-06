@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Hospital.Util;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -21,45 +22,13 @@ using System.Windows.Threading;
 
 namespace Hospital.View
 {
-    public class MTObservableCollection<T> : ObservableCollection<T>
-    {
-        public override event NotifyCollectionChangedEventHandler CollectionChanged;
-        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
-        {
-            NotifyCollectionChangedEventHandler CollectionChanged = this.CollectionChanged;
-            if (CollectionChanged != null)
-                foreach (NotifyCollectionChangedEventHandler nh in CollectionChanged.GetInvocationList())
-                {
-                    DispatcherObject dispObj = nh.Target as DispatcherObject;
-                    if (dispObj != null)
-                    {
-                        Dispatcher dispatcher = dispObj.Dispatcher;
-                        if (dispatcher != null && !dispatcher.CheckAccess())
-                        {
-                            dispatcher.BeginInvoke(
-                                (Action)(() => nh.Invoke(this,
-                                    new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset))),
-                                DispatcherPriority.DataBind);
-                            continue;
-                        }
-                    }
-                    nh.Invoke(this, e);
-                }
-        }
-    }
     public partial class DirectorRoomWindow : Window, INotifyPropertyChanged
     {
         private RoomController roomController;
         private RoomEquipmentController roomEquipmentController;
         private MTObservableCollection<Room> rooms;
-        public MTObservableCollection<Room> Rooms
-        {
-            get { return rooms; }
-            set
-            {
-                rooms = value; OnPropertyChanged("Rooms");
-            }
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DirectorRoomWindow()
         {
             InitializeComponent();
@@ -69,13 +38,21 @@ namespace Hospital.View
             roomEquipmentController = app.roomEquimpentController;
             rooms = roomController.GetAll();
         }
+        public MTObservableCollection<Room> Rooms
+        {
+            get { return rooms; }
+            set
+            {
+                rooms = value; OnPropertyChanged("Rooms");
+            }
+        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddRoom(object sender, RoutedEventArgs e)
         {
             new DirectorAddRoom().Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DeleteRoom(object sender, RoutedEventArgs e)
         {
             var viewRoomsWindow = Application.Current.Windows.OfType<DirectorRoomWindow>().FirstOrDefault();
             Room room = (Room)viewRoomsWindow.dataGridRooms.SelectedItem;
@@ -86,7 +63,7 @@ namespace Hospital.View
             }
         }
 
-        private void Button_Edit(object sender, RoutedEventArgs e)
+        private void EditButton(object sender, RoutedEventArgs e)
         {
             var viewRoomsWindow = Application.Current.Windows.OfType<DirectorRoomWindow>().FirstOrDefault();
             Room room = (Room)viewRoomsWindow.dataGridRooms.SelectedItem;
@@ -102,7 +79,7 @@ namespace Hospital.View
                 new EquipmentRoom(room).Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void AddEquipment(object sender, RoutedEventArgs e)
         {
             new DirectorAddEquipment().Show();
         }
@@ -147,7 +124,6 @@ namespace Hospital.View
             new GradesWindow().Show();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

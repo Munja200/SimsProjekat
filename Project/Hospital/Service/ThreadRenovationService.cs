@@ -34,18 +34,14 @@ namespace Hospital.Service
                 renovations = renovationService.GetAll();
                 bool flag = false;
                 if (renovations != null)
-                {
                     flag = CheckListRenovation(renovations);
-                }
+                
                 if (!flag)
-                { 
                     Thread.Sleep(30 * 1000);
-                }
             }
         }
 
-        //Ovo je rekao da treba refaktorisati
-        public bool CheckListRenovation(List<Renovation> renovations) {
+        private bool CheckListRenovation(List<Renovation> renovations) {
             bool flag = false;
             foreach (Renovation newRenovation in renovations)
             {
@@ -66,7 +62,7 @@ namespace Hospital.Service
             return flag;
         }
 
-        public void MoveAllRoomEquipment(Renovation newRenovation)
+        private void MoveAllRoomEquipment(Renovation newRenovation)
         {
             foreach (RoomEquipment roomEquipment in roomEquipmentService.GetByRoomId(newRenovation.Room.Id))
             {
@@ -75,25 +71,19 @@ namespace Hospital.Service
             roomService.DeleteRoom(newRenovation.Room.Id);
         }
 
-        public void CompleteRenovation(Renovation newRenovation)
+        private void CompleteRenovation(Renovation newRenovation)
         {
             if (newRenovation.RenovationType == RenovationType.Merger)
-            {
                 MoveAllRoomEquipment(newRenovation);
-            }
             else if (newRenovation.RenovationType == RenovationType.Sharing)
-            {
-                roomService.CreateRoom(newRenovation.Appointment.Room.Floor, newRenovation.Appointment.Room.Name + " 1", 0, true, newRenovation.Appointment.Room.RoomType);
-            }
-
+                roomService.CreateRoom(new Room(0,newRenovation.Appointment.Room.Floor, newRenovation.Appointment.Room.RoomType, newRenovation.Appointment.Room.Name + " 1", true));
+            
             roomService.EditRoomAvailability(newRenovation.Appointment.Room, true);
         }
 
-        public void ChangeRoomAvailability(Renovation newRenovation) {
+        private void ChangeRoomAvailability(Renovation newRenovation) {
             if (DateTime.Compare(newRenovation.Appointment.StartTime.Date, DateTime.Today) == 0)
-            {
                 roomService.EditRoomAvailability(newRenovation.Appointment.Room, false);
-            }
         }
     }
 }

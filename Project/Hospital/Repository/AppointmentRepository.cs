@@ -94,9 +94,7 @@ namespace Repository
                 {
                     newAppointment.Room = roomRepository.GetById(newAppointment.Room.Id);
                 }
-              
                 appointments.Add(newAppointment);
-
             }
             return appointments;
         }
@@ -112,13 +110,11 @@ namespace Repository
             return null;
         }
 
-        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType,
-            PatientAccount patientAccount, Doctor doctor, Room room)
+        public bool CreateRenovation(Appointment appointment)
         {
-            appointments.Add(new Appointment(id,startTime,endTime,duration, scheduled, appointmetntType, doctor, room,patientAccount));
+            appointments.Add(appointment);
             appointmnetFileHandler.Write(appointments);
             return true;
         }
-
     }
 }

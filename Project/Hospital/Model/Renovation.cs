@@ -21,14 +21,14 @@ namespace Hospital.Model
         public bool ShouldSerializeRoom()
         {
             if (this.Room != null)
-                this.Room.serialize = false;
+                this.Room.Serialize = false;
             return true;
         }
 
         public bool ShouldSerializeAppointment()
         {
             if (this.Appointment != null)
-                this.Appointment.serialize = false;
+                this.Appointment.Serialize = false;
             return true;
         }
     }

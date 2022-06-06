@@ -10,6 +10,7 @@ namespace Hospital.Controller
 {
     public class RenovationController
     {
+        public RenovationService renovationService;
         public RenovationController(RenovationService renovationService)
         {
             this.renovationService = renovationService;
@@ -33,8 +34,5 @@ namespace Hospital.Controller
         {
             return renovationService.Create(renovation);
         }
-
-        public Service.RenovationService renovationService;
-
     }
 }

@@ -6,22 +6,19 @@ namespace FileHandler
 {
    public class EquipmentFileHandler
    {
-      public void Write(List<Equipment> equipments)
-      {
-            foreach (Equipment eq in equipments) { eq.serialize = true; }
+        public readonly String path = @"../../Resources/Equipment.txt";
+        public void Write(List<Equipment> equipments)
+        {
+            foreach (Equipment equipment in equipments) { equipment.Serialize = true; }
             string serializedEquimpent = Newtonsoft.Json.JsonConvert.SerializeObject(equipments);
             System.IO.File.WriteAllText(path, serializedEquimpent);
         }
 
         public List<Equipment> Read()
-      {
+        {
             string serializedEquipment = System.IO.File.ReadAllText(path);
-            List<Equipment> equipment = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Equipment>>(serializedEquipment);
-            return equipment;
+            List<Equipment> equipments = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Equipment>>(serializedEquipment);
+            return equipments;
         }
-
-         public readonly String path = @"../../Resources/Equipment.txt";
-
-
     }
 }

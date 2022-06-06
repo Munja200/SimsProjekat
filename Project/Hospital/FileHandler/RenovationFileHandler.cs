@@ -13,14 +13,14 @@ namespace Hospital.FileHandler
 
         public List<Renovation> Read()
         {
-            string serializedRooms = System.IO.File.ReadAllText(path);
-            List<Renovation> renovations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Renovation>>(serializedRooms);
+            string serializedRenovation = System.IO.File.ReadAllText(path);
+            List<Renovation> renovations = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Renovation>>(serializedRenovation);
             return renovations;
         }
         public void Write(List<Renovation> renovations)
         {
-            string serializedRooms = Newtonsoft.Json.JsonConvert.SerializeObject(renovations);
-            System.IO.File.WriteAllText(path, serializedRooms);
+            string serializedRenovation = Newtonsoft.Json.JsonConvert.SerializeObject(renovations);
+            System.IO.File.WriteAllText(path, serializedRenovation);
         }
     }
 }

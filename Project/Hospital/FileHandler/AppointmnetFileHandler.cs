@@ -21,8 +21,8 @@ namespace FileHandler
             foreach (Appointment appointment in appointments)
             {
                 if (appointment.Room != null)
-                    appointment.Room.serialize = true;
-                appointment.serialize = true;
+                    appointment.Room.Serialize = true;
+                appointment.Serialize = true;
             }
 
             string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(appointments);

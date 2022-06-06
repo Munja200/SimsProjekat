@@ -41,10 +41,11 @@ namespace Hospital.View
             results = new ObservableCollection<Results>();
             questionController = app.questionController;
             employeeController = app.employeeController;
-            //Employee employee = employeeController.GetById(2);
-            //if (employee != null)
-            foreach (Results result in questionController.GetResultsForHospital()) results.Add(result); 
-
+           
+            foreach (Results result in questionController.GetResultsForHospital()) results.Add(result);
+            Initialization();
+        }
+        private void Initialization() {
             dataGridInvalidDrug.ItemsSource = results;
             total.Content = questionController.GetTotalGrade(results.ToList());
             ShowType = new ObservableCollection<string>();
@@ -54,6 +55,7 @@ namespace Hospital.View
             DoctorsOrHospital.SelectedValue = "Bolnica";
             Doctors.ItemsSource = employeeController.GetAll();
             Doctors.Visibility = Visibility.Hidden;
+
         }
 
         public String DoctorSurname
@@ -119,6 +121,9 @@ namespace Hospital.View
             }
             else {
                 Doctors.Visibility = Visibility.Hidden;
+                results.Clear();
+                foreach (Results result in questionController.GetResultsForHospital()) results.Add(result);
+                total.Content = questionController.GetTotalGrade(results.ToList());
             }
 
         }

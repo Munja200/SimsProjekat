@@ -84,7 +84,7 @@ namespace Hospital.View
                 room.Availability = false;
             }
 
-            if (!roomController.EditRoom(room.Floor, room.Name, room.Id, room.Availability, room.RoomType))
+            if (!roomController.EditRoom(new Room(room.Id, room.Floor, room.RoomType, room.Name,  room.Availability)))
             {
                 MessageBox.Show("Nije uspela izmena", "Error");
             }

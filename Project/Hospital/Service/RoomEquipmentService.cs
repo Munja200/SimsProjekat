@@ -8,17 +8,19 @@ namespace Service
 {
    public class RoomEquipmentService
    {
-      public RoomEquipmentService(RoomEquipmentRepository roomEquipmentRepository)
-      {
+
+        public RoomEquipmentRepository roomEquipmentRepository;
+        public RoomEquipmentService(RoomEquipmentRepository roomEquipmentRepository)
+        {
            this.roomEquipmentRepository = roomEquipmentRepository;
-      }
-      public List<RoomEquipment> GetByRoomId(int id)
-      {
+        }
+        public List<RoomEquipment> GetByRoomId(int id)
+        {
           return roomEquipmentRepository.GetByRoomId(id);
-      }
+        }
       
-      public List<RoomEquipment> GetByEquipmentId(int id)
-      {
+        public List<RoomEquipment> GetByEquipmentId(int id)
+        {
             return roomEquipmentRepository.GetByEquipmentId(id);
         }
 
@@ -28,60 +30,62 @@ namespace Service
         }
 
         public List<RoomEquipment> GetAll()
-      {
+        {
             return roomEquipmentRepository.GetAll();
         }
       
-      public RoomEquipment GetByIds(int idRoom, int idEquipment)
-      {
+        public RoomEquipment GetByIds(int idRoom, int idEquipment)
+        {
             return roomEquipmentRepository.GetByIds(idRoom, idEquipment);
         }
       
-      public RoomEquipment GetById(int id)
-      {
+        public RoomEquipment GetById(int id)
+        {
             return roomEquipmentRepository.GetById(id);
         }
       
-      public bool DeleteByRoomId(int id)
-      {
+        public bool DeleteByRoomId(int id)
+        {
             return roomEquipmentRepository.DeleteByRoomId(id);
         }
       
-      public bool DeleteByEquipmentId(int id)
-      {
+        public bool DeleteByEquipmentId(int id)
+        {
             return roomEquipmentRepository.DeleteByEquipmentId(id);
-      }
+        }
       
-      public bool DeleteById(int id)
-      {
+        public bool DeleteById(int id)
+        {
             return roomEquipmentRepository.DeleteById(id);
-      }
+        }
       
-      public bool Edit(Room room, Equipment equipment, int quantity, int id)
-      {
-            return roomEquipmentRepository.Edit(room, equipment, quantity, id);
-      }
+        public bool Edit(RoomEquipment roomEquipment)
+        {
+            return roomEquipmentRepository.Edit(roomEquipment);
+        }
       
-      public bool Create(Room room, Equipment equipment, int quantity, int id)
-      {
-            foreach (RoomEquipment e in roomEquipmentRepository.GetAll())
+        public bool Create(RoomEquipment roomEquipment)
+        {
+            foreach (RoomEquipment newRoomEquipment in roomEquipmentRepository.GetAll())
             {
-                if (e.Room.Id.Equals(room.Id) && e.Equipment.Id.Equals(equipment.Id))
+                if (newRoomEquipment.Room.Id.Equals(roomEquipment.Room.Id) && newRoomEquipment.Equipment.Id.Equals(roomEquipment.Equipment.Id))
                 {
-                    int pom = e.Quantity + quantity;
-                    return roomEquipmentRepository.Edit(room, equipment, pom, e.Id);
+                    int pom = newRoomEquipment.Quantity + roomEquipment.Quantity;
+                    return roomEquipmentRepository.Edit(new RoomEquipment(roomEquipment.Room, roomEquipment.Equipment, pom, newRoomEquipment.Id));
                 }
             }
-            int ids = roomEquipmentRepository.GetAll().Count() == 0 ? 0 : roomEquipmentRepository.GetAll().Max(RoomEquipment => RoomEquipment.Id);
-            return roomEquipmentRepository.Create(room, equipment, quantity, ++ids); 
-      }
+            roomEquipment.Id = GenerateRoomEquipmentId();
+            return roomEquipmentRepository.Create(roomEquipment); 
+        }
+
+        private int GenerateRoomEquipmentId() {
+            int id = roomEquipmentRepository.GetAll().Count() == 0 ? 0 : roomEquipmentRepository.GetAll().Max(RoomEquipment => RoomEquipment.Id);
+            return ++id;
+        }
       
-      public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
-      {
+        public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
+        {
             return roomEquipmentRepository.MoveEquipment(equipmentTransfer);
-      }
-      
-      public Repository.RoomEquipmentRepository roomEquipmentRepository;
-   
+        }   
    }
 }

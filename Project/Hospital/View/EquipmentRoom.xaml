@@ -23,7 +23,7 @@
                 </Grid.ColumnDefinitions>
             </Grid>
 
-            <Button Grid.Column="3" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Button_Click_1">Obrisi</Button>
+            <Button Grid.Column="3" Grid.Row="0" DockPanel.Dock="Right" Padding="5" Margin="5" Click="Delete">Obrisi</Button>
             <Separator Grid.Column="2" Grid.Row="0" Background="Transparent"></Separator>
 
         </DockPanel>
@@ -56,7 +56,7 @@
                          SelectedValuePath="Id"></ComboBox>
                         <DatePicker x:Name="Datum" HorizontalAlignment="Left" Margin="372,95,0,0" VerticalAlignment="Top" Width="208"/>
                         <TextBox  x:Name="Kolicina" HorizontalAlignment="Left" Height="23" Margin="372,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" />
-                        <Button Grid.Row="0" Padding="5" Margin="634,48,35,58" Click="Button_Click" RenderTransformOrigin="0.702,10.537" Content="Prebaci" />
+                        <Button Grid.Row="0" Padding="5" Margin="634,48,35,58" Click="TransferButton" RenderTransformOrigin="0.702,10.537" Content="Prebaci" />
                     </Grid>
                 </GroupBox>
             </Grid>

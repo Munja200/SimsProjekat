@@ -19,7 +19,7 @@ namespace FileHandler
       
       public void Write(List<Operation> operations)
       {
-            foreach (Operation o in operations) { o.Room.serialize = true; }
+            foreach (Operation o in operations)  o.Room.Serialize = true; 
             string serializedOperations = Newtonsoft.Json.JsonConvert.SerializeObject(operations);
             System.IO.File.WriteAllText(path, serializedOperations);
            

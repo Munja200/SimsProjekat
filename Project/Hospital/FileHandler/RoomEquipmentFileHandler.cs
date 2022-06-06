@@ -10,20 +10,18 @@ namespace FileHandler
 {
     public class RoomEquipmentFileHandler
    {
-      public void Write(List<RoomEquipment> roomEquipments)
-      {
+        public readonly String path = @"../../Resources/RoomEquipment.txt";
+        public void Write(List<RoomEquipment> roomEquipments)
+        {
             string serializedRoomEquipment = Newtonsoft.Json.JsonConvert.SerializeObject(roomEquipments);
             System.IO.File.WriteAllText(path, serializedRoomEquipment);
         }
 
         public List<RoomEquipment> Read()
-      {
+        {
             string serializedRoomsEquimpent = System.IO.File.ReadAllText(path);
             List<RoomEquipment> roomsEquimpent = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RoomEquipment>>(serializedRoomsEquimpent);
             return roomsEquimpent;
         }
-
-        public readonly String path = @"../../Resources/RoomEquipment.txt";
-
     }
 }

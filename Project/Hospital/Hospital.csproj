@@ -128,7 +128,6 @@
     <Compile Include="Model\Results.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\RoomEquipment.cs" />
-    <Compile Include="Model\RoomSchedule.cs" />
     <Compile Include="Model\RoomType.cs" />
     <Compile Include="Model\AppointmentType.cs" />
     <Compile Include="Model\Specialist.cs" />
@@ -177,6 +176,7 @@
     <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="Service\ThreadRenovationService.cs" />
     <Compile Include="Service\WeekRequestService.cs" />
+    <Compile Include="Util\MTObservableCollection.cs" />
     <Compile Include="View\AddDrug.xaml.cs">
       <DependentUpon>AddDrug.xaml</DependentUpon>
     </Compile>

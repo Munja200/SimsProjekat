@@ -26,7 +26,7 @@ namespace Hospital.FileHandler
             foreach (Examination examination in examinations)
             {
                 if (examination.Appointment != null)
-                    examination.Appointment.serialize = true;
+                    examination.Appointment.Serialize = true;
                 examination.serialize = true;
             }
 

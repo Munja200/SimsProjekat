@@ -40,9 +40,8 @@ namespace Hospital.Repository
             foreach (Renovation newRenovation in renovationFileHandler.Read())
             {
                 if (newRenovation.Room != null)
-                {
                     newRenovation.Room = roomRepository.GetById(newRenovation.Room.Id);
-                }
+                
                 if(newRenovation.Appointment != null)
                     newRenovation.Appointment = appointmentRepository.GetAppointmentById(newRenovation.Appointment.Id);
                 renovations.Add(newRenovation);
@@ -70,9 +69,7 @@ namespace Hospital.Repository
 
         public bool Create(Renovation renovation)
         {
-
-
-            renovations.Add(new Renovation(renovation.Room,renovation.Appointment,renovation.RenovationType));
+            renovations.Add(renovation);
             renovationFileHandler.Write(renovations);
             return true;
         }

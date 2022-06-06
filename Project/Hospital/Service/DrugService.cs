@@ -21,30 +21,22 @@ namespace Hospital.Service
         }
         public bool CreateDrug(Drug drug)
         {
-            int ids = drugRepository.GetAll().Count() == 0 ? 0 : drugRepository.GetAll().Max(Drug => Drug.Id);
-            drug.Id = ++ids;
+            drug.Id = GenerateDrugId(); 
             return drugRepository.CreateDrug(drug);
+        }
+        private int GenerateDrugId() {
+            int id = drugRepository.GetAll().Count() == 0 ? 0 : drugRepository.GetAll().Max(Drug => Drug.Id);
+            return ++id;
         }
 
         public bool EditDrug(Drug drug)
         {
-
             return drugRepository.EditDrug(drug);
         }
 
         public List<Drug> GetAllInvalidDrug()
         {
-            List<Drug> newDrugs = new List<Drug>();
-            List<Drug> drugs = drugRepository.GetAll();
-            foreach (Drug drug in drugs)
-            {
-                if (drug.IsNotValid == true)
-                {
-                    newDrugs.Add(drug);
-                }
-
-            }
-            return newDrugs;
+            return drugRepository.GetAllInvalidDrug();
         }
     }
 }

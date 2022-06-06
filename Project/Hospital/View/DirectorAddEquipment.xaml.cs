@@ -50,23 +50,17 @@ namespace Hospital.View
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Close(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void AddClick(object sender, RoutedEventArgs e)
         {
-
-
-            String na = name.Text;
-            String ma = mname.Text;
-            String des = descript.Text;
-            String romd = room.Text;
-            int temp;
+            int quantity;
             try
             {
-                temp = Int32.Parse(quant.Text);
+                quantity = Int32.Parse(quant.Text);
 
             }
             catch (Exception ex)
@@ -75,16 +69,19 @@ namespace Hospital.View
                 this.Close();
                 return;
             }
-
-            if (!equipmentController.Create(0, na, ma, temp, des))
+            CreateEquipment(quantity);
+         
+            this.Close();
+        }
+        private void CreateEquipment(int quantity) {
+            if (!equipmentController.Create(new Equipment(0, name.Text, mname.Text, quantity, descript.Text)))
             {
                 MessageBox.Show("Nije uspelo dodavanje", "Error");
                 this.Close();
                 return;
             }
-            Room ro = roomController.GetById(Int32.Parse(romd));
-            roomEquipmentController.Create(ro, equipmentController.GetByName(na), temp, 0);
-            this.Close();
+            Room rooom = roomController.GetById(Int32.Parse(room.Text));
+            roomEquipmentController.Create(new RoomEquipment(rooom, equipmentController.GetByName(name.Text), quantity, 0));
         }
     }
 }
