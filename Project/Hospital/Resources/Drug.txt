@@ -28,7 +28,7 @@
 "Equipment":{"Id":21},
 "Using":"Koristiti protiv upale misica",
 "IsNotValid":false,
-"ReasonForInvalidity":""},
+"ReasonForInvalidity":"Dodati sastojke za lek"},
 
 {"Id":13,
 "Ingredients":[],
@@ -44,7 +44,7 @@
 "Equipment":{"Id":23},
 "Using":"Koristiti za srcana oboljenja",
 "IsNotValid":false,
-"ReasonForInvalidity":null},
+"ReasonForInvalidity":"Dodati sastojke i zamenu za lek"},
 
 {"Id":1,
 "Ingredients":[{"Name":"menta"},{"Name":"pencilin"}],

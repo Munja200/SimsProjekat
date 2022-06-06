@@ -8,13 +8,16 @@ namespace Repository
 {
    public class EquipmentRepository
    {
+        public ObservableCollection<Equipment> equipments;
+        public FileHandler.EquipmentFileHandler equipmentFileHandler;
+
         public EquipmentRepository()
         {
             equipmentFileHandler = new FileHandler.EquipmentFileHandler();
             equipments = new ObservableCollection<Equipment>();
         }
         public Equipment GetById(int id)
-      {
+        {
             foreach (Equipment equipment in equipments.ToList())
             {
                 if (equipment.Id.Equals(id))
@@ -34,20 +37,20 @@ namespace Repository
         }
 
         public ref ObservableCollection<Equipment> GetAll()
-      {
+        {
             if (equipmentFileHandler.Read() == null)
                 return ref equipments;
             equipments.Clear();
             List<Equipment> list = equipmentFileHandler.Read();
 
-            foreach (Equipment e in list)
-            { equipments.Add(e); }
+            foreach (Equipment equipment in list)
+            { equipments.Add(equipment); }
 
             return ref equipments;
         }
       
-      public bool Delete(int id)
-      {
+        public bool Delete(int id)
+        {
             foreach (Equipment equipment in equipments)
             {
                 if (equipment.Id.Equals(id))
@@ -60,36 +63,30 @@ namespace Repository
             return false;
         }
       
-      public bool Edit(int id, String name, String manufacturer, int quantity, String description)
-      {
-            foreach (Equipment es in equipments)
+        public bool Edit(Equipment equipment)
+        {
+            foreach (Equipment newEquipment in equipments)
             {
-                if (es.Id.Equals(id))
+                if (newEquipment.Id.Equals(equipment.Id))
                 {
-                    es.Id = id;
-                    es.Name = name;
-                    es.Manufacturer = manufacturer;
-                    es.Quantity = quantity;
-                    es.Description = description;
+                    newEquipment.Id = equipment.Id;
+                    newEquipment.Name = equipment.Name;
+                    newEquipment.Manufacturer = equipment.Manufacturer;
+                    newEquipment.Quantity = equipment.Quantity;
+                    newEquipment.Description = equipment.Description;
                     equipmentFileHandler.Write(equipments.ToList());
 
                     return true;
                 }
             }
-
             return false;
         }
       
-      public bool Create(int id, String name, String manufacturer, int quantity, String description)
-      {
-            equipments.Add(new Equipment(id, name, manufacturer, quantity, description));
+        public bool Create(Equipment equipment)
+        {
+            equipments.Add(equipment);
             equipmentFileHandler.Write(equipments.ToList());
             return true;
         }
-      
-      public ObservableCollection<Equipment> equipments;
-      
-      public FileHandler.EquipmentFileHandler equipmentFileHandler;
-   
    }
 }

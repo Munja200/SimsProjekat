@@ -7,16 +7,19 @@ using System.Linq;
 namespace Repository
 {
    public class RoomEquipmentRepository
-   {
-      public RoomEquipmentRepository()
-      {
+    {
+        public List<RoomEquipment> roomEquipments;
+        public FileHandler.RoomEquipmentFileHandler roomEquipmentFileHandler;
+
+        public RoomEquipmentRepository()
+        {
           roomEquipmentFileHandler = new FileHandler.RoomEquipmentFileHandler();
           roomEquipments = new List<RoomEquipment>();
           this.GetAll();
         }
 
         public List<RoomEquipment> GetByRoomId(int id)
-      {
+        {
             List<RoomEquipment> pom = new List<RoomEquipment>();
           
             foreach (RoomEquipment roomEquipment in roomEquipments)
@@ -27,8 +30,8 @@ namespace Repository
             return pom;
         }
       
-      public List<RoomEquipment> GetByEquipmentId(int id)
-      {
+        public List<RoomEquipment> GetByEquipmentId(int id)
+        {
             List<RoomEquipment> pom = new List<RoomEquipment>();
           
             foreach (RoomEquipment roomEquipment in roomEquipments)
@@ -51,28 +54,33 @@ namespace Repository
         }
 
         public List<RoomEquipment> GetAll()
-      {
+        {
             if (roomEquipmentFileHandler.Read() == null)
                 return  roomEquipments;
 
             roomEquipments.Clear();
-            RoomRepository roomRepository = new RoomRepository();
-            EquipmentRepository equipmentRepository = new EquipmentRepository();
-            List<RoomEquipment> roomEquipment = roomEquipmentFileHandler.Read();
-            equipmentRepository.GetAll();
-            roomRepository.GetAll();
-            foreach (RoomEquipment re in roomEquipment)
-            {
-                re.Room = roomRepository.GetById(re.Room.Id);
-                re.Equipment = equipmentRepository.GetById(re.Equipment.Id);
+            SetRoomAndEquipment();
 
-                roomEquipments.Add(re);
-            }
             return roomEquipments;
         }
-      
-      public RoomEquipment GetByIds(int idRoom, int idEquipment)
-      {
+
+        private void SetRoomAndEquipment() {
+            RoomRepository roomRepository = new RoomRepository();
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            equipmentRepository.GetAll();
+            roomRepository.GetAll();
+            foreach (RoomEquipment roomEquipment in roomEquipmentFileHandler.Read())
+            {
+                roomEquipment.Room = roomRepository.GetById(roomEquipment.Room.Id);
+                roomEquipment.Equipment = equipmentRepository.GetById(roomEquipment.Equipment.Id);
+
+                roomEquipments.Add(roomEquipment);
+            }
+
+        }
+
+        public RoomEquipment GetByIds(int idRoom, int idEquipment)
+        {
             foreach (RoomEquipment roomEquipment in roomEquipments)
             {
                 if (roomEquipment.Room.Id.Equals(idRoom) && roomEquipment.Equipment.Id.Equals(idEquipment))
@@ -81,8 +89,8 @@ namespace Repository
             return null;
         }
       
-      public RoomEquipment GetById(int id)
-      {
+        public RoomEquipment GetById(int id)
+        {
             foreach (RoomEquipment roomEquipment in roomEquipments)
             {
                 if (roomEquipment.Id.Equals(id))
@@ -91,8 +99,8 @@ namespace Repository
             return null;
         }
       
-      public bool DeleteByRoomId(int id)
-      {
+        public bool DeleteByRoomId(int id)
+        {
             List<RoomEquipment> re = this.GetByRoomId(id);
 
             foreach (RoomEquipment roomEquipment in re)
@@ -108,7 +116,7 @@ namespace Repository
         }
 
         public bool DeleteByEquipmentId(int id)
-      {
+        {
             List<RoomEquipment> re = this.GetByRoomId(id);
 
             foreach (RoomEquipment roomEquipment in re)
@@ -122,8 +130,8 @@ namespace Repository
             return true;
         }
       
-      public bool DeleteById(int id)
-      {
+        public bool DeleteById(int id)
+        {
             foreach (RoomEquipment roomEquipment in roomEquipments)
             {
                 if (roomEquipment.Id.Equals(id)) 
@@ -137,16 +145,16 @@ namespace Repository
 
         }
 
-        public bool Edit(Room room, Equipment equipment, int quantity, int id)
-      {
-            foreach (RoomEquipment re in roomEquipments)
+        public bool Edit(RoomEquipment roomEquipment)
+        {
+            foreach (RoomEquipment newRoomEquipment in roomEquipments)
             {
-                if (re.Room.Id.Equals(room.Id) && re.Equipment.Id.Equals(equipment.Id))
+                if (newRoomEquipment.Room.Id.Equals(roomEquipment.Room.Id) && newRoomEquipment.Equipment.Id.Equals(roomEquipment.Equipment.Id))
                 {
-                    re.Room = room;
-                    re.Equipment = equipment;
-                    re.Quantity = quantity;
-                    re.Id = id;
+                    newRoomEquipment.Room = roomEquipment.Room;
+                    newRoomEquipment.Equipment = roomEquipment.Equipment;
+                    newRoomEquipment.Quantity = roomEquipment.Quantity;
+                    newRoomEquipment.Id = roomEquipment.Id;
                     roomEquipmentFileHandler.Write(roomEquipments);
 
                     return true;
@@ -156,68 +164,55 @@ namespace Repository
             return false;
         }
       
-      public bool Create(Room room, Equipment equipment, int quantity, int id)
-      {
-            roomEquipments.Add(new RoomEquipment(room, equipment, quantity, id));
+        public bool Create(RoomEquipment roomEquipment)
+        {
+            roomEquipments.Add(roomEquipment);
             roomEquipmentFileHandler.Write(roomEquipments);
             return true;
         }
       
-      public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
-      {
-            if (equipmentTransfer.SenderRoom == null)
+        public bool MoveEquipment(EquipmentTransfer equipmentTransfer)
+        {
+            if (CheckEquipmentTransfer(equipmentTransfer) == true)
                 return true;
-
-            if (equipmentTransfer.RecipientRoom == null)
-                return true;
-
-            if (equipmentTransfer.Equipment == null)
-                return true;
-
-            if (equipmentTransfer.SenderRoom.Id.Equals(equipmentTransfer.RecipientRoom.Id))
-            {
-                return true;
-            }
-
-            if (DateTime.Compare(equipmentTransfer.SheduledDate.Date, DateTime.Today) < 0)
-            {
-                return true;
-            }
          
-            RoomEquipment re = this.GetByIds(equipmentTransfer.SenderRoom.Id, equipmentTransfer.Equipment.Id);
-            if (re == null)
+            RoomEquipment roomEquipment = this.GetByIds(equipmentTransfer.SenderRoom.Id, equipmentTransfer.Equipment.Id);
+            if (roomEquipment == null)
                 return true;
-
-
-            if (re.Quantity == equipmentTransfer.Quantity)
-            {
-                this.DeleteById(re.Id);
-            }
-            else
-            {
-                this.Edit(re.Room, re.Equipment, re.Quantity - equipmentTransfer.Quantity, re.Id);
-            }
-
-
-            RoomEquipment res = this.GetByIds(equipmentTransfer.RecipientRoom.Id, equipmentTransfer.Equipment.Id);
-            if (res != null)
-            {
-                this.Edit(res.Room, res.Equipment, res.Quantity + equipmentTransfer.Quantity, res.Id);
-
-            }
-            else
-            {
-                int ids = this.GetAll().Count() == 0 ? 0 : this.GetAll().Max(RoomEquipment => RoomEquipment.Id);
-                this.Create(equipmentTransfer.RecipientRoom, equipmentTransfer.Equipment, equipmentTransfer.Quantity, ++ids);
-            }
-
+            CreatOrEditRoomEquipment(equipmentTransfer, roomEquipment);
 
             return true;
         }
-      
-        public List<RoomEquipment> roomEquipments;
-      
-      public FileHandler.RoomEquipmentFileHandler roomEquipmentFileHandler;
-   
-   }
+        private void CreatOrEditRoomEquipment(EquipmentTransfer equipmentTransfer,RoomEquipment roomEquipment) {
+            if (roomEquipment.Quantity == equipmentTransfer.Quantity)
+                this.DeleteById(roomEquipment.Id);
+            else
+                this.Edit(new RoomEquipment(roomEquipment.Room, roomEquipment.Equipment, roomEquipment.Quantity - equipmentTransfer.Quantity, roomEquipment.Id));
+
+            RoomEquipment res = this.GetByIds(equipmentTransfer.RecipientRoom.Id, equipmentTransfer.Equipment.Id);
+            if (res != null)
+                this.Edit(new RoomEquipment(res.Room, res.Equipment, res.Quantity + equipmentTransfer.Quantity, res.Id));
+            else
+                this.Create(new RoomEquipment(equipmentTransfer.RecipientRoom, equipmentTransfer.Equipment, equipmentTransfer.Quantity, GenerateRoomEquipmentId()));
+        }
+
+        private bool CheckEquipmentTransfer(EquipmentTransfer equipmentTransfer) {
+            if (equipmentTransfer.SenderRoom == null || equipmentTransfer.RecipientRoom == null || equipmentTransfer.Equipment == null)
+                return true;
+
+            if (equipmentTransfer.SenderRoom.Id.Equals(equipmentTransfer.RecipientRoom.Id))
+                return true;
+
+            if (DateTime.Compare(equipmentTransfer.SheduledDate.Date, DateTime.Today) < 0)
+                return true;
+
+            return false;
+        }
+
+        private int GenerateRoomEquipmentId()
+        {
+            int id = this.GetAll().Count() == 0 ? 0 : this.GetAll().Max(RoomEquipment => RoomEquipment.Id);
+            return ++id;
+        }
+    }
 }

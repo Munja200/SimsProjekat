@@ -17,19 +17,22 @@ namespace Hospital.View
 {
     public partial class AddDrug : Window
     {
+        private String newName;
+        private String newMname;
+        private String newDescript;
         public AddDrug()
         {
             InitializeComponent();
             DataContext = this;
         }
 
-        private void CloseWindow(object sender, RoutedEventArgs e) { this.Close(); }
+        private void CloseWindow(object sender, RoutedEventArgs e) {
+            this.Close(); 
+        }
         private void AddDrugEquipment(object sender, RoutedEventArgs e)
         {
 
-            String newName = name.Text;
-            String newMname = mname.Text;
-            String newDescript = descript.Text;
+            SetValue();
             int quantity;
             try
             {
@@ -44,6 +47,11 @@ namespace Hospital.View
 
             new AddIngredientWindow(new Equipment(0, newName, newMname, quantity, newDescript)).Show();
             this.Close();
+        }
+        private void SetValue() {
+            newName = name.Text;
+            newMname = mname.Text;
+            newDescript = descript.Text;
         }
     }
 }

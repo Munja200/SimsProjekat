@@ -31,8 +31,7 @@ namespace Hospital.View
             App app = Application.Current as App;
             drugsController = app.drugController;
             drugs = new ObservableCollection<Drug>();
-
-            foreach (Drug drug in drugsController.GetAllInvalidDrug()) { drugs.Add(drug); }
+            foreach (Drug drug in drugsController.GetAllInvalidDrug())  drugs.Add(drug); 
 
             dataGridInvalidDrug.ItemsSource = drugs;
         }

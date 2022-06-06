@@ -36,17 +36,19 @@ namespace Hospital.View
         {
             InitializeComponent();
             this.DataContext = this;
+            Drug = drug;
+            Initialization();
+
+        }
+        private void Initialization() {
             App app = Application.Current as App;
             var drugW = Application.Current.Windows.OfType<ListDrugs>().FirstOrDefault();
-            Drug = drug;
-
             drugController = app.drugController;
 
             name.Content = drug.Equipment.Name;
             usingg.Text = drug.Using;
             isValid.IsChecked = drug.IsNotValid;
             reason.Text = drug.ReasonForInvalidity;
-
         }
 
         private void SubmitButton(object sender, RoutedEventArgs e)

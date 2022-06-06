@@ -36,17 +36,19 @@ namespace Hospital.View
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
-            this.Ingredients = new ObservableCollection<Ingredient>();
-            this.Replacements = new ObservableCollection<string>();
             this.equipmentController = app.equipmentController;
             this.drugController = app.drugController;
-            this.Equipment = equipment;
             this.roomController = app.roomController;
             this.roomEquipmentController = app.roomEquimpentController;
+            Initialization(equipment);
+        }
+        private void Initialization(Equipment equipment) {
+            this.Ingredients = new ObservableCollection<Ingredient>();
+            this.Replacements = new ObservableCollection<string>();
             listIngredients.ItemsSource = Ingredients;
             listReplacements.ItemsSource = Replacements;
+            this.Equipment = equipment;
         }
-
         private void AddingIngredient(object sender, RoutedEventArgs e)
         {
             if (ingredient.Text != "")
@@ -60,25 +62,17 @@ namespace Hospital.View
         {
             if (Ingredients.Count > 0)
             {
-
-                int ids = equipmentController.GetAll().Count() == 0 ? 0 : equipmentController.GetAll().Max(Equipment => Equipment.Id);
-                Equipment.Id = ++ids;
-                if (!equipmentController.Create(Equipment.Id, Equipment.Name, Equipment.Manufacturer, Equipment.Quantity, Equipment.Description))
-
-                Equipment.Id = GenerateEquipmentId();
-                if (!equipmentController.Create(Equipment.Id, Equipment.Name, Equipment.Manufacturer, Equipment.Quantity, Equipment.Description, null))
+                Equipment equipment = new Equipment(0,Equipment.Name,Equipment.Manufacturer,Equipment.Quantity,Equipment.Description);
+                
+                if (!equipmentController.Create(equipment))
 
                     return;
-                drugController.CreateDrug(new Drug(Ingredients.ToList(), 0, Equipment, Replacements.ToList(), "", true, ""));
+                drugController.CreateDrug(new Drug(Ingredients.ToList(), 0, equipment, Replacements.ToList(), "", true, ""));
                 
                 Room newRoom = roomController.GetById(1);
-                roomEquipmentController.Create(newRoom, Equipment, Equipment.Quantity, 0);
+                roomEquipmentController.Create(new RoomEquipment(newRoom, equipment, equipment.Quantity, 0));
                 this.Close();
             }
-        }
-        private int GenerateEquipmentId() {
-            int id = equipmentController.GetAll().Count() == 0 ? 0 : equipmentController.GetAll().Max(Equipment => Equipment.Id);
-            return id++;
         }
 
         private void Close(object sender, RoutedEventArgs e)

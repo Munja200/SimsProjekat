@@ -23,19 +23,19 @@ namespace Model
 
         public bool ShouldSerializeSenderRoom()
         {
-            this.SenderRoom.serialize = false;
+            this.SenderRoom.Serialize = false;
             return true;
         }
 
         public bool ShouldSerializeEquipment()
         {
-            this.Equipment.serialize = false;
+            this.Equipment.Serialize = false;
             return true;
         }
 
         public bool ShouldSerializeRecipientRoom()
         {
-            this.RecipientRoom.serialize = false;
+            this.RecipientRoom.Serialize = false;
             return true;
         }
 

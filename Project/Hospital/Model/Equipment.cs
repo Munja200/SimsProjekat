@@ -18,15 +18,15 @@ namespace Model
         public int Quantity { get; set; }
         public String Description { get; set; }
 
-        public bool serialize { get; set; }
+        public bool Serialize { get; set; }
 
-        public bool ShouldSerializeName() { return serialize; }
-        public bool ShouldSerializeManufacturer() { return serialize; }
+        public bool ShouldSerializeName() { return Serialize; }
+        public bool ShouldSerializeManufacturer() { return Serialize; }
 
-        public bool ShouldSerializeQuantity() { return serialize; }
-        public bool ShouldSerializeDescription() { return serialize; }
-        public bool ShouldSerializeMedicine() { return serialize; }
-        public bool ShouldSerializeserialize() { return false; }
+        public bool ShouldSerializeQuantity() { return Serialize; }
+        public bool ShouldSerializeDescription() { return Serialize; }
+        public bool ShouldSerializeMedicine() { return Serialize; }
+        public bool ShouldSerializeSerialize() { return false; }
 
     }
 }

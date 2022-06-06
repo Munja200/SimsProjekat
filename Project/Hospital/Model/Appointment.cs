@@ -32,34 +32,34 @@ namespace Model
 
         }
 
-        public bool serialize { get; set; }
-        public bool ShouldSerializeserialize()
+        public bool Serialize { get; set; }
+        public bool ShouldSerializeSerialize()
         {
-            this.serialize = true;
+            this.Serialize = true;
             return false;
         }
-        public bool ShouldSerializeStartTime() { return serialize; }
-        public bool ShouldSerializeEndTime() { return serialize; }
-        public bool ShouldSerializeDuration() { return serialize; }
-        public bool ShouldSerializeScheduled() { return serialize; }
-        public bool ShouldSerializeAppointmetntType() { return serialize; }
+        public bool ShouldSerializeStartTime() { return Serialize; }
+        public bool ShouldSerializeEndTime() { return Serialize; }
+        public bool ShouldSerializeDuration() { return Serialize; }
+        public bool ShouldSerializeScheduled() { return Serialize; }
+        public bool ShouldSerializeAppointmetntType() { return Serialize; }
 
         public bool ShouldSerializeRoom()
         {
             if (this.Room != null)
-                this.Room.serialize = false;
-            return serialize;
+                this.Room.Serialize = false;
+            return Serialize;
         }
 
         public bool ShouldSerializeDoctor()
         {
-            return serialize;
+            return Serialize;
         }
         public bool ShouldSerializePatientAccount()
         {
             if (this.PatientAccount != null)
                 this.PatientAccount.serialize = false;
-            return serialize;
+            return Serialize;
         }
 
 

@@ -1,3 +1,4 @@
+using Hospital.Util;
 using Hospital.View;
 using Model;
 using Repository;
@@ -10,19 +11,21 @@ namespace Service
 {
    public class RoomService
    {
-      public RoomService(RoomRepository roomRepository) 
-      {
+        public RoomRepository roomRepository;
+
+        public RoomService(RoomRepository roomRepository) 
+        {
             this.roomRepository = roomRepository;
-      }
-      public Room GetById(int id)
-      {
+        }
+        public Room GetById(int id)
+        {
             return roomRepository.GetById(id);
-      }
+        }
 
         public ref MTObservableCollection<Room> GetAll()
-      {
+        {
             return ref roomRepository.GetAll();
-      }
+        }
 
         public List<Room> GetAllByFloor(int floor)
         {
@@ -30,30 +33,51 @@ namespace Service
         }
 
         public bool DeleteRoom(int id)
-      {
+        {
+            if (roomRepository.GetById(id).RoomType.Equals(RoomType.storage))
+                return false;
+            
             return roomRepository.DeleteRoom(id);
-      }
+        }
       
-      public bool EditRoom(int floor, String name, int id, bool availability, RoomType roomType)
-      {
-            return roomRepository.EditRoom(floor,name,id,availability,roomType);
-      }
+        public bool EditRoom(Room room)
+        {
+            if (roomRepository.GetById(room.Id).RoomType.Equals(RoomType.storage))
+                return false;
+
+            return roomRepository.EditRoom(room);
+        }
 
         public bool EditRoomAvailability(Room room, bool newAvailability)
         {
-
-            return this.EditRoom(room.Floor, room.Name, room.Id, newAvailability, room.RoomType);
+            room.Availability = newAvailability;
+            return this.EditRoom(room);
         }
 
 
-        public bool CreateRoom(int floor, String name, int id, bool availability, RoomType roomType)
-      {
-            int ids = roomRepository.GetAll().Count() == 0 ? 0 : roomRepository.GetAll().Max(Room => Room.Id);
+        public bool CreateRoom(Room room)
+        {
+            bool indicator = IsStorageExist();
 
-            return roomRepository.CreateRoom(floor,name,++ids,availability,roomType);
-      }
-      
-      public Repository.RoomRepository roomRepository;
-   
-   }
+            if (room.RoomType.Equals(RoomType.storage) && indicator)
+                return false;
+
+            room.Id = GenerateRoomId();
+            return roomRepository.CreateRoom(room);
+        }
+
+        private bool IsStorageExist() {
+            foreach (Room newRoom in roomRepository.GetAll())
+            {
+                if (newRoom.RoomType.Equals(RoomType.storage))
+                    return  true;
+            }
+            return false;
+        }
+
+        private int GenerateRoomId() {
+            int id = roomRepository.GetAll().Count() == 0 ? 0 : roomRepository.GetAll().Max(Room => Room.Id);
+            return ++id;
+        }
+    }
 }

@@ -34,18 +34,22 @@ namespace Hospital.View
             App app = Application.Current as App;
             roomEquipmenController = app.roomEquimpentController;
             equipmenController = app.equipmentController;
+           
+        }
+        private void Initialization() {
             roomEquipments = new ObservableCollection<RoomEquipment>();
             foreach (RoomEquipment roomEquipment in roomEquipmenController.GetAll())
-            { 
-                roomEquipments.Add(roomEquipment); 
+            {
+                roomEquipments.Add(roomEquipment);
             }
             dataGridRoomEquipment.ItemsSource = roomEquipments;
             Equipment = new ObservableCollection<Equipment>();
-            foreach (Equipment equipment in equipmenController.GetAll()) 
-            { 
+            foreach (Equipment equipment in equipmenController.GetAll())
+            {
                 Equipment.Add(equipment);
             }
         }
+
         private void Search(object sender, RoutedEventArgs e)
         {
             if (idEquip.Text.Equals(""))
@@ -65,17 +69,14 @@ namespace Hospital.View
             int maxQuantity = int.MaxValue;
 
             if (!mink.Text.Equals(""))
-            {
                 minQuantity = int.Parse(mink.Text);
-            }
 
             if (!maxk.Text.Equals(""))
-            {
                 maxQuantity = int.Parse(maxk.Text);
-            }
+            
             roomEquipments.Clear();
             foreach (RoomEquipment roomEquipment in roomEquipmenController.GetByEquipmentIdAndQuantity(ids, minQuantity, maxQuantity))
-            { roomEquipments.Add(roomEquipment); }
+                roomEquipments.Add(roomEquipment); 
         }
     }
 }

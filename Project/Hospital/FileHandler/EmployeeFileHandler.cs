@@ -11,17 +11,17 @@ namespace Hospital.FileHandler
     {
         private readonly string path = @"../../Resources/Employee.txt";
 
-        public void Write(List<Employee> patients)
+        public void Write(List<Employee> employees)
         {
-            string serializedPatients = Newtonsoft.Json.JsonConvert.SerializeObject(patients);
-            System.IO.File.WriteAllText(path, serializedPatients);
+            string serializedEmployee = Newtonsoft.Json.JsonConvert.SerializeObject(employees);
+            System.IO.File.WriteAllText(path, serializedEmployee);
         }
 
         public List<Employee> Read()
         {
-            string serializedPatients = System.IO.File.ReadAllText(path);
-            List<Employee> patients = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Employee>>(serializedPatients);
-            return patients;
+            string serializedEmployee = System.IO.File.ReadAllText(path);
+            List<Employee> employees = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Employee>>(serializedEmployee);
+            return employees;
         }
     }
 }

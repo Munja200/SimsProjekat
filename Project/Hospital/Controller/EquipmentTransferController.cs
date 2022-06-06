@@ -7,36 +7,34 @@ namespace Controller
 {
    public class EquipmentTransferController
    {
+        public EquipmentTransferService equipmentTransferService;
         public EquipmentTransferController(EquipmentTransferService equipmentTransferService) 
         {
             this.equipmentTransferService = equipmentTransferService; 
         }
-      public EquipmentTransfer GetById(int id)
-      {
+        public EquipmentTransfer GetById(int id)
+        {
             return equipmentTransferService.GetById(id);
-      }
+        }
 
         public List<EquipmentTransfer> GetAll()
-      {
+        {
             return equipmentTransferService.GetAll();
-      }
+        }
       
-      public bool Delete(int id)
-      {
+        public bool Delete(int id)
+        {
             return equipmentTransferService.Delete(id);
-      }
+        }
       
-      public bool Edit(Room senderRoom, Room recipientRoom, Equipment equipment, int quantity, DateTime scheduledDate, int id)
-      {
-            return equipmentTransferService.Edit(senderRoom, recipientRoom, equipment, quantity, scheduledDate, id);
-      }
+        public bool Edit(EquipmentTransfer equipmentTransfer)
+        {
+            return equipmentTransferService.Edit(equipmentTransfer);
+        }
       
-      public bool Create(Room senderRoom, Room recipientRoom, Equipment equipment, int quantity, DateTime scheduledDate, int id)
-      {
-            return equipmentTransferService.Create(senderRoom,recipientRoom,equipment,quantity,scheduledDate,id);
-      }
-      
-      public Service.EquipmentTransferService equipmentTransferService;
-   
+        public bool Create(EquipmentTransfer equipmentTransfer)
+        {
+            return equipmentTransferService.Create(equipmentTransfer);
+        } 
    }
 }

@@ -31,7 +31,7 @@ namespace Model
         public bool ShouldSerializeAppointment()
         {
             if (this.Appointment != null)
-                this.Appointment.serialize = false;
+                this.Appointment.Serialize = false;
             return serialize;
         }
         public bool ShouldSerializePrescription()

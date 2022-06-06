@@ -32,9 +32,13 @@ namespace Hospital.View
             Drugs = new ObservableCollection<Drug>();
             this.DataContext = this;
             App app = Application.Current as App;
+            drugController = app.drugController;
+           
+        }
+        private void Initialization()
+        {
             this.Ingredients = new ObservableCollection<Ingredient>();
             this.Replacements = new ObservableCollection<string>();
-            drugController = app.drugController;
             foreach (Drug drug in drugController.GetAll())
             {
                 Drugs.Add(drug);
@@ -53,22 +57,26 @@ namespace Hospital.View
             {
                 if (drug.Equipment != null)
                 {
-                    Ingredients.Clear();
-                    Replacements.Clear();
-               
-                    foreach (Ingredient ingredient in drug.Ingredients) 
-                    { 
-                                            Ingredients.Add(ingredient); 
-                    }
-                    foreach (String replacement in drug.Replacements) { Replacements.Add(replacement); }
-                    listIngredients.ItemsSource = Ingredients;
-                    listReplacements.ItemsSource = Replacements;
+                    SetIngredientsAndReplacements(drug);
                 }
                 else {
                     Ingredients.Clear();
                     Replacements.Clear();
                 }
             }
+        }
+
+        private void SetIngredientsAndReplacements(Drug drug) {
+            Ingredients.Clear();
+            Replacements.Clear();
+
+            foreach (Ingredient ingredient in drug.Ingredients)
+                Ingredients.Add(ingredient);
+
+            foreach (String replacement in drug.Replacements)
+                Replacements.Add(replacement);
+            listIngredients.ItemsSource = Ingredients;
+            listReplacements.ItemsSource = Replacements;
         }
     }
 }

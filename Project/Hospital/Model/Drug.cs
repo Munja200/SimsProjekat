@@ -40,7 +40,7 @@ namespace Hospital.Model
         public bool ShouldSerializeEquipment()
         {
             if (this.Equipment != null)
-                this.Equipment.serialize = false;
+                this.Equipment.Serialize = false;
             return true;
         }
 

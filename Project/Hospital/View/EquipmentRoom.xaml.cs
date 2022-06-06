@@ -24,27 +24,30 @@ namespace Hospital.View
         private EquipmentTransferController equipmentTransferController;
         public ObservableCollection<Room> States { get; set; }
         public ObservableCollection<RoomEquipment> roomEquipments;
-        public EquipmentRoom(Room idr)
+        public EquipmentRoom(Room room)
         {
             InitializeComponent();
             this.DataContext = this;
             App app = Application.Current as App;
             roomEquipmenController = app.roomEquimpentController;
             roomController = app.roomController;
-            roomEquipments = new ObservableCollection<RoomEquipment>();
             equipmentTransferController = app.equipmentTransferController;
-            foreach (RoomEquipment re in roomEquipmenController.GetByRoomId(idr.Id)) { roomEquipments.Add(re); }
-
-            dataGridRoomEquipment.ItemsSource = roomEquipments; 
+            Initialization(room);
+        }
+        private void Initialization(Room room) {
+            roomEquipments = new ObservableCollection<RoomEquipment>();
+            foreach (RoomEquipment re in roomEquipmenController.GetByRoomId(room.Id))  roomEquipments.Add(re); 
+            dataGridRoomEquipment.ItemsSource = roomEquipments;
             States = new ObservableCollection<Room>();
-            foreach (Room r in roomController.GetAll()) { States.Add(r); }
+            foreach (Room r in roomController.GetAll()) States.Add(r);
 
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void TransferButton(object sender, RoutedEventArgs e)
         {
             var viewRoomsWindow = Application.Current.Windows.OfType<EquipmentRoom>().FirstOrDefault();
-            RoomEquipment room = (RoomEquipment)viewRoomsWindow.dataGridRoomEquipment.SelectedItem;
-            if (room != null)
+            RoomEquipment roomEquipment = (RoomEquipment)viewRoomsWindow.dataGridRoomEquipment.SelectedItem;
+            if (roomEquipment != null)
             {
                 int quanty = 0;
                 try
@@ -58,46 +61,29 @@ namespace Hospital.View
                     this.Close();
                     return;
                 }
-                if (quanty > room.Quantity || quanty <= 0)
-                {
-                    MessageBox.Show("Nije uspelo dodavanje", "Error");
-                    this.Close();
-                    return;
-                }
+                CreateEquipmentTransfer(quanty,roomEquipment);
 
-                if (Datum.Text.Equals(""))
-                {
-                    MessageBox.Show("Nije uspelo dodavanje", "Error");
-                    this.Close();
-                    return;
-                }
-
-                if (Odrediste.Text.Equals(""))
-                {
-                    MessageBox.Show("Nije uspelo dodavanje", "Error");
-                    this.Close();
-                    return;
-                }
-
-                DateTime dt = Convert.ToDateTime(Datum.Text);
-                int ids = (int)Odrediste.SelectedValue;
-                Room ro = roomController.GetById(ids);
-
-                int idse = equipmentTransferController.GetAll().Count() == 0 ? 0 : equipmentTransferController.GetAll().Max(EquipmentTransfer => EquipmentTransfer.Id);
-
-                if (!equipmentTransferController.Create(room.Room, ro, room.Equipment, quanty, dt, 0))
-                {
-                    MessageBox.Show("Nije uspelo dodavanje", "Error");
-                }
-               
-               
-                
                 this.Close();
-
             }
         }
+
+        private void CreateEquipmentTransfer(int quanty,RoomEquipment roomEquipment) {
+            if (quanty > roomEquipment.Quantity || quanty <= 0 || Datum.Text.Equals("") || Odrediste.Text.Equals(""))
+            {
+                MessageBox.Show("Nije uspelo dodavanje", "Error");
+                this.Close();
+                return;
+            }
+
+            DateTime dt = Convert.ToDateTime(Datum.Text);
+            int ids = (int)Odrediste.SelectedValue;
+            Room oldRoom = roomController.GetById(ids);
+
+            if (!equipmentTransferController.Create(new EquipmentTransfer(roomEquipment.Room, oldRoom, roomEquipment.Equipment, quanty, dt, 0)))
+                MessageBox.Show("Nije uspelo dodavanje", "Error");
+        }
         
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Delete(object sender, RoutedEventArgs e)
         {
             var viewRoomsWindow = Application.Current.Windows.OfType<EquipmentRoom>().FirstOrDefault();
             RoomEquipment room = (RoomEquipment)viewRoomsWindow.dataGridRoomEquipment.SelectedItem;

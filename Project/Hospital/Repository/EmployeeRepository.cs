@@ -9,9 +9,9 @@ namespace Hospital.Repository
 {
     public class EmployeeRepository
     {
-        public List<Employee> employees;
+        private List<Employee> employees;
 
-        public FileHandler.EmployeeFileHandler employeeFileHandler;
+        private FileHandler.EmployeeFileHandler employeeFileHandler;
         public EmployeeRepository()
         {
             employeeFileHandler = new FileHandler.EmployeeFileHandler();

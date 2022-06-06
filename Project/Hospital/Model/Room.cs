@@ -25,18 +25,16 @@ namespace Model
         public int Id { get; set; }
         public bool Availability { get; set; }
         public RoomType RoomType { get; set; }
-
-        public bool serialize { get; set; }
-
-        public bool ShouldSerializeserialize()
+        public bool Serialize { get; set; }
+        public bool ShouldSerializeSerialize()
         {
-            this.serialize = true;
+            this.Serialize = true;
             return false;
         }
-        public bool ShouldSerializeFloor() { return serialize; }
-        public bool ShouldSerializeRoomType() { return serialize; }
-        public bool ShouldSerializeName() { return serialize; }
-        public bool ShouldSerializeAvailability() { return serialize; }
+        public bool ShouldSerializeFloor() { return Serialize; }
+        public bool ShouldSerializeRoomType() { return Serialize; }
+        public bool ShouldSerializeName() { return Serialize; }
+        public bool ShouldSerializeAvailability() { return Serialize; }
 
         public override bool Equals(object obj)
         {

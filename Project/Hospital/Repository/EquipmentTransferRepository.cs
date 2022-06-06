@@ -1,3 +1,4 @@
+using FileHandler;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ namespace Repository
    public class EquipmentTransferRepository
    {
         public List<EquipmentTransfer> equipmentTransfers;
+        public EquipmentTransferFileHandler equipmentTransferFileHandler;
+
         public EquipmentTransferRepository()
         {
             equipmentTransferFileHandler = new FileHandler.EquipmentTransferFileHandler();
@@ -15,43 +18,43 @@ namespace Repository
 
 
         public EquipmentTransfer GetById(int id)
-      {
-            foreach (EquipmentTransfer et in equipmentTransfers)
+        {
+            foreach (EquipmentTransfer equipmentTransfer in equipmentTransfers)
             {
-                if (et.Id.Equals(id))
-                    return et;
+                if (equipmentTransfer.Id.Equals(id))
+                    return equipmentTransfer;
             }
             return null;
         }
         
         public List<EquipmentTransfer> GetAll()
-      {
+        {
             if (equipmentTransferFileHandler.Read() == null)
                 return equipmentTransfers;
 
             equipmentTransfers.Clear();
+            SetEquipmentAndRooms();
+                
+            return equipmentTransfers;
+        }
+
+        private void SetEquipmentAndRooms() {
             RoomRepository roomRepository = new RoomRepository();
             EquipmentRepository equipmentRepository = new EquipmentRepository();
-            List<EquipmentTransfer> ets = equipmentTransferFileHandler.Read();
-
             equipmentRepository.GetAll();
             roomRepository.GetAll();
 
-            foreach (EquipmentTransfer et in ets)
+            foreach (EquipmentTransfer et in equipmentTransferFileHandler.Read())
             {
                 et.RecipientRoom = roomRepository.GetById(et.RecipientRoom.Id);
                 et.SenderRoom = roomRepository.GetById(et.SenderRoom.Id);
                 et.Equipment = equipmentRepository.GetById(et.Equipment.Id);
-
                 equipmentTransfers.Add(et);
             }
-
-            return equipmentTransfers;
-
         }
 
         public bool Delete(int id)
-      {
+        {
             foreach (EquipmentTransfer et in equipmentTransfers)
             {
                 if (et.Id.Equals(id))
@@ -64,36 +67,34 @@ namespace Repository
             return false;
         }
       
-      public bool Edit(Room senderRoom, Room recipientRoom, Equipment equipment, int quantity, DateTime scheduledDate, int id)
-      {
-            foreach (EquipmentTransfer et in equipmentTransfers)
+        public bool Edit(EquipmentTransfer equipmentTransfer)
+        {
+            foreach (EquipmentTransfer newEquipmentTransfer in equipmentTransfers)
             {
-                if (et.Id.Equals(id))
+                if (newEquipmentTransfer.Id.Equals(equipmentTransfer.Id))
                 {
-                    et.Id = id;
-                    et.SenderRoom = senderRoom;
-                    et.RecipientRoom = recipientRoom;
-                    et.Equipment = equipment;
-                    et.Quantity = quantity;
-                    et.SheduledDate = scheduledDate;
-                    equipmentTransferFileHandler.Write(equipmentTransfers);
-
+                    SetEquipmentTransferValue(newEquipmentTransfer, equipmentTransfer);
                     return true;
                 }
             }
-
             return false;
         }
-      
-      public bool Create(Room senderRoom, Room recipientRoom, Equipment equipment, int quantity, DateTime scheduledDate, int id)
-      {
 
-            equipmentTransfers.Add(new EquipmentTransfer(senderRoom, recipientRoom, equipment, quantity,scheduledDate,id));
+        private void SetEquipmentTransferValue(EquipmentTransfer newEquipmentTransfer, EquipmentTransfer equipmentTransfer) {
+            newEquipmentTransfer.Id = equipmentTransfer.Id;
+            newEquipmentTransfer.SenderRoom = equipmentTransfer.SenderRoom;
+            newEquipmentTransfer.RecipientRoom = equipmentTransfer.RecipientRoom;
+            newEquipmentTransfer.Equipment = equipmentTransfer.Equipment;
+            newEquipmentTransfer.Quantity = equipmentTransfer.Quantity;
+            newEquipmentTransfer.SheduledDate = equipmentTransfer.SheduledDate;
             equipmentTransferFileHandler.Write(equipmentTransfers);
-            return true;
         }
       
-      public FileHandler.EquipmentTransferFileHandler equipmentTransferFileHandler;
-   
+        public bool Create(EquipmentTransfer equipmentTransfer)
+        {
+            equipmentTransfers.Add(equipmentTransfer);
+            equipmentTransferFileHandler.Write(equipmentTransfers);
+            return true;
+        }   
    }
 }

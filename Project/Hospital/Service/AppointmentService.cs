@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Model;
 using Repository;
 
@@ -42,24 +43,25 @@ namespace Service
 
         }
 
-        public bool CreateRenovation(int id, DateTime startTime, DateTime endTime, int duration, bool scheduled, AppointmentType appointmetntType,
-            PatientAccount patientAccount, Doctor doctor, Room room)
+        public bool CreateRenovation(Appointment appointment)
         {
-            if ((DateTime.Compare(startTime.Date, DateTime.Today) < 0) ||(DateTime.Compare(endTime.Date, startTime.Date) < 0))
-            {
+            if ((DateTime.Compare(appointment.StartTime.Date, DateTime.Today) < 0) ||(DateTime.Compare(appointment.EndTime.Date, appointment.StartTime.Date) < 0))
                 return false;
-            }
 
-            if (!this.IsTheRoomOccupied(startTime, endTime, room))
-            {
-                return appointmentRepository.CreateRenovation(id, startTime, endTime, duration, scheduled, appointmetntType, patientAccount, doctor, room);
-            }
+            appointment.Id = GenerateAppointmentId();
+            if (!this.IsTheRoomOccupied(appointment.StartTime, appointment.EndTime, appointment.Room))
+                return appointmentRepository.CreateRenovation(appointment);
             else
                 return false;
 
         }
+        private int GenerateAppointmentId()
+        {
+            int id = appointmentRepository.GetAll().Count() == 0 ? 0 : appointmentRepository.GetAll().Max(Appointment => Appointment.Id);
+            return ++id;
+        }
 
-        public bool IsTheRoomOccupied(DateTime startTime, DateTime endTime,Room room) {
+        private bool IsTheRoomOccupied(DateTime startTime, DateTime endTime,Room room) {
             foreach (Appointment appointment in this.GetAll())
             {
                 if (appointment.Room != null)
@@ -67,17 +69,16 @@ namespace Service
                     if (appointment.Room.Id.Equals(room.Id))
                     {
                         if ((DateTime.Compare(startTime, appointment.StartTime) >= 0) && (DateTime.Compare(startTime, appointment.EndTime) < 0))
-                            { return true;}
+                             return true;
                         
                         if ((DateTime.Compare(endTime, appointment.StartTime) >= 0) && (DateTime.Compare(endTime, appointment.EndTime) < 0))
-                            {return true;}
+                            return true;
 
                         if ((DateTime.Compare(startTime, appointment.StartTime) <= 0) && (DateTime.Compare(endTime, appointment.EndTime) >= 0))
-                            {return true;}
+                            return true;
                     }
                 }
             }
-
             return false;
         }
 

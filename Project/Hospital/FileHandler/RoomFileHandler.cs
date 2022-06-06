@@ -18,7 +18,7 @@ namespace FileHandler
 
         public void Write(List<Room> rooms)
         {
-            foreach (Room r in rooms) { r.serialize = true; }
+            foreach (Room room in rooms)  room.Serialize = true; 
             string serializedRooms = Newtonsoft.Json.JsonConvert.SerializeObject(rooms);
             System.IO.File.WriteAllText(path, serializedRooms);
         }

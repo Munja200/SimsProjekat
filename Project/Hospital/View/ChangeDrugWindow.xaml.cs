@@ -34,23 +34,26 @@ namespace Hospital.View
             public event PropertyChangedEventHandler PropertyChanged;
 
         public ChangeDrugWindow(Drug drug)
-            {
-                InitializeComponent();
-                DataContext = this;
-                App app = Application.Current as App;
-                drugController = app.drugController;
-                this.drug = drug;
-                Ingredients = new ObservableCollection<Ingredient>();
-                Replacements = new ObservableCollection<String>();
-                NewName = this.drug.Equipment.Name;
-                Manu = this.drug.Equipment.Manufacturer;
-                Describe = this.drug.ReasonForInvalidity;
-                foreach (Ingredient ingredient in this.drug.Ingredients) { Ingredients.Add(ingredient); }
-                foreach (String newReplacement in this.drug.Replacements) { Replacements.Add(newReplacement); }
-                listIngredients.ItemsSource = Ingredients;
-                listReplacements.ItemsSource = Replacements;
-            }
-
+        {
+            InitializeComponent();
+            DataContext = this;
+            App app = Application.Current as App;
+            drugController = app.drugController;
+            this.drug = drug;
+            Initialization();
+        }
+        private void Initialization() {
+            Ingredients = new ObservableCollection<Ingredient>();
+            Replacements = new ObservableCollection<String>();
+            NewName = this.drug.Equipment.Name;
+            Manu = this.drug.Equipment.Manufacturer;
+            Describe = this.drug.ReasonForInvalidity;
+            foreach (Ingredient ingredient in this.drug.Ingredients) Ingredients.Add(ingredient);
+            foreach (String newReplacement in this.drug.Replacements) Replacements.Add(newReplacement);
+            listIngredients.ItemsSource = Ingredients;
+            listReplacements.ItemsSource = Replacements;
+        }
+            
             public String NewName
             {
                 get => name;
@@ -101,7 +104,7 @@ namespace Hospital.View
                 drug.Equipment.Manufacturer = Manu;
                 drug.Ingredients = Ingredients.ToList();
                 drug.Replacements = Replacements.ToList();
-                drug.IsNotValid = false;
+                drug.IsNotValid = true;
                 drug.ReasonForInvalidity = "";
                 drugController.EditDrug(drug);
                 this.Close();
